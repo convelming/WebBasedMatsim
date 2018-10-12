@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>echarts Network Display</title>
+</head>
+<body style="height: 100%; margin: 0">
+<div id="wait" style="width:100%;height:100%;position:fixed;z-index:3;top: -65px;px;left:-65px;display:none;" align="center">
+        <span style="color:black;font-weight:bold;position:absolute;z-index:2;top:40%;">
+            运行中，请稍后 ...<br>
+            <img src="./image/waiting.gif" style="width:130px;height:130px;"/>
+        </span>
+    <div style="width:100%;height:100%;top:0px;left:0px;background-color:rgba(0,0,0,0.6);position:absolute;z-index:1;"></div>
+</div>
+<div id="container" style="height: 100%"></div>
+
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+<script type="text/javascript " src="./javascript/plugin/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    option = null;
+    var CHUNK_COUNT = 0;
+    var dataCount = 0;
+    var dataFolder = '';
+    var centerX = 0.0;
+    var centerY = 0.0;
+    $(document).ready(function(){
+        $.ajax({
+            type : "POST",
+            url : "/static/display/echartsNetwork",
+            dataType:"json",
+            beforeSend: function(){
+                $("#wait").attr("style","display:show();");
+            },
+            contentType: "application/json",
+            data:JSON.stringify({saveName:getQueryString("saveName")
+                 ,otherInfo:getQueryString("shapeId")}
+                                 ),
+            async: true,
+            success : function(result) {
+
+                centerX = result.data.centerX;
+                centerY = result.data.centerY;
+                dataFolder = result.data.dataFolder;
+                CHUNK_COUNT = result.data.chunk_COUNT;
+                console.log(centerX+", "+centerY+", "+result.data.dataFolder);
+                function fetchData(idx) {
+                    if (idx >= CHUNK_COUNT) {
+                        return;
+                    }
+                    var dataURL = dataFolder +"subnet_"+idx+".json";
+                    // console.log(dataURL);
+
+                    $.ajax({
+                        url: dataURL,
+                        type: "get",
+                        dataType: "json",
+                        success: function (rawData) {
+                            $("#wait").attr("style","display:none;");
+                            var data = rawData.slice(2,rawData.length);
+                            data = new Float64Array(data.length);
+                            // console.log(data[0]+","+data[1]+","+data[2]);
+                            var offsetX = rawData[0];
+                            var offsetY = rawData[1];
+                            var off = 0;
+                            var addedDataCount = 0;
+                            for (var i = 2; i < rawData.length;) {
+                                var count = rawData[i++];
+                                data[off++] = count;
+                                for (var k = 0; k < count; k++) {
+                                    var x = rawData[i++] + offsetX;
+                                    var y = rawData[i++] + offsetY;
+                                    data[off++] = x;
+                                    data[off++] = y;
+                                    addedDataCount++;
+                                }
+                            }
+                            myChart.appendData({
+                                seriesIndex: 0,
+                                data: data
+                            });
+                            dataCount += addedDataCount;
+                            fetchData(idx + 1);
+                        }
+                    });
+                }
+
+                option = {
+                    progressive: 20000,
+                    backgroundColor: '#111',
+                    geo: {
+                        center: [centerX,centerY],//114.18735045,22.695330900000002
+                        zoom: 360,
+                        map: 'world',
+                        roam: true,
+                        silent: true,
+                        itemStyle: {
+                            normal: {
+                                color: 'transparent',
+                                borderColor: 'rgba(255,255,255,0.1)',
+                                borderWidth: 1
+                            }
+                        }
+                    },
+                    series: [{
+                        type: 'lines',
+
+                        coordinateSystem: 'geo',
+
+                        blendMode: 'lighter',
+
+                        dimensions: ['value'],
+
+                        data: new Float64Array(),
+                        polyline: true,
+                        large: true,
+
+                        lineStyle: {
+                            color: 'orange',
+                            width: 0.5,
+                            opacity: 0.3
+                        }
+                    }]
+                };
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+                fetchData(0);
+            }
+        });
+    });
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+</script>
+
+
+</body>
+</html>

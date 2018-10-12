@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../web/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/style.css">
+    <script type="text/javascript " src="../javascript/plugin/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+    <title>AdminWelcome</title>
+    <script>
+        window.onload = function(){
+
+            $.ajax({
+                type: "POST",
+                url: "/verify/getUserInfo",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (result) {
+                    document.getElementById("userName").value = result.name;
+                    document.getElementById("password").value = result.password;
+                    document.getElementById("email").value = result.email;
+
+                }
+            });
+
+            var dataTable = $("#saveDataTable");
+            $.ajax({
+                type: "post",
+                url: "/saveAndLoad/loadAll",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (result) {
+                    console.log(result);
+                    var tableContent =  "<tr><th>save name</th>  <th>save time</th> <th></th> </tr>";
+                    var saveData = result.data;
+                    for (var i=0;i<saveData.length;i++){
+
+                        //<a id="dn_config" href="" download="">
+                        tableContent += "<tr id='"+saveData[i].saveName+"'><td><a href=\"downLoad.html?saveName="+saveData[i].saveName+"\">"+saveData[i].saveName+"</a></td>"
+                            +"<td>"+saveData[i].saveTime+"</td>"+"<td>"+saveData[i].saveName+"</td>"
+                            +"<td><button onclick=\"delSave('"+saveData[i].saveName+"')\">DELETE?</button></td></tr>";
+                    }
+                    dataTable.html(tableContent);
+                }
+            });
+        };
+
+        function delSave(saveName) { // this function delete user save by save name
+            var data = {};
+            data.saveName = saveName;
+            $.ajax({
+                type: "post",
+                url: "/saveAndLoad/deleteSaveName",
+                dataType: "json",
+                contentType: "application/json",
+                data:JSON.stringify({saveName:saveName}),
+                beforeSend: function(){
+                    var answer = confirm("are you sure to delete "+saveName+"?");
+                    console.log(!answer);
+                    if(!answer){
+                        this.abort();
+                        return false;
+                    }
+                },
+                success: function (result) {
+                    console.log(result);
+                    if(result.success) {
+                        alert("Save " + saveName + " has been successfully deleted...");
+                        var mainBody = document.getElementById("saveDataTable");
+                        var cell = document.getElementById(saveName);
+                        if(cell!=undefined){
+                            mainBody.removeChild(cell);
+                        }
+                    }else{
+                        alert("Something went wrong, please try again later...");
+                    }
+                }
+            });
+        }
+        
+        function alterUserInfo() {
+            var submitData = {};
+            submitData.userName = document.getElementById("userName").value;
+            submitData.password = document.getElementById("password").value;
+            submitData.verifiedPassword = document.getElementById("verifiedPassword").value;
+            submitData.email = document.getElementById("email").value;
+            console.log(submitData);
+            $.ajax({
+                url: "/verify/alterUserInfo",
+                type: "post",
+                data: submitData,
+                dataType: "json",
+                beforeSend: function(){
+                    console.log(submitData.password!=submitData.verifiedPassword);
+                    if(submitData.password!=submitData.verifiedPassword){
+                        alert("Password and confirmed password are not the same!");
+
+                    }else{
+                        if(!confirm("are you sure to change?")){
+                            this.abort();
+                            return false;
+                        }
+                    }
+                },
+                success: function (result){
+                    alert("User information has been suceessfully changed.")
+                }
+            })
+        }
+        function logout() {
+            $.ajax({
+                url: "/verify/logout",
+                type: "post",
+                dataType: "json",
+                beforeSend: function(){
+                    if(!confirm("are you sure to log out?")){
+                        this.abort();
+                        return false;
+                    }
+                },
+                complete:function () {
+                    window.location.href="../web/index.html";
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="height: 70px;">
+        <div class="container-fluid"style="height: 60px;">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../web/index.html"><img src="../web/img/name.png" alt="myLogo" height="50" /></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a data-scroll href="downLoad.html"> 资料下载</a></li>
+                    <li><a data-scroll onclick="logout()">注销</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div style="height:70px;"></div>
+    <table>
+        <td>
+            <div style="width:30px"> </div>
+        </td>
+        <td>
+            <div class="row  style_display" id="AdminInfo" style="border-bottom: none;">
+                <form id="userInfo">
+                    <div class="form-group">
+                        用户名：<input type="text" name="userName" readonly="true" class="form-control" id="userName" style="width: 200px;">
+                    </div>
+                    <div class="form-group">
+                        密码： <input type="password" name="password" class="form-control" id="password"  style="width: 200px;">
+                    </div>
+                    <div class="form-group">
+                        确认密码：<input type="password" name= "verifiedPassword" class="form-control" id="verifiedPassword"  style="width: 200px;">
+                    </div>
+                    <div class="form-group">
+                        email:<input type="email" name = "email" class="form-control" id="email" style="width: 200px;">
+                    </div>
+                    <div>
+                        <div><button type="button" onclick="alterUserInfo()" id="submit" class="btn btn-primary" style="width: 200px;">修改</button></div>
+                    </div>
+                </form>
+            </div>
+        </td>
+        <td>
+            <div style="width:50px"> </div>
+        </td>
+        <td>
+            <div class="row  style_display" id="saveDataTable" style="border-bottom: none;"></div>
+        </td>
+    </table>
+
+<footer>
+    <div class="row" style="padding-top: 60px; clear: both;">
+        <div class="col-md-12 text-center"><p><small>&copy; All Rights Reserved.深圳康沃数据科技有限公司<a href="http://www.ethz.ch/" target="_blank" title="">Online Traffic planning.</a> <p></div>
+    </div>
+</footer>
+</body>
+</html>
+

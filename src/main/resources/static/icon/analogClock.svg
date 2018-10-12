@@ -1,0 +1,82 @@
+    <svg id="analogClock" width="220" height="220" transform="scale(0.5 0.5)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+        <circle id="clockFace" cx="110" cy="110" r="100"
+            stroke-width="8" fill="none" stroke="grey"
+        ></circle>
+        <line id="hourHand" x1="110" x2="110" y1="120" y2="35" stroke="red" stroke-width="6"></line>
+        <line id="minuteHand" x1="110" x2="110" y1="130" y2="25" stroke="grey" stroke-width="3"></line>
+
+        <line id="hourStroke" x1="110" x2="110" y1="10" y2="30" stroke="grey" stroke-width="6"></line>
+        <use xlink:href="#hourStroke" transform="rotate(30 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(60 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(90 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(120 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(150 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(180 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(210 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(240 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(270 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(300 110 110)" />
+        <use xlink:href="#hourStroke" transform="rotate(330 110 110)" />
+
+        <line id="minuteStroke" x1="110" x2="110" y1="10" y2="23" stroke="grey" stroke-width="4"></line>
+        <use xlink:href="#minuteStroke" transform="rotate(6 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(12 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(18 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(24 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(36 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(42 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(48 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(54 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(66 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(72 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(78 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(84 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(96 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(102 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(108 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(114 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(126 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(132 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(138 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(144 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(156 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(162 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(168 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(174 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(186 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(192 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(198 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(204 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(216 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(222 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(228 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(234 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(246 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(252 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(258 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(264 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(276 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(282 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(288 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(294 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(306 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(312 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(318 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(324 110 110)" />
+
+        <use xlink:href="#minuteStroke" transform="rotate(336 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(342 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(348 110 110)" />
+        <use xlink:href="#minuteStroke" transform="rotate(354 110 110)" />
+    </svg>
+    

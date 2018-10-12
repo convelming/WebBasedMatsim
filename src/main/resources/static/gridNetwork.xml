@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE network SYSTEM "http://www.matsim.org/files/dtd/network_v1.dtd">
+<network>
+
+<!-- ====================================================================== -->
+
+	<nodes>
+		<node id="00" x="0.0" y="0.0" />
+		<node id="01" x="0.0" y="100.0" />
+		<node id="02" x="0.0" y="200.0" />
+		<node id="03" x="0.0" y="300.0" />
+		<node id="04" x="0.0" y="400.0" />
+		<node id="05" x="0.0" y="500.0" />
+		<node id="06" x="0.0" y="600.0" />
+		<node id="07" x="0.0" y="700.0" />
+		<node id="08" x="0.0" y="800.0" />
+		<node id="09" x="0.0" y="900.0" />
+		<node id="10" x="100.0" y="0.0" />
+		<node id="11" x="100.0" y="100.0" />
+		<node id="12" x="100.0" y="200.0" />
+		<node id="13" x="100.0" y="300.0" />
+		<node id="14" x="100.0" y="400.0" />
+		<node id="15" x="100.0" y="500.0" />
+		<node id="16" x="100.0" y="600.0" />
+		<node id="17" x="100.0" y="700.0" />
+		<node id="18" x="100.0" y="800.0" />
+		<node id="19" x="100.0" y="900.0" />
+		<node id="20" x="200.0" y="0.0" />
+		<node id="21" x="200.0" y="100.0" />
+		<node id="22" x="200.0" y="200.0" />
+		<node id="23" x="200.0" y="300.0" />
+		<node id="24" x="200.0" y="400.0" />
+		<node id="25" x="200.0" y="500.0" />
+		<node id="26" x="200.0" y="600.0" />
+		<node id="27" x="200.0" y="700.0" />
+		<node id="28" x="200.0" y="800.0" />
+		<node id="29" x="200.0" y="900.0" />
+		<node id="30" x="300.0" y="0.0" />
+		<node id="31" x="300.0" y="100.0" />
+		<node id="32" x="300.0" y="200.0" />
+		<node id="33" x="300.0" y="300.0" />
+		<node id="34" x="300.0" y="400.0" />
+		<node id="35" x="300.0" y="500.0" />
+		<node id="36" x="300.0" y="600.0" />
+		<node id="37" x="300.0" y="700.0" />
+		<node id="38" x="300.0" y="800.0" />
+		<node id="39" x="300.0" y="900.0" />
+		<node id="40" x="400.0" y="0.0" />
+		<node id="41" x="400.0" y="100.0" />
+		<node id="42" x="400.0" y="200.0" />
+		<node id="43" x="400.0" y="300.0" />
+		<node id="44" x="400.0" y="400.0" />
+		<node id="45" x="400.0" y="500.0" />
+		<node id="46" x="400.0" y="600.0" />
+		<node id="47" x="400.0" y="700.0" />
+		<node id="48" x="400.0" y="800.0" />
+		<node id="49" x="400.0" y="900.0" />
+		<node id="50" x="500.0" y="0.0" />
+		<node id="51" x="500.0" y="100.0" />
+		<node id="52" x="500.0" y="200.0" />
+		<node id="53" x="500.0" y="300.0" />
+		<node id="54" x="500.0" y="400.0" />
+		<node id="55" x="500.0" y="500.0" />
+		<node id="56" x="500.0" y="600.0" />
+		<node id="57" x="500.0" y="700.0" />
+		<node id="58" x="500.0" y="800.0" />
+		<node id="59" x="500.0" y="900.0" />
+		<node id="60" x="600.0" y="0.0" />
+		<node id="61" x="600.0" y="100.0" />
+		<node id="62" x="600.0" y="200.0" />
+		<node id="63" x="600.0" y="300.0" />
+		<node id="64" x="600.0" y="400.0" />
+		<node id="65" x="600.0" y="500.0" />
+		<node id="66" x="600.0" y="600.0" />
+		<node id="67" x="600.0" y="700.0" />
+		<node id="68" x="600.0" y="800.0" />
+		<node id="69" x="600.0" y="900.0" />
+		<node id="70" x="700.0" y="0.0" />
+		<node id="71" x="700.0" y="100.0" />
+		<node id="72" x="700.0" y="200.0" />
+		<node id="73" x="700.0" y="300.0" />
+		<node id="74" x="700.0" y="400.0" />
+		<node id="75" x="700.0" y="500.0" />
+		<node id="76" x="700.0" y="600.0" />
+		<node id="77" x="700.0" y="700.0" />
+		<node id="78" x="700.0" y="800.0" />
+		<node id="79" x="700.0" y="900.0" />
+		<node id="80" x="800.0" y="0.0" />
+		<node id="81" x="800.0" y="100.0" />
+		<node id="82" x="800.0" y="200.0" />
+		<node id="83" x="800.0" y="300.0" />
+		<node id="84" x="800.0" y="400.0" />
+		<node id="85" x="800.0" y="500.0" />
+		<node id="86" x="800.0" y="600.0" />
+		<node id="87" x="800.0" y="700.0" />
+		<node id="88" x="800.0" y="800.0" />
+		<node id="89" x="800.0" y="900.0" />
+		<node id="90" x="900.0" y="0.0" />
+		<node id="91" x="900.0" y="100.0" />
+		<node id="92" x="900.0" y="200.0" />
+		<node id="93" x="900.0" y="300.0" />
+		<node id="94" x="900.0" y="400.0" />
+		<node id="95" x="900.0" y="500.0" />
+		<node id="96" x="900.0" y="600.0" />
+		<node id="97" x="900.0" y="700.0" />
+		<node id="98" x="900.0" y="800.0" />
+		<node id="99" x="900.0" y="900.0" />
+	</nodes>
+
+<!-- ====================================================================== -->
+
+	<links capperiod="01:00:00" effectivecellsize="7.5" effectivelanewidth="3.75">
+		<link id="00h1" from="00" to="01" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="00h2" from="01" to="00" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="00v1" from="00" to="10" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="00v2" from="10" to="00" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="01h1" from="01" to="02" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="01h2" from="11" to="10" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="01v1" from="01" to="11" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="01v2" from="20" to="10" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="02h1" from="02" to="03" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="02h2" from="21" to="20" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="02v1" from="02" to="12" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="02v2" from="30" to="20" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="03h1" from="03" to="04" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="03h2" from="31" to="30" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="03v1" from="03" to="13" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="03v2" from="40" to="30" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="04h1" from="04" to="05" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="04h2" from="41" to="40" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="04v1" from="04" to="14" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="04v2" from="50" to="40" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="05h1" from="05" to="06" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="05h2" from="51" to="50" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="05v1" from="05" to="15" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="05v2" from="60" to="50" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="06h1" from="06" to="07" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="06h2" from="61" to="60" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="06v1" from="06" to="16" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="06v2" from="70" to="60" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="07h1" from="07" to="08" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="07h2" from="71" to="70" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="07v1" from="07" to="17" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="07v2" from="80" to="70" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="08h1" from="08" to="09" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="08h2" from="81" to="80" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="08v1" from="08" to="18" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="08v2" from="90" to="80" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="09h2" from="91" to="90" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="09v1" from="09" to="19" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="10h1" from="10" to="11" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="10h2" from="02" to="01" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="10v1" from="10" to="20" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="10v2" from="11" to="01" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="11h1" from="11" to="12" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="11h2" from="12" to="11" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="11v1" from="11" to="21" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="11v2" from="21" to="11" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="12h1" from="12" to="13" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="12h2" from="22" to="21" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="12v1" from="12" to="22" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="12v2" from="31" to="21" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="13h1" from="13" to="14" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="13h2" from="32" to="31" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="13v1" from="13" to="23" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="13v2" from="41" to="31" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="14h1" from="14" to="15" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="14h2" from="42" to="41" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="14v1" from="14" to="24" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="14v2" from="51" to="41" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="15h1" from="15" to="16" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="15h2" from="52" to="51" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="15v1" from="15" to="25" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="15v2" from="61" to="51" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="16h1" from="16" to="17" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="16h2" from="62" to="61" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="16v1" from="16" to="26" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="16v2" from="71" to="61" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="17h1" from="17" to="18" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="17h2" from="72" to="71" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="17v1" from="17" to="27" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="17v2" from="81" to="71" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="18h1" from="18" to="19" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="18h2" from="82" to="81" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="18v1" from="18" to="28" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="18v2" from="91" to="81" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="19h2" from="92" to="91" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="19v1" from="19" to="29" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="20h1" from="20" to="21" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="20h2" from="03" to="02" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="20v1" from="20" to="30" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="20v2" from="12" to="02" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="21h1" from="21" to="22" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="21h2" from="13" to="12" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="21v1" from="21" to="31" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="21v2" from="22" to="12" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="22h1" from="22" to="23" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="22h2" from="23" to="22" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="22v1" from="22" to="32" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="22v2" from="32" to="22" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="23h1" from="23" to="24" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="23h2" from="33" to="32" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="23v1" from="23" to="33" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="23v2" from="42" to="32" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="24h1" from="24" to="25" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="24h2" from="43" to="42" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="24v1" from="24" to="34" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="24v2" from="52" to="42" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="25h1" from="25" to="26" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="25h2" from="53" to="52" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="25v1" from="25" to="35" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="25v2" from="62" to="52" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="26h1" from="26" to="27" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="26h2" from="63" to="62" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="26v1" from="26" to="36" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="26v2" from="72" to="62" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="27h1" from="27" to="28" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="27h2" from="73" to="72" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="27v1" from="27" to="37" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="27v2" from="82" to="72" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="28h1" from="28" to="29" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="28h2" from="83" to="82" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="28v1" from="28" to="38" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="28v2" from="92" to="82" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="29h2" from="93" to="92" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="29v1" from="29" to="39" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="30h1" from="30" to="31" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="30h2" from="04" to="03" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="30v1" from="30" to="40" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="30v2" from="13" to="03" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="31h1" from="31" to="32" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="31h2" from="14" to="13" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="31v1" from="31" to="41" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="31v2" from="23" to="13" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="32h1" from="32" to="33" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="32h2" from="24" to="23" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="32v1" from="32" to="42" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="32v2" from="33" to="23" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="33h1" from="33" to="34" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="33h2" from="34" to="33" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="33v1" from="33" to="43" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="33v2" from="43" to="33" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="34h1" from="34" to="35" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="34h2" from="44" to="43" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="34v1" from="34" to="44" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="34v2" from="53" to="43" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="35h1" from="35" to="36" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="35h2" from="54" to="53" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="35v1" from="35" to="45" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="35v2" from="63" to="53" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="36h1" from="36" to="37" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="36h2" from="64" to="63" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="36v1" from="36" to="46" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="36v2" from="73" to="63" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="37h1" from="37" to="38" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="37h2" from="74" to="73" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="37v1" from="37" to="47" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="37v2" from="83" to="73" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="38h1" from="38" to="39" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="38h2" from="84" to="83" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="38v1" from="38" to="48" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="38v2" from="93" to="83" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="39h2" from="94" to="93" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="39v1" from="39" to="49" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="40h1" from="40" to="41" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="40h2" from="05" to="04" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="40v1" from="40" to="50" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="40v2" from="14" to="04" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="41h1" from="41" to="42" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="41h2" from="15" to="14" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="41v1" from="41" to="51" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="41v2" from="24" to="14" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="42h1" from="42" to="43" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="42h2" from="25" to="24" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="42v1" from="42" to="52" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="42v2" from="34" to="24" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="43h1" from="43" to="44" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="43h2" from="35" to="34" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="43v1" from="43" to="53" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="43v2" from="44" to="34" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="44h1" from="44" to="45" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="44h2" from="45" to="44" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="44v1" from="44" to="54" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="44v2" from="54" to="44" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="45h1" from="45" to="46" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="45h2" from="55" to="54" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="45v1" from="45" to="55" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="45v2" from="64" to="54" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="46h1" from="46" to="47" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="46h2" from="65" to="64" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="46v1" from="46" to="56" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="46v2" from="74" to="64" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="47h1" from="47" to="48" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="47h2" from="75" to="74" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="47v1" from="47" to="57" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="47v2" from="84" to="74" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="48h1" from="48" to="49" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="48h2" from="85" to="84" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="48v1" from="48" to="58" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="48v2" from="94" to="84" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="49h2" from="95" to="94" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="49v1" from="49" to="59" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="50h1" from="50" to="51" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="50h2" from="06" to="05" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="50v1" from="50" to="60" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="50v2" from="15" to="05" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="51h1" from="51" to="52" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="51h2" from="16" to="15" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="51v1" from="51" to="61" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="51v2" from="25" to="15" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="52h1" from="52" to="53" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="52h2" from="26" to="25" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="52v1" from="52" to="62" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="52v2" from="35" to="25" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="53h1" from="53" to="54" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="53h2" from="36" to="35" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="53v1" from="53" to="63" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="53v2" from="45" to="35" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="54h1" from="54" to="55" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="54h2" from="46" to="45" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="54v1" from="54" to="64" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="54v2" from="55" to="45" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="55h1" from="55" to="56" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="55h2" from="56" to="55" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="55v1" from="55" to="65" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="55v2" from="65" to="55" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="56h1" from="56" to="57" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="56h2" from="66" to="65" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="56v1" from="56" to="66" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="56v2" from="75" to="65" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="57h1" from="57" to="58" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="57h2" from="76" to="75" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="57v1" from="57" to="67" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="57v2" from="85" to="75" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="58h1" from="58" to="59" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="58h2" from="86" to="85" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="58v1" from="58" to="68" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="58v2" from="95" to="85" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="59h2" from="96" to="95" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="59v1" from="59" to="69" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="60h1" from="60" to="61" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="60h2" from="07" to="06" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="60v1" from="60" to="70" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="60v2" from="16" to="06" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="61h1" from="61" to="62" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="61h2" from="17" to="16" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="61v1" from="61" to="71" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="61v2" from="26" to="16" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="62h1" from="62" to="63" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="62h2" from="27" to="26" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="62v1" from="62" to="72" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="62v2" from="36" to="26" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="63h1" from="63" to="64" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="63h2" from="37" to="36" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="63v1" from="63" to="73" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="63v2" from="46" to="36" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="64h1" from="64" to="65" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="64h2" from="47" to="46" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="64v1" from="64" to="74" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="64v2" from="56" to="46" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="65h1" from="65" to="66" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="65h2" from="57" to="56" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="65v1" from="65" to="75" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="65v2" from="66" to="56" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="66h1" from="66" to="67" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="66h2" from="67" to="66" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="66v1" from="66" to="76" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="66v2" from="76" to="66" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="67h1" from="67" to="68" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="67h2" from="77" to="76" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="67v1" from="67" to="77" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="67v2" from="86" to="76" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="68h1" from="68" to="69" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="68h2" from="87" to="86" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="68v1" from="68" to="78" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="68v2" from="96" to="86" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="69h2" from="97" to="96" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="69v1" from="69" to="79" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="70h1" from="70" to="71" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="70h2" from="08" to="07" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="70v1" from="70" to="80" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="70v2" from="17" to="07" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="71h1" from="71" to="72" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="71h2" from="18" to="17" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="71v1" from="71" to="81" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="71v2" from="27" to="17" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="72h1" from="72" to="73" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="72h2" from="28" to="27" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="72v1" from="72" to="82" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="72v2" from="37" to="27" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="73h1" from="73" to="74" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="73h2" from="38" to="37" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="73v1" from="73" to="83" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="73v2" from="47" to="37" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="74h1" from="74" to="75" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="74h2" from="48" to="47" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="74v1" from="74" to="84" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="74v2" from="57" to="47" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="75h1" from="75" to="76" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="75h2" from="58" to="57" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="75v1" from="75" to="85" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="75v2" from="67" to="57" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="76h1" from="76" to="77" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="76h2" from="68" to="67" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="76v1" from="76" to="86" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="76v2" from="77" to="67" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="77h1" from="77" to="78" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="77h2" from="78" to="77" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="77v1" from="77" to="87" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="77v2" from="87" to="77" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="78h1" from="78" to="79" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="78h2" from="88" to="87" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="78v1" from="78" to="88" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="78v2" from="97" to="87" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="79h2" from="98" to="97" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="79v1" from="79" to="89" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="80h1" from="80" to="81" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="80h2" from="09" to="08" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="80v1" from="80" to="90" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="80v2" from="18" to="08" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="81h1" from="81" to="82" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="81h2" from="19" to="18" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="81v1" from="81" to="91" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="81v2" from="28" to="18" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="82h1" from="82" to="83" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="82h2" from="29" to="28" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="82v1" from="82" to="92" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="82v2" from="38" to="28" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="83h1" from="83" to="84" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="83h2" from="39" to="38" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="83v1" from="83" to="93" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="83v2" from="48" to="38" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="84h1" from="84" to="85" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="84h2" from="49" to="48" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="84v1" from="84" to="94" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="84v2" from="58" to="48" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="85h1" from="85" to="86" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="85h2" from="59" to="58" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="85v1" from="85" to="95" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="85v2" from="68" to="58" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="86h1" from="86" to="87" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="86h2" from="69" to="68" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="86v1" from="86" to="96" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="86v2" from="78" to="68" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="87h1" from="87" to="88" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="87h2" from="79" to="78" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="87v1" from="87" to="97" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="87v2" from="88" to="78" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="88h1" from="88" to="89" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="88h2" from="89" to="88" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="88v1" from="88" to="98" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="88v2" from="98" to="88" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="89h2" from="99" to="98" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="89v1" from="89" to="99" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="90h1" from="90" to="91" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="90v2" from="19" to="09" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="91h1" from="91" to="92" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="91v2" from="29" to="19" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="92h1" from="92" to="93" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="92v2" from="39" to="29" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="93h1" from="93" to="94" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="93v2" from="49" to="39" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="94h1" from="94" to="95" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="94v2" from="59" to="49" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="95h1" from="95" to="96" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="95v2" from="69" to="59" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="96h1" from="96" to="97" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="96v2" from="79" to="69" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="97h1" from="97" to="98" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="97v2" from="89" to="79" length="100.0" freespeed="27.8" capacity="800.0" permlanes="4.0" oneway="1" modes="bus,car" />
+		<link id="98h1" from="98" to="99" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+		<link id="98v2" from="99" to="89" length="100.0" freespeed="27.8" capacity="800.0" permlanes="2.0" oneway="1" modes="bus,car" />
+	</links>
+
+<!-- ====================================================================== -->
+
+</network>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Network events</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="networkDisplays.js"></script>
+    <style>
+        html,body{
+            width:100%;
+            /*height: 100%;*/
+            margin:0;
+        }
+        #networkSvg {
+            width: 95%;
+            /*height: 100%;*/
+            position:absolute;left:20px;top:20px;z-index:100;
+        }
+        #timeSlider{
+            width:95%;
+            position:absolute;left:20px;top:98%;z-index:120;
+        }
+        #clock{
+           position:absolute;top:1%;right:3%;z-index:130;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var winWidth = document.body.scrollWidth;
+            var scaleFactor = 0.125*winWidth/document.getElementById("analogClock").getAttribute("width");
+            // alert(scaleFactor);
+            document.getElementById("analogClock").setAttribute("transform", "scale("+scaleFactor+" "+scaleFactor+")");
+            $("#clock").attr("style","display:show();");
+
+            // document.getElementById("networkSvg").setAttribute("width","100%");
+            var network = parseXmlNetwork("gridNetwork.xml");
+            var eventSvg = xmlEvents2Svg("10.events.xml", network, "networkSvg");
+            var seconds = eventSvg.getCurrentTime();
+            console.log("start seconds: " +seconds);
+            var deltaT = 100;
+            $("#timeSlider").slider({
+                min: 0,
+                max: 60 * 60 * 24,
+                animate: true,
+            });
+            $("#timeSlider").bind('slide', function (event, ui) {
+                console.log(ui.value);
+                seconds = ui.value;
+                eventSvg.pauseAnimations();
+                eventSvg.setCurrentTime(seconds);
+                eventSvg.unpauseAnimations();
+            });
+            var interval = setInterval(function () {
+                if (seconds >= 3600 * 24) {
+                    seconds = ui.value;
+                    clearInterval(interval);
+                }
+                setHourAndMinuteHands(seconds, "hourHand", "minuteHand");
+                $("#timeSlider").slider({ value: seconds });
+                seconds += deltaT/100*60;
+                console.log(eventSvg.getCurrentTime()+", "+seconds);
+            }, deltaT);
+
+        };
+
+        // set hour and minute hands according to timeInSeconds
+        // timeInSeconds starts at 00:00:00
+        function setHourAndMinuteHands(timeInSeconds, hourHandId, minuteHandId) {
+
+            var hour = Math.floor(timeInSeconds / 3600);
+            var minute = Math.floor(timeInSeconds % 3600 / 60);
+            var hourHand = document.getElementById(hourHandId);
+            var minuteHand = document.getElementById(minuteHandId);
+
+            if (hour >= 12 && hour < 24) {
+                document.getElementById("amOrPm").textContent = "pm";
+            }else if(hour<12){
+                document.getElementById("amOrPm").textContent = "am";
+
+            }
+            //set
+            var cx = document.getElementById("clockFace").getAttribute("cx");
+            var cy = document.getElementById("clockFace").getAttribute("cy");
+            hourHand.setAttribute("transform", "rotate(" + 30 * hour + "," + cx + "," + cy + ")");
+            minuteHand.setAttribute("transform", "rotate(" + 6 * minute + "," + cx + "," + cy + ")");
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="clock" style="display:none;">
+        <svg id="analogClock" width="220" height="220" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+            <circle id="clockFace" cx="110" cy="110" r="100" stroke-width="8" fill="none" stroke="grey"></circle>
+            <text id="amOrPm" x="150" y="120" fill="red">am</text>
+            <line id="hourHand" x1="110" x2="110" y1="120" y2="35" stroke="red" stroke-width="6"></line>
+            <line id="minuteHand" x1="110" x2="110" y1="130" y2="25" stroke="grey" stroke-width="3"></line>
+            <line id="hourStroke" x1="110" x2="110" y1="10" y2="30" stroke="grey" stroke-width="6"></line>
+            <use xlink:href="#hourStroke" transform="rotate(30 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(60 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(90 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(120 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(150 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(180 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(210 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(240 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(270 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(300 110 110)" />
+            <use xlink:href="#hourStroke" transform="rotate(330 110 110)" />
+
+            <line id="minuteStroke" x1="110" x2="110" y1="10" y2="23" stroke="grey" stroke-width="4"></line>
+            <use xlink:href="#minuteStroke" transform="rotate(6 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(12 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(18 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(24 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(36 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(42 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(48 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(54 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(66 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(72 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(78 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(84 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(96 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(102 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(108 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(114 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(126 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(132 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(138 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(144 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(156 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(162 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(168 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(174 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(186 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(192 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(198 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(204 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(216 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(222 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(228 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(234 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(246 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(252 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(258 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(264 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(276 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(282 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(288 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(294 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(306 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(312 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(318 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(324 110 110)" />
+
+            <use xlink:href="#minuteStroke" transform="rotate(336 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(342 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(348 110 110)" />
+            <use xlink:href="#minuteStroke" transform="rotate(354 110 110)" />globe.gif
+
+
+        </svg>
+    </div>
+    <div id="networkSvg" onmousewheel="scaleByMouseWheel(this)" >
+
+    </div>
+    <div id="eventsSvg"> </div>
+    <div id="timeSlider"></div>
+    <div> still working on it, coming soon... drag the slider at the bottom to about 1/3 to see some animation 模拟一天的出行活动，将底部进度条滑块拖动到1/3到位置就可以看到动画</div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download page</title>
+
+    <!--<link rel="stylesheet" type="text/css" href="./javascript/dataTables/Datatables.css">-->
+    <!--<script type="text/javascript" charset="utf8" src="./javascript/dataTables/Datatables.js"></script>-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../web/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/style.css">
+    <script type="text/javascript " src="../javascript/plugin/jquery.min.js"></script>
+    <script type="text/javascript" >
+        function logout() {
+            $.ajax({
+                url: "/verify/logout",
+                type: "post",
+                dataType: "json",
+                beforeSend: function(){
+                    if(!confirm("are you sure to log out?")){
+                        this.abort();
+                        return false;
+                    }
+                },
+                complete:function () {
+                    window.location.href="../web/index.html";
+                }
+            })
+        }
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        // window.onload(
+        //
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/saveAndLoad/getSaveNameFolder",
+        //         dataType: "json",
+        //         contentType: "application/json",
+        //         data:JSON.stringify({saveName:getQueryString("saveName")}),
+        //         // data:JSON.stringify({saveName:getQueryString("saveName")}),
+        //         async: false,
+        //         success: function (result) {
+        //             // todo get files according to the names.
+        //             var personAct = result.data;
+        //             console.log(personAct);
+        //             actXs = personAct.actXs;
+        //             actYs = personAct.actYs;
+        //             actInfos = personAct.activityInfo;
+        //             centerX = personAct.centerX;
+        //             centerY = personAct.centerY;
+        //             defaultContent = personAct.defaultContent;
+        //         }
+        //     });
+        //
+        // // need to load the save name
+        // );
+
+        function downLoadFile( downLoadContent) {
+
+            var targetElement;
+            //
+            /** This download file might be problematic, 'cause all the download paths are fixed according to
+             a certain file structure.
+              /userName/
+             ├── saveName
+             │   ├── GTFS
+             │   ├── csvTxtFile
+             │   │   ├── array
+             │   │   └── matrix
+             │   ├── excel
+             │   │   ├── array
+             │   │   └── matrix
+             │   ├── matsimXml
+             │   │   ├── busSchedule
+             │   │   ├── config
+             │   │   ├── facility
+             │   │   ├── network
+             │   │   └── plans
+             │   ├── others
+             │   ├── output
+             │   └── shpFile
+             │       ├── network
+             │       └── region
+             └── temp // this folder is same heirachy as the save name
+             */
+            var userName;
+            // get the user name
+            $.ajax({
+                type: "POST",
+                url: "/saveAndLoad/getSaveNameFolder",
+                dataType: "json",
+                contentType: "application/json",
+                data:JSON.stringify({"saveName":"test"}),//getQueryString("saveName")}),
+                async: false,
+                success: function (result) {
+                    console.log(result.data);
+                    var data = eval('(' + result.data + ')');
+                    console.log(data.networkFile);
+                    if(result.success){
+                        userName = result.data;
+                        console.log(userName+" line 60");
+                    }else{
+                        alert(result.errMsg);
+                    }
+                }
+
+            });
+
+            switch(downLoadContent)
+            {
+                case "network":
+                    targetElement = document.getElementById("dn_network");
+                    targetElement.setAttribute("href","../sharedFiles/fullConfig.xml");
+                    targetElement.setAttribute("download","network");
+                    console.log("download network");
+                    break;
+                case "config":
+                    //执行代码块 2
+                    break;
+                case "plan":
+                    //执行代码块 2
+                    break;
+                case "output":
+                    //执行代码块 2
+                    break;
+
+            }
+            console.log("test onclick ");
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" height="70px" >
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../web/index.html"><img src="../web/img/name.png" alt="myLogo" height="50px" /></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <!--<li><a data-scroll onclick="loadOriginalTable()">load </a></li>-->
+                    <!--<li><a data-scroll onclick="validateData()">validate</a></li>-->
+                    <li><a data-scroll href="admin.html">user admin</a></li>
+
+                    <li><a data-scroll onclick="logout()">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div class="downloads" style="margin: 40px">
+        <div style="height: 70px"></div>
+        <div id="sharedFiles">
+            shared Files
+            <li><a href="../sharedFiles/fullConfig.xml" download="fullConfig.xml"> full config </a></li> download full config file
+            <li><a href="../sharedFiles/headers.xls" download="tripChainTemplate.xls"> trip chains excel</a></li> download the template of trip chain to work on the plans on your own computer.
+            <li><a href="../lines-bus.json" download="input.excel"> local MATSim runner</a></li> download the matsim runner.
+
+        </div>
+        -------------------------------------------------------------------------
+        <div id="personalData">
+                personal data <br>
+                network files <br>  download network.xml, please rename it after download
+                <!--<div id="dn_network"> </div>-->
+                <li><a id="dn_network" href="" download="" onclick="downLoadFile( 'network' )"> network</a></li>
+                config files <br>  download config.xml
+                <div id="dn_config"> </div>
+            <!--<li><a id="dn_config" href="" download=""> config</a></li>-->
+                plan files <br> download generated plan.xml
+                <div id="dn_plan"> </div>
+            <!--<li><a id="dn_plan" href="" download=""> plan</a></li>-->
+                outputs<br> download output if you have already run the model on the server.
+                <div id="dn_output"> </div>
+            <!--<li><a id="dn_output" href="" download=""> output</a></li>-->
+        </div>
+    </div>
+
+<body class="style-2">
+
+<div class="container">
+
+    <div class="row" style="padding-top: 60px; clear: both;">
+        <div class="col-md-12 text-center"><p><small>&copy; All Rights Reserved.深圳康沃数据科技有限公司<a href="http://www.ethz.ch/" target="_blank" title="">Online Traffic planning.</a> <p></div>
+    </div>
+</div>
+
+
+</body>
+</body>
+</html>

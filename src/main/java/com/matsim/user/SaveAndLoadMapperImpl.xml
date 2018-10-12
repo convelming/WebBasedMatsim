@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.matsim.user.SaveAndLoadMapper" >
+    <resultMap id="saveAndLoad" type="com.matsim.user.SaveAndLoad" >
+        <id property="saveId" column="save_id" />
+        <result property="userId" column="user_id" />
+        <result property="saveName" column="save_name" />
+		<result property="saveInfo" column="save_info" />
+		<result property="saveContent" column="save_content" />
+        <result property="saveTime" column="save_time" />
+        <result property="other" column="other" />
+    </resultMap>
+
+    <insert id="save" parameterType="com.matsim.user.SaveAndLoad" >
+		<!--<selectKey keyProperty="save_id" resultType="java.lang.Long" order="BEFORE">-->
+			<!--SELECT currval('save_id'::regclass) as save_id-->
+		<!--</selectKey>-->
+		INSERT INTO saved_workspace (
+-- 			save_id,
+			user_id ,
+    		save_info ,
+    		save_name,
+    		save_content,
+    		save_time,
+    		other
+		)VALUES (
+-- 			nextval('saved_workspace_save_id_seq'),
+			#{saveAndLoad.userId},
+			#{saveAndLoad.saveInfo},
+			#{saveAndLoad.saveName},
+			#{saveAndLoad.saveContent},
+			#{saveAndLoad.saveTime},
+			#{saveAndLoad.other}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.matsim.user.SaveAndLoad" >
+		UPDATE saved_workspace
+			<set>
+				<if test="saveAndLoad.saveId != null and saveAndLoad.saveId != '' ">
+ 					save_id = #{saveAndLoad.saveId},
+				</if>
+				<if test="saveAndLoad.userId != null and saveAndLoad.userId != '' ">
+					user_id = #{saveAndLoad.userId},
+				</if>
+				<if test="saveAndLoad.saveInfo != null">
+					save_info = #{saveAndLoad.saveInfo},
+				</if>
+				<if test="saveAndLoad.saveName != null">
+					save_name = #{saveAndLoad.saveName},
+				</if>
+				<if test="saveAndLoad.saveContent != null">
+					save_content = #{saveAndLoad.saveContent},
+				</if>
+				<!--<if test="saveAndLoad.saveTime != null and saveAndLoad.saveTime != '' ">-->
+					save_time = #{saveAndLoad.saveTime},
+				<!--</if>-->
+				<if test="saveAndLoad.other != null">
+					other = #{saveAndLoad.other}
+				</if>
+			</set>
+		WHERE user_id = #{saveAndLoad.userId} AND save_name= #{saveAndLoad.saveName}
+	</update>
+
+	<delete id="delete" parameterType="com.matsim.user.SaveAndLoad" >
+		DELETE FROM saved_workspace WHERE save_name = #{saveAndLoad.saveName} and user_id = #{saveAndLoad.userId}
+	</delete>
+
+	<select id="hasSaveName" parameterType="com.matsim.user.SaveAndLoad" resultMap="saveAndLoad">
+		SELECT * FROM saved_workspace WHERE save_name = #{saveAndLoad.saveName} and user_id = #{saveAndLoad.userId}
+	</select>
+
+	<select id="loadBySaveId" parameterType="java.lang.Integer" resultMap="saveAndLoad"  >
+		SELECT * FROM saved_workspace WHERE save_Id = #{saveId}
+	</select>
+
+	<select id="loadByUserIdAndSaveName" parameterType="com.matsim.user.SaveAndLoad" resultMap="saveAndLoad"  >
+		SELECT * FROM saved_workspace
+		WHERE user_id = #{saveAndLoad.userId} AND save_name= #{saveAndLoad.saveName}
+	</select>
+
+	<select id="displayAllSavesByUserId" parameterType="java.lang.Integer" resultMap="saveAndLoad"  >
+		SELECT * FROM saved_workspace WHERE user_id = #{userId}
+	</select>
+
+</mapper>
+

@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="MATSim.org">
+    <meta name="viewport" content="width=device-width">
+    <title>Help Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../web/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../web/css/style.css">
+    <script type="text/javascript " src="../javascript/plugin/jquery.min.js"></script>
+</head>
+
+<body id="page-top" class="index preload" style="margin: 30px;">
+<!--<header>-->
+    <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">-->
+    <!--<div class="container-fluid">-->
+        <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="../web/index.html"><img src="../web/img/name.png" alt="myLogo" height="50px" /></a>-->
+        <!--</div>-->
+        <!--<div class="collapse navbar-collapse navbar-right" id="navbar-collapse">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--&lt;!&ndash;<li><a data-scroll onclick="loadOriginalTable()">load </a></li>&ndash;&gt;-->
+                <!--<li><a data-scroll onclick="window.close()">Close</a></li>-->
+                <!--&lt;!&ndash;<li><a data-scroll href="admin.html">Close</a></li>&ndash;&gt;-->
+
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+<!--</header>-->
+<div class="container" >
+
+    <!-- MAIN CONTENT -->
+
+        <h3 id="intro">Introduction</h3>
+    <table style="width:100%">
+        <tr>
+            <th><p><image src="../image/workspace.gif" style="height: 300px;"></image></p></th>
+            <!--<th><p><image src="../image/echartNetwork.gif" style="height: 300px;"></image></p></th>-->
+            <th><p><image src="../image/eventQuery.gif" style="height: 300px;"></image></p></th>
+
+        </tr>
+    </table>
+
+
+            <p>The purpose of this MATSim online tool is to build a MATSim scenario without programming.
+                Users can just drag the blocks into the workspace, double click the block, set up according to the clicked block,
+                link the blocks and you are ready to go.We fancy the idea of 'simple, yet efficient',
+                so when building a trip chain, 'common sense' of understanding
+                daily trips is enough(We assume that users already know some basics about MATSim, if not so,
+                please check <a href="https://matsim.org" target="_Blank"><image src="../image/matsimLogo.png" style="height: 30px"></image></a>).
+                After the model has been run successfully, there are also some blocks to show some visual effects.
+                Right now it is under development so everyone interested is welcome to try, and any suggestion would be greatly appreciated.</p>
+            <hr/>
+            <h4>Framwork</h4>
+                <p> The project is based on Spring boot 2 framework,
+                    and right know it is only tested in Chrome(pop-up window option should be enabled first).
+                </p>
+                <li>Spring Boot 2
+                    <ul>WEB FRONT
+                        <ul><li>original javascript, jQuery</li></ul>
+                    </ul>
+                    <ul>SERVER END
+                        <ul><li>Java 1.8</li></ul>
+                        <ul><li>MATSim 0.8.0</li></ul>
+                    </ul>
+                    <ul>DATA MANAGEMENT
+                        <ul><li>myBatis </li></ul>
+                        <ul><li>upload and download files</li></ul>
+                    </ul>
+                </li>
+                <li>Visualization
+                    <ul>WEB GL
+                        <ul><li>three.js</li></ul>
+                    </ul>
+                    <ul>BAIDU API
+                        <ul> <li>Echarts 4.0</li></ul>
+                    </ul>
+                    <ul>OPENSTREETMAP
+                    </ul>
+                </li>
+                <hr/>
+            <h4>Working space and blocks</h4>
+                <p>
+                    <image src="../image/workspace.png" style="height: 300px"></image>
+                </p>
+                <p>The working bench including four parts: model setting blocks,visualization blocks, examples and helps block and tool blocks.
+                The first two part you could drag into the workspace, while the last two parts can be clicked on.
+                The icons are pretty much showing what those blocks are for.
+                If you are still not sure, move your mouse onto it and some instructions can be seen.
+                </p>
+                <hr/>
+            <h4>Building scenarios</h4>
+                <p>
+                    <image src="../image/buildingScenario.png" style="height: 300px"></image>
+                </p>
+                <p> Drag the modelling blocks and double click them to config, upload files or fill out forms,
+                    then link the blocks, click run button on the up-right corner, the model will run on the server.
+                    After that, using the visualization blocks to see the results.
+                    You can also download all the files (inputs, outputs) and run locally on your local computer.
+                    Just go to the download page by click user account icon on the up-right corner.
+                </p>
+                <hr/>
+            <h4>Basic scenario components</h4>
+                <p>
+                    <image src="../image/scenarioComp.png" style="height: 300px"></image>
+                </p>
+                <p> There are three basic components building a MATSim scenario: network part;
+                    plan parts and config part. The network part prepares network and traffic zone(region) data;
+                    plan parts specify trip chains of travel agents,and config part is used to config the scnario, upload files for sophisticated models.
+                </p>
+                <hr/>
+
+            <h4>Network components</h4>
+            <p>
+                <image src="../image/network.png" style="height: 300px"></image>
+            </p>
+            <p>
+                MATSim requires a .xml network, and users can build the network part through:
+                <a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>
+                <a href="index.html#network"><image src="../icon/map.svg" style="height: 50px;width:50px"></image></a>,
+                <a href="index.html#openStreet"><image src="../icon/openMap.svg" style="height: 50px;width:50px"></image></a>,
+                <li>If you have a MATSim network already, upload it with
+                    <a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>
+                    and you are done with the network part;
+                </li>
+                <li>If you have a .shp format map, you might need to use GIS tools to modify it first and then upload with
+                    <a href="index.html#network"><image src="../icon/map.svg" style="height: 50px;width:50px"></image></a>,
+                    The platform will transfer it into a standard .xml network, after click the running button <image src="../icon/start.svg" style="height: 30px;width:30px"></image>,
+                    you can also download it in your account<image src="../icon/user.svg" style="height: 30px;width:30px"></image>.
+                </li>
+                <li>If you don't have any network at hand, <a href="https://www.openstreetmap.org">openstreet map</a>
+                    is a good source of getting one. Use
+                    <a href="index.html#openStreet"><image src="../icon/openMap.svg" style="height: 50px;width:50px"></image></a>,
+                        to specify the map boundary and it will download automatically. Once again, after clicking the running button
+                    <image src="../icon/start.svg" style="height: 30px;width:30px"></image>
+                    you can also download it in your account<image src="../icon/user.svg" style="height: 30px;width:30px"></image>.
+                </li>
+            </p>
+            <p> Beside, there is another block <a href="index.html#region"><image src="../icon/region.svg" style="height: 50px;width:50px"></image></a>
+             you might need. <br/>
+                In this block users need to upload a .shp file polygons which indicates traffic zones and zone ids for later use.
+            Because MATSim needs origins to specify their exact coordination, sometime OD matrix data only indicates to a zone level.
+                In this case, the region block is needed to tell the platform ids of each zone and it will generate a random coord within according to the zone Id.</p>
+            <hr/>
+
+            <h4>Plan components</h4>
+            <p>
+                <image src="../image/plans.png" style="height: 300px"></image>
+            </p>
+            <p> There are actually two ways to formulate plans for MATSim, through
+                <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>,
+                and trip chain blocks. If you don't have exact coord information in those,
+                please remember to use
+                <a href="index.html#region"><image src="../icon/region.svg" style="height: 50px;width:50px"></image></a>
+
+                and all region ids filled should be consistent with the ids in the
+                <a href="index.html#region"><image src="../icon/region.svg" style="height: 50px;width:50px"></image></a>.
+
+                When using
+                <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>,
+                please note there are traditional od matrix and trip chains to specify first. for more details, go to
+                <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>.
+
+                Another way to create some population is to create some trip chains(try to imagine a trip using common sense, there must be a home location,
+                 some intermediate destinations and then go back home the last).By the way, users are do not have to add home again in the end.
+                Each chain starts with
+                <a href="index.html#person"><image src="../icon/person.svg" style="height: 50px;width:50px"></image></a>,
+                via
+                <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>
+                or
+                <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                and in between is
+                <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>.
+                These three can be linked in any orders and even be skipped(there are default values for them).
+                Again: if the travel plan is based on an od matrix, or trip chains with activity location based on traffic Zone Ids, Region block is needed, which users need to specify traffic zone id in the shp file and upload the shp file. System will generate random point in the specified Zones automatically.
+
+            </p>
+            <hr/>
+            <h4>Plan components</h4>
+                <p>
+                    <image src="../image/odMatrix.png" style="height: 300px"></image>
+                </p>
+                <p> For advanced users, .xml plan file can always be used.
+                    For others, a batch way to input agents plans are using od matrices or od chain arrays.
+                    Upload an excel or text file according to the following headers: <br>
+                    id(0)|count(1)|oriDepatrueTime(2)|origionRegion(3)|originCoordX(4)|originCoordY(5)|departureTime1(6+8*i)|desiredMode1(7+8*i)|tripPurpose1(8+8*i)|desFacilityId1(9+8*i)| facilityChangable1(10+8*i)|desRegionId1(11+8*i)|desCoordX1(12+8*i)|desCoordY1(13+8*i)
+                    <br>
+                    Use
+                    <a href="index.html#editTable"><image src="../icon/edit.svg" style="height: 50px;width:50px"></image></a>
+                    to validate and edit your data.
+                </p>
+            <hr />
+            <h4>Visualization</h4>
+            <p>
+                After upload the network or region files, they are ready to visualize. Please use these
+                <a href="index.html#networkDisplay"><image src="../icon/display.svg" style="height: 50px;width:50px"></image></a>,
+                <a href="index.html#chord"><image src="../image/globe3s.gif" style="height: 50px;width:50px"></image></a>
+
+                Only after successfully running the model will it be possible to see some actions by:
+                <a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>.
+            </p>
+            <hr />
+    <h3 id="blocks">Block</h3>
+            <h4 id="matsimXMLs">MatsimXMLs block</h4>
+                <p><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from: none </p>
+                <p>Could link to: <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>,
+                                  <a href="index.html#networkDisplay"><image src="../icon/display.svg" style="height: 50px;width:50px"></image></a></p>
+                This block is for advanced users who prepare their own MATSim inputs. All *.xml inputs can be uploaded in this block, the population,
+                network, bus schedule, vehilce files, except config file, which can be uploaded from
+                <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>.
+                <hr />
+            <h4 id="matsim">matsim core block</h4>
+                <p><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#network"><image src="../icon/map.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#openStreet"><image src="../icon/openMap.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#region"><image src="../icon/region.svg" style="height: 50px;width:50px"></image></a>
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                </p>
+                <p>Could link to:
+                    <a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>This is the most important block, which is closely related to MATSim jars on the server.
+                    If files, such as bus schedule or vehicle.xml files are uploaded, then corresponding radio boxes have to be checked.
+                    If you have your own config.xml file, you can upload it.
+                    Bear in mind that the scenario will later run on the server, so all the inputs configs are not necessary.
+                    These can be filled out with local paths, but they will be altered before running.</p>
+                <hr />
+            <h4 id="network">network block</h4>
+                <p><image src="../icon/map.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:
+                    <a href="index.html#networkDisplay"><image src="../icon/display.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>This block deals with network shape files. Because MATSim network links contain information of
+                    free speed, lanes, etc. These information have to be pointed out to a corresponding field in the shape file.
+                    <br>
+                    <image src="../image/shpConfig.png" style="height:300px;"></image><br>
+                    It is strongly recommended editing the corresponding field of the shape file first before uploading.
+                        Note that a complete shape file has three mandatory files with the file extension of.shp, .shx and .dbf.
+                    What is more, at the moment only WGS 84(EPSG:4326) is supported and the shape file must be in polyline format. </p>
+                <hr />
+            <h4 id="openStreet">openstreet map block</h4>
+                <p><image src="../icon/openMap.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from: none
+                </p>
+                <p>Could link to:
+                    <a href="index.html#networkDisplay"><image src="../icon/display.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Open street map is kinda coming-to-the-rescue hero for those
+                    who simply just need a map either for learning or doing serious work.
+                    Go to <a href="https://www.openstreetmap.org">openstreet map</a>, select a desired area, record its boundary
+                    and fill the blanks with the coord and it is ready to go. <br>
+                    Please only select the boundary needed,
+                    excessive boundary needs longer time to download from the open street server and can also impedes dramatically
+                    later procedures.
+                </p>
+                <hr />
+            <h4 id="GTFS">GTFS block(under construction, coming soon...)</h4>
+                <p><image src="../icon/text_GTFS.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from: none
+                    <!--<a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>,-->
+                </p>
+                <p>Could link to:none
+                    <!--<a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>-->
+                </p>
+                <p> This block intend to accept GTFS files and transfer them into schedule and vehicle files that MATSim recognize.
+                    <br>Under construction, coming soon...</p>
+                <hr />
+            <h4 id="region">region block</h4>
+                <p><image src="../icon/region.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from: none
+                    <!--<a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>,-->
+                </p>
+                <p>Could link to:
+                    <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#networkDisplay"><image src="../icon/display.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#chord"><image src="../image/globe3s.gif" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>This block is only needed when od matrix or activity locations are given on region-level instead of exact coords. File uploaded requires polygon-format shape file
+                and regionID field chosen must be unique in values. And only WGS 84(EPSG:4326) is supported at the moment.</p>
+                <hr />
+            <h4 id="facility">facility block</h4>
+                <p><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#person"><image src="../icon/person.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:
+                    <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Facility block serves same functionality as the activity blcok.
+                    If facility.xml is not uploaded, usage of this block is not recommended. Just use
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>
+                    instead. </p>
+                <hr />
+            <h4 id="odMatrix">od matrix block</h4>
+                <p><image src="../icon/table.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:
+                    <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#editTable"><image src="../icon/edit.svg" style="height: 50px;width:50px"></image></a>
+                    <a href="index.html#chord"><image src="../image/globe3s.gif" style="height: 50px;width:50px"></image></a>
+
+                </p>
+
+                <p>This block serves the main function of building plans. A traditional four-step model is 'kinda' supported as well as agents' trip chains.
+                <image src="../image/odWindow.png" style="height: 200px;"></image>
+                    <br>
+                    Note if square matrix is chosen, then it must be traffic zone id.
+                    if trip chain is the option, file uploaded must follow the headers like: <br>
+                    id(0)|count(1)|oriDepatrueTime(2)|origionRegion(3)|originCoordX(4)|originCoordY(5)|departureTime1(6+8*i)|desiredMode1(7+8*i)|tripPurpose1(8+8*i)|desFacilityId1(9+8*i)| facilityChangable1(10+8*i)|desRegionId1(11+8*i)|desCoordX1(12+8*i)|desCoordY1(13+8*i)
+                    <br> where i >= 1,<br>
+                    Not all field have to be filled out, for example if region id is given, then coordX and coordY are no longer needed.
+                    When forming this trip chains, just use common sense to do it. Think about a daily trip chain would look like,
+                    which information is mandatory, which is not and it should be fine. Once it is done and uploaded,
+                    <a href="index.html#editTable"><image src="../icon/edit.svg" style="height: 50px;width:50px"></image></a>
+                    serves the checking duty.
+                </p>
+
+                <hr />
+            <h4 id="editTable">editTable block</h4>
+                <p><image src="../icon/edit.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:none
+                    <!--<a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>-->
+                </p>
+                <p>This block has basic editing functions but it is not recommended.
+                    Files are edited locally using excel or txt file editing tool.
+                    <br> It also offers to check if the trip chains are valid.
+                    A more stable version is on the way with more editing features and stable performance.
+                </p>
+                <hr />
+            <h4 id="activity">activity block</h4>
+                <p>Accept from:
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#person"><image src="../icon/person.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:
+                    <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p> This is actually the trip destination. If traffic zone id is checked, then a region file must be uploaded.
+                    It is also serves the intermediate point for a trip chain. All these
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>
+                    have to have a destination attached. What is more, the destination is also the next activity's origin.
+                </p>
+                <hr />
+            <h4 id="timer">timer block</h4>
+                <p><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#person"><image src="../icon/person.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>               </p>
+                <hr />
+                <p>
+                    <p><image src="../image/timerWindow.png" style="height: 200px;"></image></p>
+
+                    activity duration is
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    after this block(need to further check).<br>
+                    activity end time is <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#person"><image src="../icon/person.svg" style="height: 50px;width:50px"></image></a>
+                    before this block.
+                </p>
+            <h4 id="person">person block</h4>
+                <p><image src="../icon/person.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:none
+                    <!--<a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>,-->
+                </p>
+                <p>Could link to:
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p> MATSim is family based agent, so there is car ownership and family size needed.
+                Again if not coored filled , then region file is needed.</p>
+                <hr />
+            <h4 id="mode">mode block</h4>
+                <p><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#person"><image src="../icon/person.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#tripPurpose"><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p> Default mode is car, and this option should also to be specified in the network, especially when preparing your own network.xml file.
+                    <br> Also if there are user defined modes, check the network file again, and make sure there are these modes configured. </p>
+                <hr />
+            <h4 id="tripPurpose">trip purpose block</h4>
+                <p><image src="../icon/tripPurpose.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#person"><image src="../icon/person.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to:
+                    <a href="index.html#activity"><image src="../icon/activity.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#mode"><image src="../icon/vehicle.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#facility"><image src="../icon/facility.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#timer"><image src="../icon/clock.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p> Default is work, and this option should also to be specified in the config.xml, especially when preparing your own config.xml file.
+                    <br> Also if there are user defined purposes, check the config file again, and make sure there are these purposes configured.
+                </p>
+                <hr />
+                <hr />
+            <h4 id="networkDisplay">network display block</h4>
+                <p><image src="../icon/display.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#openStreet"><image src="../icon/openMap.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#region"><image src="../icon/region.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#network"><image src="../icon/map.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#matsimXMLs"><image src="../icon/xml.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to: none
+                    <!--<a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>-->
+                </p>
+                <p> visualization is on the way, please wait...</p>
+                <hr />
+            <h4 id="OTFvis">OTFVis block</h4>
+                <p><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#matsim"><image src="../icon/matsim.svg" style="height: 50px;width:50px"></image></a>,
+                </p>
+                <p>Could link to: none
+                    <!--<a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>-->
+                </p>
+                <hr />
+            <h4 id="centroid">centroid block</h4>
+                <p><image src="../icon/movingStar.svg" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#region"><image src="../icon/region.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to: none
+                    <!--<a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>-->
+                </p>
+                <hr />
+            <h4 id="chord">chord block</h4>
+                <p><image src="../image/globe3s.gif" style="height: 50px;width:50px"></image></p>
+                <p>Accept from:
+                    <a href="index.html#region"><image src="../icon/region.svg" style="height: 50px;width:50px"></image></a>,
+                    <a href="index.html#odMatrix"><image src="../icon/table.svg" style="height: 50px;width:50px"></image></a>
+                </p>
+                <p>Could link to: none
+                    <!--<a href="index.html#OTFvis"><image src="../icon/otfvis.svg" style="height: 50px;width:50px"></image></a>-->
+                </p>
+                <hr />
+        <h3 id="examples">Example</h3>
+        <h3 id="others">Others</h3>
+
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap">
+    <footer class="footer" id="footer_content">
+        <p>&copy; 2018 <a href="https://matsim.org/about-us">MATSim Community</a></p>
+    </footer>
+</div>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://matsim.org/lib/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://matsim.org/lib/classie.js"></script>
+<script src="https://matsim.org/lib/cbpAnimatedHeader.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="https://matsim.org/lib/agency.js"></script>
+
+</body>
+</html>

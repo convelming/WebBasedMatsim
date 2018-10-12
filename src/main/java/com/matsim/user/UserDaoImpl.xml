@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.matsim.user.UserDao" >
+    <resultMap id="userResultMap" type="com.matsim.user.User" >
+        <id property="id" column="user_id" />
+        <result property="name" column="user_name" />
+        <result property="saveUrl" column="save_url" />
+        <result property="tempUrl" column="temp_url" />
+        <result property="saveBlockNum" column="save_block_number" />
+        <result property="level" column="user_level" />
+        <result property="allowedBlockList" column="allowed_block_list" />
+        <result property="email" column="user_email" />
+        <result property="password" column="user_password" />
+        <result property="other" column="other" />
+        <result property="loginTime" column="user_login_time" />
+        <result property="registerTime" column="user_register_time" />
+    </resultMap>
+
+    <insert id="add" parameterType="com.matsim.user.User" >
+		INSERT INTO users (
+-- 			user_id ,
+    		user_name ,
+			save_url ,
+			temp_url ,
+			save_block_number ,
+			user_level ,
+			allowed_block_list ,
+			user_email ,
+			user_password ,
+			other,
+			user_login_time,
+    		user_register_time
+		)VALUES (
+-- 			nextval('users_user_id_seq'),
+			#{user.name},
+			#{user.saveUrl},
+			#{user.tempUrl},
+			#{user.saveBlockNum},
+			#{user.level},
+			#{user.allowedBlockList},
+			#{user.email},
+			#{user.password},
+			#{user.other},
+			#{user.loginTime},
+			#{user.registerTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.matsim.user.User" >
+		UPDATE users
+			<set>
+				<!--<if test="user.name != null and user.name != '' ">-->
+					<!--user_name = #{user.name},-->
+				<!--</if>-->
+				<!--<if test="user.id != null and user.id != '' ">-->
+					<!--user_id = #{user.code},-->
+				<!--</if>-->
+				<!--<if test="user.saveUrl != null">-->
+					<!--save_url = #{user.saveUrl},-->
+				<!--</if>-->
+				<!--<if test="user.tempUrl != null">-->
+					<!--temp_url = #{user.tempUrl},-->
+				<!--</if>-->
+				<!--<if test="user.saveBlockNum != null">-->
+					<!--save_block_number = #{user.saveBlockNum},-->
+				<!--</if>-->
+				<!--<if test="user.allowedBlockList != null and user.allowedBlockList != '' ">-->
+                    <!--allowed_block_list = #{user.allowedBlockList},-->
+				<!--</if>-->
+				<!--<if test="user.level != null">-->
+					<!--user_level = #{user.level},-->
+				<!--</if>-->
+				<if test="user.email != null">
+					user_email = #{user.email},
+				</if>
+				<if test="user.password != null and user.password != '' ">
+					user_password = #{user.password},
+				</if>
+				<!--<if test="user.other != null">-->
+					<!--other = #{user.other},-->
+				<!--</if>-->
+				<!--<if test="user.loginTime != null and user.mark != '' ">-->
+					<!--user_login_time = #{user.loginTime},-->
+				<!--</if>-->
+				<!--<if test="user.registerTime != null and user.username != '' ">-->
+					<!--user_register_time = #{user.registerTime},-->
+				<!--</if>-->
+
+			</set>
+		WHERE user_name = #{user.name}
+	</update>
+
+	<delete id="delete" parameterType="com.matsim.user.User" >
+		DELETE FROM users WHERE user_name = #{user.name}
+	</delete>
+
+	<select id="hasUserName" parameterType="java.lang.String" resultMap="userResultMap"  >
+		SELECT * FROM users WHERE user_name = #{userName}
+	</select>
+
+	<select id="getUserIdByName" parameterType="java.lang.String" resultMap="userResultMap"  >
+		SELECT * FROM users WHERE user_name = #{userName}
+	</select>
+
+	<select id="hasUserId" parameterType="java.lang.Integer" resultMap="userResultMap"  >
+        SELECT * FROM users WHERE user_id = #{id}
+    </select>
+
+
+</mapper>
+

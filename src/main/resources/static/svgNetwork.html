@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShowNetwork</title>
+    <link rel="stylesheet"href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <style>
+        #networkDiv {
+            width: 100%;
+            height: 100%;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+            margin:0px;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="networkDisplays.js"></script>
+
+    <script>
+        window.onload = function () {
+            //     var winWidth = document.body.scrollWidth;
+            //     var network = parseXmlNetwork("zhengzhou1121.xml");
+            //     var networkSvg = xmlNetwork2Svg(network);、
+            //     document.getElementById("networkDiv").appendChild(networkSvg);
+            // }
+            var network = parseXmlNetwork("sz180603.xml");
+            var networkSvg = xmlNetwork2Svg(network);
+            document.getElementById("networkDiv").appendChild(networkSvg);
+            // console.log(networkSvg);
+        }
+    </script>
+</head>
+    <div id="networkDiv" >
+
+    </div>
+</html>

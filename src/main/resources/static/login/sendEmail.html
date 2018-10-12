@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>用户密码重置</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FreeHTML5.co" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript " src="../javascript/plugin/jquery.min.js"></script>
+
+	<script>
+		function sendEmail() {
+			var submitData = {};
+			submitData.userName = document.getElementById("userName").value;
+			submitData.email = document.getElementById("email").value;
+			$.ajax({
+				url: "/verify/sendEmail",
+				type: "post",
+				data: submitData,
+				dataType: "json",
+				beforeSend: function(){
+					if(!confirm("are you sure to send?")){
+						this.abort();
+						return false;
+					}
+				},
+				success: function (result){
+				    console.log(result);
+				    if(!result.success){
+						alert(result.errMsg);
+                    }else{
+				        alert("Password has been sent to your email, please check.");
+                        window.location.href="../login/loginPage.html";
+                    }
+				}
+			})
+		}
+	</script>
+	</head>
+	<body class="style-2">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<!-- Start Sign In Form -->
+					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
+						<h2>Forgot Password</h2>
+						<!-- <div class="form-group">
+							<div class="alert alert-success" role="alert">Your email has been sent.</div>
+						</div> -->
+						<div class="form-group">
+							<label for="userName" class="sr-only">user name</label>
+							<input type="text" class="form-control" id="userName" placeholder="userName" autocomplete="off" name="userName">
+						</div>
+						<div class="form-group">
+							<label for="email" class="sr-only">Email</label>
+							<input type="email" class="form-control" id="email" name ="email"
+							 placeholder="Email" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<p><a href="loginPage.html">用户登录</a> or <a href="registerPage.html">用户注册</a></p>
+						</div>
+						<div class="form-group">
+							<input type="button" onclick="sendEmail()" value="Send Email" name="send" class="btn btn-primary">
+						</div>
+					</form>
+					<!-- END Sign In Form -->
+				</div>
+			</div>
+
+		</div>
+	<footer>
+		<div class="row" style="padding-top: 60px; clear: both;">
+			<div class="col-md-12 text-center"><p><small>&copy; All Rights Reserved.®深圳康小沃数据科技有限公司<a href="http://www.ethz.ch/" target="_blank" title="">Online Traffic planning.</a> <p></div>
+		</div>
+	</footer>
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Placeholder -->
+	<script src="js/jquery.placeholder.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Main JS -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+
