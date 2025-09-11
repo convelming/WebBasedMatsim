@@ -1,20 +1,20 @@
 package com.matsim.util;
 
 import com.matsim.bean.PersonActivity;
-import org.apache.log4j.Logger;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.jboss.logging.Logger;
 import org.matsim.api.core.v01.Coord;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Link;
+import org.matsim.api.core.v01.network.Network;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
-import org.matsim.core.network.MatsimNetworkReader;
-import org.matsim.core.network.NetworkImpl;
+import org.matsim.core.network.io.MatsimNetworkReader;
 import org.matsim.core.scenario.ScenarioUtils;
 
 import java.io.File;
@@ -30,7 +30,7 @@ import java.util.Set;
  */
 public class EventUtil {
     public static Logger log = Logger.getLogger(EventUtil.class);
-    NetworkImpl network;
+    Network network;
 //    List<Element> eventsList;
     List<Element> linkEvents = new ArrayList<>(  );
 
@@ -38,7 +38,7 @@ public class EventUtil {
         Config config = ConfigUtils.createConfig();
         Scenario sc = ScenarioUtils.loadScenario(config);
         new MatsimNetworkReader(sc.getNetwork()).readFile(networkFile);
-        this.network = (NetworkImpl) sc.getNetwork();
+        this.network = sc.getNetwork();
 
         SAXReader saxReader = new SAXReader();
         Document document = null;

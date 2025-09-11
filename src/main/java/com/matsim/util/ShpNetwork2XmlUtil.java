@@ -2,7 +2,10 @@ package com.matsim.util;
 
 import com.matsim.bean.Block;
 import com.matsim.bean.Result;
-import org.geotools.data.FeatureSource;
+import org.geotools.api.data.FeatureSource;
+import org.geotools.api.feature.Property;
+import org.geotools.api.feature.simple.SimpleFeature;
+import org.geotools.api.feature.simple.SimpleFeatureType;
 import org.geotools.data.shapefile.ShapefileDataStore;
 import org.geotools.data.shapefile.dbf.DbaseFileHeader;
 import org.geotools.data.shapefile.dbf.DbaseFileReader;
@@ -13,17 +16,13 @@ import org.matsim.api.core.v01.Coord;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.network.Link;
 import org.matsim.api.core.v01.network.Network;
+import org.matsim.api.core.v01.network.NetworkWriter;
 import org.matsim.api.core.v01.network.Node;
-import org.matsim.core.network.*;
+import org.matsim.core.network.NetworkUtils;
 import org.matsim.core.network.algorithms.NetworkCleaner;
 import org.matsim.core.utils.geometry.CoordinateTransformation;
 import org.matsim.core.utils.geometry.transformations.TransformationFactory;
-import org.matsim.utils.gis.matsim2esri.network.Links2ESRIShape;
-import org.opengis.feature.Property;
-import org.opengis.feature.simple.SimpleFeature;
-import org.opengis.feature.simple.SimpleFeatureType;
 
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -42,20 +41,21 @@ public class ShpNetwork2XmlUtil {
 //        readDbfFile(f );
 //        readShpFile(f);
         //shp2MastimNetwork(f,"4326","DIR",null,null,
-               // null,null,null,"ID");
+        // null,null,null,"ID");
 //        List<String> test = getDbfHeader(f);
 //        for(String t:test){
 //            System.out.println(t);
 //        }
     }
-    public static List<String> getDbfHeader(String file){
+
+    public static List<String> getDbfHeader(String file) {
         DbaseFileReader reader = null;
         List<String> fieldsNames = new ArrayList<>();
         try {
             reader = new DbaseFileReader(new ShpFiles(file), false, Charset.forName("GBK"));
             DbaseFileHeader header = reader.getHeader();
 //            int f = header.getHeaderLength();
-            for(int i=0;i<header.getNumFields();i++){
+            for (int i = 0; i < header.getNumFields(); i++) {
                 fieldsNames.add(header.getFieldName(i));
             }
 //            System.out.println(header.getNumFields());
@@ -64,7 +64,8 @@ public class ShpNetwork2XmlUtil {
         }
         return fieldsNames;
     }
-    public static void readDbfFile(String file){
+
+    public static void readDbfFile(String file) {
         DbaseFileReader reader = null;
         try {
             reader = new DbaseFileReader(new ShpFiles(file), false, Charset.forName("GBK"));
@@ -75,7 +76,7 @@ public class ShpNetwork2XmlUtil {
             while (reader.hasNext()) {
                 try {
                     Object[] entry = reader.readEntry();
-                    for (int i=0; i<numFields; i++) {
+                    for (int i = 0; i < numFields; i++) {
                         String title = header.getFieldName(i);
                         Object value = entry[i];
 //                        System.out.println(title+"="+value);
@@ -89,18 +90,20 @@ public class ShpNetwork2XmlUtil {
         } finally {
             if (reader != null) {
                 //关闭
-                try {reader.close();} catch (Exception e) {}
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                }
             }
         }
     }
 
 
     /**
-     *  this method tries to transform shp file into a matsim-supported network. it has to specify
-     *  some fields so the program knows how to deal with certain attributes
-     *  Users have to do some modifications to their shp files using whichever GIS softwares
+     * this method tries to transform shp file into a matsim-supported network. it has to specify
+     * some fields so the program knows how to deal with certain attributes
+     * Users have to do some modifications to their shp files using whichever GIS softwares
      *
-
      * @return
      */
 
@@ -108,8 +111,7 @@ public class ShpNetwork2XmlUtil {
 //    public static Network shp2MastimNetwork(String shpFile, String epsg, String directionField,
 //                                            String lengthInMeterField, String capacityField,
 //                                            String numLanesField, String speedLimitField, String typeField, String origIdField){
-
-    public Result shp2MastimNetwork(Block networkBlock, String shpFile){
+    public Result shp2MastimNetwork(Block networkBlock, String shpFile) {
         Result result = new Result();
         //todo need to modify when user contrl system is done.
 //        String shpFile = session.getAttribute("userName").toString()+"/network/"+(new File(networkBlock.getNetworkShpFile()).getName());
@@ -125,8 +127,8 @@ public class ShpNetwork2XmlUtil {
         String linkCapacity = networkBlock.getLinkCapacity();
 
 
-        NetworkImpl network = (NetworkImpl)NetworkUtils.createNetwork();
-        try{
+        Network network = NetworkUtils.createNetwork();
+        try {
             ShapefileDataStore shpDataStore = null;
             shpDataStore = new ShapefileDataStore(new File(shpFile).toURI().toURL());
             shpDataStore.setCharset(Charset.forName("GBK"));
@@ -139,17 +141,17 @@ public class ShpNetwork2XmlUtil {
                     .getCoordinateTransformation(networkDefaultEPSG, networkDesiredEPSG);//"EPSG:32649");
 //            xy = ct.transform(xy);
 
-            while(iterator.hasNext()){
+            while (iterator.hasNext()) {
 
                 SimpleFeature feature = iterator.next();
                 String the_goem = feature.getAttribute("the_geom").toString();
-                if(the_goem.startsWith("MULTILINESTRING")){
+                if (the_goem.startsWith("MULTILINESTRING")) {
                     String lines[] = the_goem.replace
-                            ("MULTILINESTRING ((","").
-                            replace("))","").split("\\) , \\(");
+                                    ("MULTILINESTRING ((", "").
+                            replace("))", "").split("\\) , \\(");
                     for (int i = 0; i < lines.length; i++) {
                         String[] points = lines[i].split(",");
-                        for (int j = 0; j < points.length-1; j++) {
+                        for (int j = 0; j < points.length - 1; j++) {
                             // get node x y
                             String[] fromPoint = points[j].trim().split(" ");
                             String[] toPoint = points[j + 1].trim().split(" ");
@@ -160,97 +162,97 @@ public class ShpNetwork2XmlUtil {
 
                             // get link length
                             double length = 0;
-                            if(!linkLength.equalsIgnoreCase("null")||!linkLength.isEmpty()||!linkLength.equals( "" )){
+                            if (!linkLength.equalsIgnoreCase("null") || !linkLength.isEmpty() || !linkLength.equals("")) {
 //                                log.info( feature.getAttribute(networkBlock.getLinkLength()).toString() );
                                 length = Double.parseDouble(feature.getAttribute(networkBlock.getLinkLength()).toString());
 
-                            }else {
+                            } else {
                                 length = getDistance(fromX, fromY, toX, toY);
                             }
                             // get link speed
                             double speed = 16.67;
-                            if(!linkSpeed.equalsIgnoreCase("null")||!linkSpeed.isEmpty()||!linkSpeed.equals( "" )){
+                            if (!linkSpeed.equalsIgnoreCase("null") || !linkSpeed.isEmpty() || !linkSpeed.equals("")) {
                                 length = Double.parseDouble(feature.getAttribute(networkBlock.getLinkSpeed()).toString());
                             }
                             // get link capacity
                             double capacity = 600;
-                            if(!linkCapacity.equalsIgnoreCase("null")||!linkCapacity.isEmpty()||!linkCapacity.equals( "" )){
+                            if (!linkCapacity.equalsIgnoreCase("null") || !linkCapacity.isEmpty() || !linkCapacity.equals("")) {
 //                                log.info( networkBlock.getLinkCapacity() );
                                 capacity = Double.parseDouble(feature.getAttribute(networkBlock.getLinkCapacity()).toString());
                             }
                             // get lane number
                             double lanes = 1;
-                            if(!linkLane.equalsIgnoreCase("null")||!linkLane.isEmpty()||!linkLane.equals( "" )) {
+                            if (!linkLane.equalsIgnoreCase("null") || !linkLane.isEmpty() || !linkLane.equals("")) {
                                 length = Double.parseDouble(feature.getAttribute(networkBlock.getLinkLane()).toString());
                             }
                             // get link allowed mode
-                            Set<String> allowedModes = new HashSet<>(  );
-                            if(!linkMode.equalsIgnoreCase("null")||!linkMode.isEmpty()||!linkLane.equals( "" )) {
+                            Set<String> allowedModes = new HashSet<>();
+                            if (!linkMode.equalsIgnoreCase("null") || !linkMode.isEmpty() || !linkLane.equals("")) {
                                 String tempMode = feature.getAttribute(networkBlock.getLinkMode()).toString();
-                                if(!linkMode.equals("")||!linkMode.equalsIgnoreCase("null")||!tempMode.isEmpty()){
-                                    String modes[] = tempMode.split( "," );
+                                if (!linkMode.equals("") || !linkMode.equalsIgnoreCase("null") || !tempMode.isEmpty()) {
+                                    String modes[] = tempMode.split(",");
                                     for (int k = 0; k < modes.length; k++) {
-                                        allowedModes.add( modes[k] );
+                                        allowedModes.add(modes[k]);
                                     }
-                                }else{
-                                    allowedModes.add( "car" );
+                                } else {
+                                    allowedModes.add("car");
                                 }
                             }
 
 
-                            Id<Node> fromNodeKey = Id.createNodeId(format5(fromX)+"_"+ format5(fromY));
-                            Id<Node> toNodeKey = Id.createNodeId(format5(toX)+"_"+ format5(toY));
-                            Id<Link> fromToLinkKey = Id.createLinkId(format5(fromX)+"_"+ format5(fromY)+">>"+format5(toX)+"_"+ format5(toY));
-                            Id<Link> toFromLinkKey = Id.createLinkId(format5(toX)+"_"+ format5(toY)+">>"+format5(fromX)+"_"+ format5(fromY));
+                            Id<Node> fromNodeKey = Id.createNodeId(format5(fromX) + "_" + format5(fromY));
+                            Id<Node> toNodeKey = Id.createNodeId(format5(toX) + "_" + format5(toY));
+                            Id<Link> fromToLinkKey = Id.createLinkId(format5(fromX) + "_" + format5(fromY) + ">>" + format5(toX) + "_" + format5(toY));
+                            Id<Link> toFromLinkKey = Id.createLinkId(format5(toX) + "_" + format5(toY) + ">>" + format5(fromX) + "_" + format5(fromY));
 
-                            if(!network.getNodes().containsKey(fromNodeKey)){
-                                Coord tempCoord = new Coord(fromX,fromY);
-                                network.createAndAddNode(fromNodeKey,ct.transform(tempCoord));
+                            if (!network.getNodes().containsKey(fromNodeKey)) {
+                                Coord tempCoord = new Coord(fromX, fromY);
+                                NetworkUtils.createAndAddNode(network, fromNodeKey, ct.transform(tempCoord));
                             }
-                            if(!network.getNodes().containsKey(toNodeKey)){
-                                Coord tempCoord = new Coord(fromX,fromY);
-                                network.createAndAddNode(toNodeKey,ct.transform(tempCoord));
+                            if (!network.getNodes().containsKey(toNodeKey)) {
+                                Coord tempCoord = new Coord(fromX, fromY);
+                                NetworkUtils.createAndAddNode(network, toNodeKey, ct.transform(tempCoord));
                             }
                             // set up link attribute if specified
                             // direction
                             String linkDirField = feature.getAttribute(linkDir).toString();
-                            if ((linkDirField.equalsIgnoreCase("null")||linkDirField.isEmpty()||linkDirField.equals( "" ))||Double.parseDouble(linkDirField) == 0){
-                                if(!network.getLinks().containsKey(fromToLinkKey)){
-                                    network.createAndAddLink(fromToLinkKey,
+                            if ((linkDirField.equalsIgnoreCase("null") || linkDirField.isEmpty() || linkDirField.equals("")) || Double.parseDouble(linkDirField) == 0) {
+                                if (!network.getLinks().containsKey(fromToLinkKey)) {
+                                    NetworkUtils.createAndAddLink(network, fromToLinkKey,
                                             network.getNodes().get(fromNodeKey), network.getNodes().get(toNodeKey),
-                                            length, speed,capacity,lanes);
-                                    network.getLinks().get( fromToLinkKey ).setAllowedModes( allowedModes );
+                                            length, speed, capacity, lanes);
+                                    network.getLinks().get(fromToLinkKey).setAllowedModes(allowedModes);
                                 }
-                                if(!network.getLinks().containsKey(toFromLinkKey)){
-                                    network.createAndAddLink(toFromLinkKey,
-                                            network.getNodes().get(toNodeKey),network.getNodes().get(fromNodeKey),
-                                            length, speed,capacity,lanes);
-                                    network.getLinks().get( toFromLinkKey ).setAllowedModes( allowedModes );
+                                if (!network.getLinks().containsKey(toFromLinkKey)) {
+                                    NetworkUtils.createAndAddLink(network, toFromLinkKey,
+                                            network.getNodes().get(toNodeKey), network.getNodes().get(fromNodeKey),
+                                            length, speed, capacity, lanes);
+                                    network.getLinks().get(toFromLinkKey).setAllowedModes(allowedModes);
 
                                 }
 
-                            }else if (!(linkDirField.equalsIgnoreCase("null")||linkDirField.isEmpty()||linkDirField.equals( "" ))&&Double.parseDouble(linkDirField) > 0){ // dirction is from start to end node
-                                if(!network.getLinks().containsKey(fromToLinkKey)){
-                                    network.createAndAddLink(fromToLinkKey,
-                                        network.getNodes().get(fromNodeKey), network.getNodes().get(toNodeKey),
-                                        length, speed,capacity,lanes);
-                                    log.info( allowedModes.toString()+">><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>" );
-                                    network.getLinks().get( fromToLinkKey ).setAllowedModes( allowedModes );
+                            } else if (!(linkDirField.equalsIgnoreCase("null") || linkDirField.isEmpty() || linkDirField.equals("")) && Double.parseDouble(linkDirField) > 0) { // dirction is from start to end node
+                                if (!network.getLinks().containsKey(fromToLinkKey)) {
+                                    NetworkUtils.createAndAddLink(network, fromToLinkKey,
+                                            network.getNodes().get(fromNodeKey), network.getNodes().get(toNodeKey),
+                                            length, speed, capacity, lanes);
+                                    log.info(allowedModes.toString() + ">><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+                                    network.getLinks().get(fromToLinkKey).setAllowedModes(allowedModes);
 
                                 }
-                            }else if (!(linkDirField.equalsIgnoreCase("null")||linkDirField.isEmpty())&&Double.parseDouble(linkDirField) < 0){ // dirction is from end to start node
-                                if(!network.getLinks().containsKey(toFromLinkKey)){
-                                    network.createAndAddLink(toFromLinkKey,
-                                            network.getNodes().get(toNodeKey),network.getNodes().get(fromNodeKey),
-                                            length, speed,capacity,lanes);
-                                    network.getLinks().get( toFromLinkKey ).setAllowedModes( allowedModes );
+                            } else if (!(linkDirField.equalsIgnoreCase("null") || linkDirField.isEmpty()) && Double.parseDouble(linkDirField) < 0) { // dirction is from end to start node
+                                if (!network.getLinks().containsKey(toFromLinkKey)) {
+                                    NetworkUtils.createAndAddLink(network, toFromLinkKey,
+                                            network.getNodes().get(toNodeKey), network.getNodes().get(fromNodeKey),
+                                            length, speed, capacity, lanes);
+                                    network.getLinks().get(toFromLinkKey).setAllowedModes(allowedModes);
 
                                 }
                             }
 //                            iPoint++;
                         }
                     }
-                }else {
+                } else {
                     //TODO
                 }
 //                System.out.println(iPoint+","+nodeIds.size());
@@ -261,7 +263,7 @@ public class ShpNetwork2XmlUtil {
 //            iterator.close();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 //        System.out.println(network.getLinks().size());
@@ -271,14 +273,15 @@ public class ShpNetwork2XmlUtil {
 //        Links2ESRIShape links2ESRIShape = new Links2ESRIShape(network,"/Users/convel/Desktop/testMew.shp","EPSG:4326");
 //        links2ESRIShape.write();
         new NetworkWriter
-                (network).write(shpFile.replace(".shp",".xml"));
+                (network).write(shpFile.replace(".shp", ".xml"));
         result.setSuccess(true);
-        result.setData(shpFile.replace(".shp",".xml"));
+        result.setData(shpFile.replace(".shp", ".xml"));
         return result;
     }
-    public static void readShpFile(String file){
+
+    public static void readShpFile(String file) {
         ShapefileDataStore shpDataStore = null;
-        try{
+        try {
             shpDataStore = new ShapefileDataStore(new File(file).toURI().toURL());
             shpDataStore.setCharset(Charset.forName("GBK"));
             String typeName = shpDataStore.getTypeNames()[0];
@@ -288,7 +291,7 @@ public class ShpNetwork2XmlUtil {
 //            System.out.println(result.size());
             FeatureIterator<SimpleFeature> itertor = result.features();
 
-            while(itertor.hasNext()){
+            while (itertor.hasNext()) {
                 SimpleFeature feature = itertor.next();
 
                 Collection<Property> p = feature.getProperties();
@@ -312,7 +315,9 @@ public class ShpNetwork2XmlUtil {
             itertor.close();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch(IOException e) { e.printStackTrace(); }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String format5(double value) {
@@ -323,6 +328,7 @@ public class ShpNetwork2XmlUtil {
     /**
      * 根据两个位置的经纬度，来计算两地的距离（单位为KM）
      * 参数为String类型
+     *
      * @return
      */
     public static double getDistance(double x1, double y1, double x2, double y2) {

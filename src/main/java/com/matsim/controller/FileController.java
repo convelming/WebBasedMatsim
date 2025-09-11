@@ -1,10 +1,10 @@
 package com.matsim.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.List;
 
@@ -20,13 +20,13 @@ public class FileController {
      */
     @PostMapping("/uploadFiles")
     @ResponseBody
-    public String uploadFiles(HttpServletRequest request,@RequestParam("userName")String userName){
+    public String uploadFiles(HttpServletRequest request, @RequestParam("userName") String userName) {
 
-        File savePath =null;
-        if(userName!=null){
-            savePath= new File("E:\\"+userName+"\\");
-        }else{
-            savePath= new File("E:\\");
+        File savePath = null;
+        if (userName != null) {
+            savePath = new File("E:\\" + userName + "\\");
+        } else {
+            savePath = new File("E:\\");
         }
         if (!savePath.exists()) {
             savePath.mkdirs();
@@ -60,6 +60,7 @@ public class FileController {
         }
         return "所有文件上传成功";
     }
+
     /**
      * 单文件上传
      *
@@ -69,15 +70,15 @@ public class FileController {
      */
     @PostMapping("/upload")
     @ResponseBody
-    public String upload(@RequestParam("file") MultipartFile file,@RequestParam("userName")String userName,
+    public String upload(@RequestParam("file") MultipartFile file, @RequestParam("userName") String userName,
                          HttpServletRequest request) {
 
         if (!file.isEmpty()) {
             String saveFileName = file.getOriginalFilename();
-            File saveFile =null;
-            if(userName!=null){
-                saveFile = new File("E:\\"+userName+"\\" + saveFileName);
-            }else{
+            File saveFile = null;
+            if (userName != null) {
+                saveFile = new File("E:\\" + userName + "\\" + saveFileName);
+            } else {
                 saveFile = new File("E:\\" + saveFileName);
             }
             if (!saveFile.getParentFile().exists()) {

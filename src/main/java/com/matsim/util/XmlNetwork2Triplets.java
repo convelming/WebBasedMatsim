@@ -1,8 +1,8 @@
 package com.matsim.util;
 
 import org.matsim.api.core.v01.network.Link;
+import org.matsim.api.core.v01.network.Network;
 import org.matsim.api.core.v01.network.Node;
-import org.matsim.core.network.NetworkImpl;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,7 +21,7 @@ public class XmlNetwork2Triplets {
     public static List<Triplets> tripletsListxmlNetwork2Triplets(String networkFile){
         List<Triplets> tripletsList = new ArrayList<>(  );
 
-        NetworkImpl network = LoadNetwork.LoadNetwork( networkFile );
+        Network network = LoadNetwork.LoadNetwork( networkFile );
         for (Link link:network.getLinks().values()
              ) {
             Node fromNode = network.getNodes().get( link.getFromNode().getId() );

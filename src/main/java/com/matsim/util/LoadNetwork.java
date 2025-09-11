@@ -2,9 +2,9 @@ package com.matsim.util;
 
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Link;
+import org.matsim.api.core.v01.network.Network;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
-import org.matsim.core.network.NetworkImpl;
 import org.matsim.core.scenario.ScenarioUtils;
 
 import java.util.logging.Logger;
@@ -16,12 +16,12 @@ import java.util.logging.Logger;
 public class LoadNetwork {
 
     private final static Logger log = Logger.getLogger( "LoadNetwork.class" );
-    public final static NetworkImpl LoadNetwork(String networkFile){
+    public final static Network LoadNetwork(String networkFile){
 //        log.info("Loading network...");
         Config config = ConfigUtils.createConfig();
         config.network().setInputFile(networkFile);
         Scenario scenario = ScenarioUtils.loadScenario(config);
-        NetworkImpl network = (NetworkImpl)scenario.getNetwork();
+        Network network = scenario.getNetwork();
 //        log.info("Loading network is done.");
         return network;
     }
@@ -32,7 +32,7 @@ public class LoadNetwork {
      * @param network
      * @return
      */
-    public static double[] getBoudningBox(NetworkImpl network){
+    public static double[] getBoudningBox(Network network){
         double minLng = Double.MAX_VALUE;
         double minLat = Double.MAX_VALUE;
         double maxLng = Double.MIN_VALUE;

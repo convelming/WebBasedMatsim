@@ -4,7 +4,7 @@ import com.matsim.bean.GeoJsonFeature;
 import com.matsim.bean.GeoJsonGeometry;
 import com.matsim.bean.GeoJsonProperties;
 import org.matsim.api.core.v01.network.Link;
-import org.matsim.core.network.NetworkImpl;
+import org.matsim.api.core.v01.network.Network;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class XmlNetwork2GeoJson {
 
     public XmlNetwork2GeoJson(String xmlNetworkFile){
 
-        NetworkImpl network = LoadNetwork.LoadNetwork( xmlNetworkFile );
+        Network network = LoadNetwork.LoadNetwork( xmlNetworkFile );
         for (Link link:network.getLinks().values()
              ) {
             GeoJsonFeature linkFeature = new GeoJsonFeature();
@@ -81,12 +81,8 @@ public class XmlNetwork2GeoJson {
      * @return
      */
     public static int[][] getOnlyLineCoords(String xmlNetworkFile){
-        NetworkImpl network = LoadNetwork.LoadNetwork( xmlNetworkFile );
-        List<Link> links = new ArrayList<>();
-        for (Link l: network.getLinks().values()
-             ) {
-            links.add( l );
-        }
+        Network network = LoadNetwork.LoadNetwork( xmlNetworkFile );
+        List<Link> links = new ArrayList<>(network.getLinks().values());
         int[][] coords = new int[links.size()][4];
 
         double boundingBox[] = LoadNetwork.getBoudningBox( network );

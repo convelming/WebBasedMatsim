@@ -1,10 +1,5 @@
 package com.matsim.bean;
 
-import org.matsim.api.core.v01.Id;
-import org.matsim.api.core.v01.network.Link;
-import org.matsim.api.core.v01.network.Node;
-import org.matsim.core.network.NetworkImpl;
-
 /**
  * Created by MingLU on 2018/9/28,
  * Life is short, so get your fat ass moving and chase your damn dream.
