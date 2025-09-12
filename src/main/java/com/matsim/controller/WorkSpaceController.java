@@ -15,6 +15,8 @@ import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigGroup;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
+import org.matsim.core.config.groups.ReplanningConfigGroup;
+import org.matsim.core.config.groups.RoutingConfigGroup;
 import org.matsim.core.config.groups.ScoringConfigGroup;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy;
@@ -60,7 +62,6 @@ public class WorkSpaceController {
     public Result runWorkSpace(@RequestBody WorkSpace workSpace, HttpSession session) throws Exception {
         log.info("start to run ...");
         Config config = ConfigUtils.createConfig();
-        Scenario sc = ScenarioUtils.createScenario(config);
         String userFolder = FileUtil.userFilePath + session.getAttribute("userName") + "/" + workSpace.getName();//session.getAttribute("userName").toString();
 
 //    - Parsing blocks, parsing in order of matsimXMLs,network,region,odmatrix blocks, activity blocks
@@ -75,7 +76,7 @@ public class WorkSpaceController {
         List<Block> odMatrixBlocks = workSpace.getBlocksByType("odMatrix");
         List<List<Block>> actChains = workSpace.getActivityRelatedBlocks();
         String networkFile = "";
-        String planXml = userFolder + "/matsimXml/plans/plans" + getUUID32() + ".xml";
+        String planXml = userFolder + "/matsimXml/plans/plans.xml";
         String configFile = "";
         Controler controler = null;
         /**
@@ -105,7 +106,7 @@ public class WorkSpaceController {
          */
 
 //          - network   check if networkfile is set up by shp block or openstreet block
-        String networkFolder = userFolder + "/matsimXml/network";
+        String networkFolder = userFolder + "/matsimXml/network/";
         if (xmlBlock == null && !FileUtil.hasXmlFile(networkFolder)) { // if network is not specified in matsimXmls block
 
             if (openStreetBlock != null && !FileUtil.hasXmlFile(networkFolder)) {
@@ -151,7 +152,6 @@ public class WorkSpaceController {
 //          - odMatrix blocks  get all related blocks
 //          - activity blocks  get all related blocks
 
-        Population population = sc.getPopulation();
 
         // get person and plans from csv files
         List<Person> allPersonsFromOdMatrix = new ArrayList<>();
@@ -179,6 +179,10 @@ public class WorkSpaceController {
                 }
             }
         }
+
+        Scenario sc = ScenarioUtils.createScenario(ConfigUtils.createConfig());
+        Population population = sc.getPopulation();
+
         // get plans from activity related blocks
         for (Person person : allPersonsFromOdMatrix) {
             population.addPerson(person);
@@ -224,13 +228,14 @@ public class WorkSpaceController {
         // get matsim block inputs
         int iteration = 1;
         String busScheduleFile = null;
+        String busVehicleFile = null;
         String vehicleFile = null;
         String facilityFile = null;
         if (matsimBlock != null) {
             iteration = matsimBlock.getIteration();
             if (matsimBlock.isHasConfigXml()) {
                 File tempConfigFile = new File(matsimBlock.getConfigXml().replace("\\", "/"));
-                configFile = userFolder + "/matsimXml/" + tempConfigFile;
+                configFile = userFolder + "/matsimXml/config/" + tempConfigFile;
                 controler = new Controler(ConfigUtils.loadConfig(configFile));
             } else { // if config file is not specified  create one
                 configFile = userFolder + "/matsimXml/config.xml";
@@ -243,7 +248,7 @@ public class WorkSpaceController {
                 (new ConfigWriter(config)).write(configFile);
             }
             if (matsimBlock.isHasBusScheduleXml() && xmlBlock != null && xmlBlock.getBusScheduleXml() != null) {
-                busScheduleFile = userFolder + "/matsimXml/" + xmlBlock.getBusScheduleXml().replace("\\", "/");
+                busScheduleFile = userFolder + "/matsimXml/busSchedule/" + xmlBlock.getBusScheduleXml().replace("\\", "/");
                 config.transit().setTransitScheduleFile(busScheduleFile);
                 config.transit().setUseTransit(true);
                 Set<String> transitModes = new HashSet<>();
@@ -256,13 +261,15 @@ public class WorkSpaceController {
                 }
                 config.transit().setTransitModes(transitModes);
             }
-            if (matsimBlock.isHasVehicleXml()) {
-                vehicleFile = userFolder + "/matsimXml/" + xmlBlock.getVehicleXml().replace("\\", "/");
-                config.vehicles().setVehiclesFile(vehicleFile);
+            if (matsimBlock.isHasVehicleXml()) { // pt vehicle ?
+                busVehicleFile = userFolder + "/matsimXml/busSchedule/" + xmlBlock.getVehicleXml().replace("\\", "/");
+                config.transit().setVehiclesFile(busVehicleFile);
+//                vehicleFile = userFolder + "/matsimXml/busSchedule/" + xmlBlock.getVehicleXml().replace("\\", "/");
+//                config.vehicles().setVehiclesFile(vehicleFile);
             }
 
             if (matsimBlock.isHasFacilityXml()) {
-                facilityFile = userFolder + "/matsimXml/" + xmlBlock.getFacilityXml().replace("\\", "/");
+                facilityFile = userFolder + "/matsimXml/facility/" + xmlBlock.getFacilityXml().replace("\\", "/");
                 config.facilities().setInputFile(facilityFile);
             }
         }
@@ -272,7 +279,7 @@ public class WorkSpaceController {
             config = ConfigUtils.loadConfig(configFile);
         } else {
             config.scoring().addParam("learningRate", "0.5");
-            config.scoring().addParam("BrainExpBeta", "2.0");
+            config.scoring().addParam("brainExpBeta", "2.0");
             config.scoring().addParam("lateArrival", "-18");
             config.scoring().addParam("earlyDeparture", "-0");
             config.scoring().addParam("performing", "+6");
@@ -282,40 +289,42 @@ public class WorkSpaceController {
             for (String act : allActTypes) {
                 if (act.equalsIgnoreCase("home")) {
                     ScoringConfigGroup.ActivityParams home = new ScoringConfigGroup.ActivityParams();
-                    home.addParam("activityType_" + iAct, act);
-                    home.addParam("activityPriority_" + iAct, "1");
-                    home.addParam("activityTypicalDuration_" + iAct, "12:00:00");
-                    home.addParam("activityMinimalDuration_" + iAct, "08:00:00");
+                    home.addParam("activityType", act);
+                    home.addParam("priority", "1");
+                    home.addParam("typicalDuration", "12:00:00");
+                    home.addParam("minimalDuration", "08:00:00");
                     config.scoring().addActivityParams(home);
                 } else if (act.equalsIgnoreCase("work")) {
                     ScoringConfigGroup.ActivityParams work = new ScoringConfigGroup.ActivityParams();
-                    work.addParam("activityType_" + iAct, act);
-                    work.addParam("activityPriority_" + iAct, "1");
-                    work.addParam("activityTypicalDuration_" + iAct, "08:00:00");
-                    work.addParam("activityMinimalDuration_" + iAct, "07:00:00");
+                    work.addParam("activityType", act);
+                    work.addParam("priority", "1");
+                    work.addParam("typicalDuration", "08:00:00");
+                    work.addParam("minimalDuration", "07:00:00");
                     config.scoring().addActivityParams(work);
                 } else {
                     ScoringConfigGroup.ActivityParams other = new ScoringConfigGroup.ActivityParams();
-                    other.addParam("activityType_" + iAct, act);
-                    other.addParam("activityPriority_" + iAct, "1");
-                    other.addParam("activityTypicalDuration_" + iAct, "02:00:00");
-                    other.addParam("activityMinimalDuration_" + iAct, "01:00:00");
+                    other.addParam("activityType", act);
+                    other.addParam("priority", "1");
+                    other.addParam("typicalDuration", "02:00:00");
+                    other.addParam("minimalDuration", "01:00:00");
                     config.scoring().addActivityParams(other);
                 }
             }
 
             // set up strategy
             config.replanning().addParam("maxAgentPlanMemorySize", "5");
-            ConfigGroup moduleProbability_1 = new ConfigGroup("strategysettings");
-            moduleProbability_1.addParam("strategyName", "BestScore");
+            ConfigGroup moduleProbability_1 = new ReplanningConfigGroup.StrategySettings();
+            moduleProbability_1.addParam("strategyName", "ChangeTripMode");
             moduleProbability_1.addParam("weight", "0.9");
             config.replanning().addParameterSet(moduleProbability_1);
-            ConfigGroup moduleProbability_2 = new ConfigGroup("strategysettings");
+            ConfigGroup moduleProbability_2 = new ReplanningConfigGroup.StrategySettings();
             moduleProbability_2.addParam("strategyName", "ReRoute");
             moduleProbability_2.addParam("weight", "0.1");
             config.replanning().addParameterSet(moduleProbability_2);
 
-//            config.strategy().addParam("ModuleProbability_1", "0.9");
+            config.routing().setAccessEgressType(RoutingConfigGroup.AccessEgressType.accessEgressModeToLink);
+
+            //               config.strategy().addParam("ModuleProbability_1", "0.9");
 //            config.strategy().addParam("Module_1", "BestScore");
 //            config.strategy().addParam("ModuleProbability_2", "0.1");
 //            config.strategy().addParam("Module_2", "ReRoute");
@@ -325,13 +334,44 @@ public class WorkSpaceController {
         config.network().setInputFile(networkFile);
         config.plans().setInputFile(userFolder + "/matsimXml/plans/plans.xml");
         config.controller().setOutputDirectory(userFolder + "/output");
-        config.controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.overwriteExistingFiles);
-        controler = new Controler(ConfigUtils.loadConfig(configFile));
+        config.controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
+
+        // 移除pt interaction
+//        config.scoring().removeParameterSet()
+
+        //
+        config.vspExperimental().addParam("isAbleToOverwritePtInteractionParams", "true");
+        config.global().setCoordinateSystem("EPSG:3857");
+        config.qsim().setEndTime(3600 * 25); // 25:00:00
+//        ConfigUtils.writeConfig(config, configFile);
+        // 如果使用config.xml
+        if (matsimBlock.isHasConfigXml()) {
+            config = ConfigUtils.loadConfig(userFolder + "/matsimXml/config/" + matsimBlock.getConfigXml());
+            config.controller().setOutputDirectory(userFolder + "/output");
+            config.controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
+            // 重新設置輸入文件目錄
+            config.plans().setInputFile("../plans/plans.xml");
+            config.network().setInputFile("../network/" + xmlBlock.getNetworkXml());
+            if (matsimBlock.isHasBusScheduleXml()) {
+                busScheduleFile = "../busSchedule/" + xmlBlock.getBusScheduleXml().replace("\\", "/");
+                config.transit().setTransitScheduleFile(busScheduleFile);
+            }
+            if (matsimBlock.isHasVehicleXml()) {
+                busVehicleFile = "../busSchedule/" + xmlBlock.getVehicleXml().replace("\\", "/");
+                config.transit().setTransitScheduleFile(busVehicleFile);
+            }
+            if (matsimBlock.isHasFacilityXml()) {
+                facilityFile = "../facility/" + xmlBlock.getFacilityXml().replace("\\", "/");
+                config.facilities().setInputFile(facilityFile);
+            }
+        }
+        controler = new Controler(ScenarioUtils.loadScenario(config));
 //       result.setInfo( "MATSim is running. Depending on the size of your scenario , it may take from several minutes to a couple of hours..." +
 //                " please wait patiently... " );
 
+
         System.out.println("MATSim is running...");
-//        controler.run();
+        controler.run();
 
         return result;
     }

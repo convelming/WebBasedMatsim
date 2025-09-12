@@ -149,7 +149,7 @@ public class UploadFileController {
 		// 获得输入流：
 		try {
 			InputStream input = file.getInputStream();
-			FileInputStream fs = (FileInputStream) multipartReq.getFile("fileBtn").getInputStream();
+			InputStream fs = multipartReq.getFile("fileBtn").getInputStream();
 			byte[] buffer = new byte[1024];
 			int len = 0;
 			while ((len = fs.read(buffer)) != -1) {

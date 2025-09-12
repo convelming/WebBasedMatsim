@@ -2,11 +2,8 @@ package com.matsim.util;
 
 import com.matsim.bean.PersonActivity;
 import org.matsim.api.core.v01.Id;
-import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.*;
-import org.matsim.core.config.Config;
-import org.matsim.core.config.ConfigUtils;
-import org.matsim.core.scenario.ScenarioUtils;
+import org.matsim.core.population.PopulationUtils;
 
 import java.text.DecimalFormat;
 import java.util.*;
@@ -133,10 +130,7 @@ public class PlanXmlUtil {
     }
 
     public PlanXmlUtil(String popOrPlanFile) {
-        Config config = ConfigUtils.createConfig();
-        config.plans().setInputFile(popOrPlanFile);
-        Scenario sc = ScenarioUtils.loadScenario(config);
-        this.population = sc.getPopulation();
+        this.population = PopulationUtils.readPopulation(popOrPlanFile);
     }
 
 
