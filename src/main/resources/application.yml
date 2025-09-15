@@ -50,7 +50,7 @@ spring.datasource.initial-size: 5
 ##      min-idle: 1
 #      max-wait: 60000
 server:
-  port: 7077
+  port: 23103
 #  redis:
 #    # Redis数据库索引（默认为0）
 #    database: 3
