@@ -1,11 +1,11 @@
-var ipPort = "localhost:7077";
+var ipPort = "localhost:23103";
 // var ipPort = "119.23.251.152:7077";
 var configs = window.configs = {
 
     drawBoard: {   // 操作面板配置
         id: "traffic",
-        loadUrl: "http://"+ipPort+"/saveAndLoad/loadBySaveId",
-        runUrl: "http://"+ipPort+"/workspace/start",
+        loadUrl: "/saveAndLoad/loadBySaveId",
+        runUrl: "/workspace/start",
         tool: {
             title: "",
             style: "width: 80px;color:black;",
@@ -139,7 +139,7 @@ var configs = window.configs = {
             { key: "shapeId", title: "shapeId", type: "text", show: false }
         ],
         buttons: [
-            { id: "save", type: "saveConsole", text: "sure?", url: "http://"+ipPort+"/saveAndLoad/save" },
+            { id: "save", type: "saveConsole", text: "sure?", url: "/saveAndLoad/save" },
         ]
     },
 
@@ -218,9 +218,9 @@ var configs = window.configs = {
                 { key: "linkLane", title: "lanes", type: "text", value: "null", verify: "NO_NULL", help: "Hint: lane number for single direction, as int", error: "Error: field not found!" },
                 { key: "linkCapacity", title: "capacity", type: "text", value: "null", verify: "NO_NULL", help: "Hint: capacity for single direction", error: "Error: field not found!" },
                 { key: "linkMode", title: "modes", type: "text", value: "null", verify: "NO_NULL", help: "Hint: modes allowed on the link, splitted by ','", error: "Error: field not found!" },
-                { key: "networkShpFile", title: "upload .shp file", type: "file", value: "", verify: "NO_NULL", help: "Hint: a complete shp file includes .shp,.shx,.prj, .dbf and etc, must be the same prefix name", url: "http://"+ipPort+"/upload/networkShpFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "networkShxFile", title: "upload .shx file", type: "file", value: "", verify: "NO_NULL", help: "Hint:upload .shx file", url: "http://"+ipPort+"/upload/networkShxFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "networkDbfFile", title: "upload .dbf file", type: "file", value: "", verify: "NO_NULL", help: "Hint:upload .dbf file", url: "http://"+ipPort+"/upload/networkDbfFile", fileName: "fileBtn", upload:"custom.console.call.upload" }
+                { key: "networkShpFile", title: "upload .shp file", type: "file", value: "", verify: "NO_NULL", help: "Hint: a complete shp file includes .shp,.shx,.prj, .dbf and etc, must be the same prefix name", url: "/upload/networkShpFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "networkShxFile", title: "upload .shx file", type: "file", value: "", verify: "NO_NULL", help: "Hint:upload .shx file", url: "/upload/networkShxFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "networkDbfFile", title: "upload .dbf file", type: "file", value: "", verify: "NO_NULL", help: "Hint:upload .dbf file", url: "/upload/networkDbfFile", fileName: "fileBtn", upload:"custom.console.call.upload" }
 
             ],
             buttons: [{ id: "finish", type: "finish", text: "DONE" }, { id: "help", type: "help", text: "HELP" }]
@@ -234,9 +234,9 @@ var configs = window.configs = {
                 { key: "regionDefaultEPSG", title: "default proj", type: "span", value: "EPSG：4326", default: "EPSG code", help: "Hint:<a href=http://epsg.io\" target=\"_blank\">OPEN STREET MAP</a>  not working" },
                 { key: "regionDesiredEPSG", title: "desired proj", type: "span", value: "EPSG：4326", default: "EPSG code", help: "Hint:not working", error: "Error: not NULL!" },
                 { key: "regionId", title: "regionID field", type: "text", value: "EnglishID", verify: "NO_NULL", help: "Hint:id field from the shp file, case sensitive", error: "Error: not NULL!" },
-                { key: "regionShpFile", title: "upload .shp file", type: "file", value: "", verify: "NO_NULL", help: "Hint: traffic zone shp file, with polygon or multipolygon", url: "http://"+ipPort+"/upload/regionShp", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "regionShxFile", title: "upload .shx file", type: "file", value: "", verify: "NO_NULL", help: "Hint:.shx file",  url: "http://"+ipPort+"/upload/regionShx", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "regionDbfFile", title: "upload .dbf file", type: "file", value: "", verify: "NO_NULL", help: "Hint:.prj file", url: "http://"+ipPort+"/upload/regionDbf", fileName: "fileBtn", upload:"custom.console.call.upload" }
+                { key: "regionShpFile", title: "upload .shp file", type: "file", value: "", verify: "NO_NULL", help: "Hint: traffic zone shp file, with polygon or multipolygon", url: "/upload/regionShp", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "regionShxFile", title: "upload .shx file", type: "file", value: "", verify: "NO_NULL", help: "Hint:.shx file",  url: "/upload/regionShx", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "regionDbfFile", title: "upload .dbf file", type: "file", value: "", verify: "NO_NULL", help: "Hint:.prj file", url: "/upload/regionDbf", fileName: "fileBtn", upload:"custom.console.call.upload" }
 
             ],
             buttons: [{ id: "finish", type: "finish", text: "DONE" }, { id: "help", type: "help", text: "HELP" }]
@@ -264,7 +264,7 @@ var configs = window.configs = {
                     key: "odFile", title: "activity(plan,od)file", type: "file", default: "",
                     help: "Hint:only support csv or txt file at the moment, if od array is uploaded, please check the format as:" +
                     "id(0)|count(1)|oriDepatrueTime(2)|origionRegion(3)|originCoordX(4)|originCoordY(5)|departureTime1(6+8*i)|desiredMode1(7+8*i)|tripPurpose1(8+8*i)|desFacilityId1(9+8*i)|facilityChangable1(10+8*i)|desRegionId1(11+8*i)|desCoordX1(12+8*i)|desCoordY1(13+8*i) where i>=1",
-                    error: "Error: please read the help lines and check.", url: "http://"+ipPort+"/upload/odMatrix", fileName: "fileBtn", upload:"custom.console.call.upload"
+                    error: "Error: please read the help lines and check.", url: "/upload/odMatrix", fileName: "fileBtn", upload:"custom.console.call.upload"
                 },
             ],
             buttons: [{ id: "finish", type: "finish", text: "DONE" }, { id: "help", type: "help", text: "HELP" }]
@@ -356,11 +356,11 @@ var configs = window.configs = {
                 title: "matsimXMLs"
             },
             form: [
-                { key: "networkXml", title: "network", type: "file", default: "", verify: "", help: "Hint:upload matsim supported .xml network", error: "Error: please read the help lines and check.", url: "http://"+ipPort+"/upload/mastimNetworkXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "activityXml", title: "plans(population)", type: "file", default: "", verify: "", help: "Hint:upload plans(population) .xml ", error: "Error: please read the help lines and check.", url: "http://"+ipPort+"/upload/mastimActivityXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "busScheduleXml", title: "bus schedules", type: "file", default: "", verify: "", help: "Hint:upload bus schedule .xml", error: "Error: please read the help lines and check.", url: "http://"+ipPort+"/upload/mastimBusScheduleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "vehicleXml", title: "vehicles", type: "file", default: "", verify: "", help: "Hint:upload vehicle .xml", error: "Error: please read the help lines and check.", url: "http://"+ipPort+"/upload/mastimVehicleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "facilityXml", title: "facilities", type: "file", default: "", verify: "", help: "Hint:upload facility .xml", error: "Error: please read the help lines and check.", url: "http://"+ipPort+"/upload/mastimFacilityXml", fileName: "fileBtn", upload:"custom.console.call.upload" }
+                { key: "networkXml", title: "network", type: "file", default: "", verify: "", help: "Hint:upload matsim supported .xml network", error: "Error: please read the help lines and check.", url: "/upload/mastimNetworkXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "activityXml", title: "plans(population)", type: "file", default: "", verify: "", help: "Hint:upload plans(population) .xml ", error: "Error: please read the help lines and check.", url: "/upload/mastimActivityXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "busScheduleXml", title: "bus schedules", type: "file", default: "", verify: "", help: "Hint:upload bus schedule .xml", error: "Error: please read the help lines and check.", url: "/upload/mastimBusScheduleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "vehicleXml", title: "vehicles", type: "file", default: "", verify: "", help: "Hint:upload vehicle .xml", error: "Error: please read the help lines and check.", url: "/upload/mastimVehicleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "facilityXml", title: "facilities", type: "file", default: "", verify: "", help: "Hint:upload facility .xml", error: "Error: please read the help lines and check.", url: "/upload/mastimFacilityXml", fileName: "fileBtn", upload:"custom.console.call.upload" }
             ],
             buttons: [{ id: "finish", type: "finish", text: "DONE" }, { id: "help", type: "help", text: "HELP" }]
         },
@@ -394,7 +394,7 @@ var configs = window.configs = {
                 },
                 {
                     key: "configXml", title: "config file", type: "file", default: "", verify: "", help: "Hint:upload the config file", if: "@hasConfigXml==true",
-                    error: "Error: please read the help lines and check.", url: "http://"+ipPort+"/upload/mastimConfigXml", fileName: "fileBtn", upload:"custom.console.call.upload"
+                    error: "Error: please read the help lines and check.", url: "/upload/mastimConfigXml", fileName: "fileBtn", upload:"custom.console.call.upload"
                 }
 
             ],
@@ -428,7 +428,7 @@ var configs = window.configs = {
             grid: {
                 col: 5,
                 elements: {
-                    url: "http://"+ipPort+"/saveAndLoad/loadAll",
+                    url: "/saveAndLoad/loadAll",
                     width: 1,
                     height: 1
                 }
@@ -442,7 +442,7 @@ var configs = window.configs = {
             grid: {
                 col: 5,
                 elements: {
-                    url: "http://"+ipPort+"/saveAndLoad/loadExample",
+                    url: "/saveAndLoad/loadExample",
                     width: 1,
                     height: 1
                 }
@@ -456,7 +456,7 @@ var configs = window.configs = {
             grid: {
                 col: 5,
                 elements: {
-                    url: "http://"+ipPort+"/saveAndLoad/loadExample",
+                    url: "/saveAndLoad/loadExample",
                     width: 1,
                     height: 1
                 }

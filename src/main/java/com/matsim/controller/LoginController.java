@@ -6,7 +6,10 @@ import com.matsim.user.User;
 import com.matsim.user.UserDao;
 import com.matsim.util.SendMailUtil;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.logging.Logger;
 
 
 /**
@@ -24,10 +26,15 @@ import java.util.logging.Logger;
 @Controller
 @RequestMapping("/verify")
 public class LoginController {
-    private Logger log = Logger.getLogger("LoginController.class");
+
+    private final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserDao userDao;
+
+    // tempUrl
+    @Value("${user.temp.url}")
+    private String userTempUrl;
 
     @RequestMapping("/login")
     public String login(@RequestParam("username") String userName, @RequestParam("password") String password, HttpSession session) {
@@ -35,8 +42,8 @@ public class LoginController {
         //todo here the if have too many queries, need to change that
         List<User> userList = userDao.hasUserName(userName);
         if (userList != null && userList.size() == 1 &&
-                userList.get(0).getName().equalsIgnoreCase(userName)
-                && userList.get(0).getPassword().equals(password)) { // redirect to previous or
+                userList.getFirst().getName().equalsIgnoreCase(userName)
+                && userList.getFirst().getPassword().equals(password)) { // redirect to previous or
             result.setSuccess(true);
             session.setAttribute("userName", userName);
             session.setAttribute("userId", userDao.hasUserName(userName).get(0).getId());
@@ -46,7 +53,6 @@ public class LoginController {
             //todo update user login time
             result.setSuccess(false);
             result.setErrMsg("User login failed");
-            System.out.println("User login failed");
             return "redirect:/static/login/loginPage.html";
         }
 
@@ -58,11 +64,10 @@ public class LoginController {
                            @RequestParam("email") String email, HttpSession session) {
         System.out.println(" in register!");
         List<User> userList = userDao.hasUserName(userName);
-        String tempUrl = "/users/convel/Desktop/" + userName + "/temp";
+        String tempUrl = userTempUrl + userName + "/temp";
         if (userList != null && userList.size() == 1 &&
                 userList.get(0).getName().equalsIgnoreCase(userName)
                 && userList.get(0).getPassword().equals(password)) {
-            System.out.println("already have user!");
             return "redirect:/static/login/loginPage.html";
 
         } else if (password.equals(confirmedPassword)) {
@@ -75,7 +80,6 @@ public class LoginController {
             user.setRegisterTime(new Timestamp(System.currentTimeMillis()));
             user.setSaveBlockNum(Integer.MAX_VALUE);
             userDao.add(user);
-            System.out.println("user id is:" + user.getId());
             return "redirect:/static/login/loginPage.html";
         }
         return "redirect:/static/login/loginPage.html";
@@ -93,7 +97,6 @@ public class LoginController {
             user.setEmail(userList.get(0).getEmail());
             user.setPassword(userList.get(0).getPassword());
         }
-        System.out.println(user.getName() + ", " + user.getEmail() + "," + user.getPassword());
         return user;
     }
 
@@ -104,13 +107,11 @@ public class LoginController {
         Result result = new Result();
         List<User> userList = userDao.hasUserName(userName);
         User user = userList.get(0);
-        System.out.println(userName + "," + password + ", " + confirmedPassword + ", " + email);
         user.setName(userName);
         user.setPassword(password);
         user.setEmail(email);
         userDao.update(user);
         result.setSuccess(true);
-
         return result;
     }
 
@@ -126,15 +127,14 @@ public class LoginController {
             try {
                 SendMailUtil.sendMail(email, mailContent);
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
+//                throw new RuntimeException(e);
             }
-
             result.setSuccess(true);
         } else {
             result.setSuccess(false);
             result.setErrMsg("User name and Email address do not match, please check!");
         }
-
         return result;
     }
 
@@ -145,8 +145,6 @@ public class LoginController {
         session.removeAttribute(WebConfig.SESSION_KEY);
         session.invalidate();
 
-        System.out.println("successfully log out....");
-        System.out.println(session.getAttribute("userName"));
         return "redirect:/static/console.html";
     }
 

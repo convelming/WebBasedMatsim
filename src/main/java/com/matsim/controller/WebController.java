@@ -17,6 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebController {
     @RequestMapping("/")
     public String toIndex(){
-        return "redirect:/static/web/index.html";
+        return "redirect:/static/login/loginPage.html";
     }
 }

@@ -3,9 +3,6 @@ spring:
     active: dev
   devtools.restart.enabled: true
   thymeleaf.cache: false
-  http.encoding.force: true
-  http.encoding.charset: UTF-8
-  http.encoding.enabled: true
   datasource:
     tomcat:
       remove-abandoned: true
@@ -51,6 +48,11 @@ spring.datasource.initial-size: 5
 #      max-wait: 60000
 server:
   port: 23103
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 #  redis:
 #    # Redis数据库索引（默认为0）
 #    database: 3
@@ -64,5 +66,12 @@ server:
 #    timeout: 5000
 
 #logging.config: classpath:log4j2.xml
+
+user:
+  file:
+    path: "E:/root/matsim/userData/"
+    htmlPath: "E:/root/matsim/userData/"
+  temp:
+    url: "/root/matsim/"
 
 

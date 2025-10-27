@@ -350,19 +350,25 @@ public class WorkSpaceController {
             config.controller().setOutputDirectory(userFolder + "/output");
             config.controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
             // 重新設置輸入文件目錄
-            config.plans().setInputFile("../plans/plans.xml");
-            config.network().setInputFile("../network/" + xmlBlock.getNetworkXml());
+            config.plans().setInputFile(userFolder + "/matsimXml/plans/plans.xml");
+            config.network().setInputFile(userFolder + "/matsimXml/network/" + xmlBlock.getNetworkXml());
             if (matsimBlock.isHasBusScheduleXml()) {
-                busScheduleFile = "../busSchedule/" + xmlBlock.getBusScheduleXml().replace("\\", "/");
+                busScheduleFile = userFolder + "/matsimXml/busSchedule/" + xmlBlock.getBusScheduleXml().replace("\\", "/");
                 config.transit().setTransitScheduleFile(busScheduleFile);
+            }else{
+                config.transit().setTransitScheduleFile(null);
             }
             if (matsimBlock.isHasVehicleXml()) {
-                busVehicleFile = "../busSchedule/" + xmlBlock.getVehicleXml().replace("\\", "/");
-                config.transit().setTransitScheduleFile(busVehicleFile);
+                busVehicleFile = userFolder + "/matsimXml/busSchedule/" + xmlBlock.getVehicleXml().replace("\\", "/");
+                config.transit().setVehiclesFile(busVehicleFile);
+            }else{
+                config.transit().setVehiclesFile(null);
             }
             if (matsimBlock.isHasFacilityXml()) {
-                facilityFile = "../facility/" + xmlBlock.getFacilityXml().replace("\\", "/");
+                facilityFile = userFolder + "/matsimXml/facility/" + xmlBlock.getFacilityXml().replace("\\", "/");
                 config.facilities().setInputFile(facilityFile);
+            }else {
+                config.facilities().setInputFile(null);
             }
         }
         controler = new Controler(ScenarioUtils.loadScenario(config));
