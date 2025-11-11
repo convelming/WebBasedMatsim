@@ -4,170 +4,188 @@ package com.matsim.controller;
  * Created by MingLu on 2018/4/24.
  * This utility class
  */
+
 import com.matsim.bean.Result;
 import com.matsim.util.FileUtil;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.*;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Logger;
 
+@Scope("prototype")
 @RestController
-@CrossOrigin
 @RequestMapping("/upload")
 public class UploadFileController {
-    private Logger log = Logger.getLogger("UploadFileController.class");
 
-	// for od files
-	@RequestMapping(value = "/odMatrix", method = RequestMethod.POST)
-	public Result upLoadOdFile(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {".txt",".csv",".xls",".xlsx"};
-        return this.uploadFile(multipartReq,session,"odFile",fileExtensions);
-	}
+    private Logger log = LoggerFactory.getLogger(UploadFileController.class);
 
-	// for network .shp file
-	@RequestMapping(value = "/networkShpFile", method = RequestMethod.POST)
-	public Result upLoadNetworkShpFile(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {".shp","SHP"};
-        return this.uploadFile(multipartReq,session,"shpFile/network",fileExtensions);
-	}
-	@RequestMapping(value = "/networkShxFile", method = RequestMethod.POST)
-	public Result upLoadNetworkShxFile(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {".shx","SHX"};
-        return this.uploadFile(multipartReq,session,"shpFile/network",fileExtensions);
-	}
-	@RequestMapping(value = "/networkDbfFile", method = RequestMethod.POST)
-	public Result upLoadNetworkDbfFile(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {".dbf","DBF"};
-        return this.uploadFile(multipartReq,session,"shpFile/network",fileExtensions);
-	}
+    // for od files
+    @RequestMapping(value = "/odMatrix", method = RequestMethod.POST)
+    public Result upLoadOdFile(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {".txt", ".csv", ".xls", ".xlsx"};
+        return this.uploadFile(fileBtn, session, "odFile", fileExtensions);
+    }
 
-	// for region .shp files
+    // for network .shp file
+    @RequestMapping(value = "/networkShpFile", method = RequestMethod.POST)
+    public Result upLoadNetworkShpFile(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {".shp", "SHP"};
+        return this.uploadFile(fileBtn, session, "shpFile/network", fileExtensions);
+    }
+
+    @RequestMapping(value = "/networkShxFile", method = RequestMethod.POST)
+    public Result upLoadNetworkShxFile(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {".shx", "SHX"};
+        return this.uploadFile(fileBtn, session, "shpFile/network", fileExtensions);
+    }
+
+    @RequestMapping(value = "/networkDbfFile", method = RequestMethod.POST)
+    public Result upLoadNetworkDbfFile(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {".dbf", "DBF"};
+        return this.uploadFile(fileBtn, session, "shpFile/network", fileExtensions);
+    }
+
+    // for region .shp files
     @RequestMapping(value = "/regionShp", method = RequestMethod.POST)
-    public Result upLoadRegionShpFile(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"shp","SHP"};
-        return this.uploadFile(multipartReq,session,"shpFile/region",fileExtensions);
+    public Result upLoadRegionShpFile(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"shp", "SHP"};
+        return this.uploadFile(fileBtn, session, "shpFile/region", fileExtensions);
     }
+
     @RequestMapping(value = "/regionShx", method = RequestMethod.POST)
-    public Result upLoadRegionShxFile(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"shx","SHX"};
-        return this.uploadFile(multipartReq,session,"shpFile/region",fileExtensions);
+    public Result upLoadRegionShxFile(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"shx", "SHX"};
+        return this.uploadFile(fileBtn, session, "shpFile/region", fileExtensions);
     }
+
     @RequestMapping(value = "/regionDbf", method = RequestMethod.POST)
-    public Result upLoadRegionDbfFile(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"dbf","DBF"};
-        return this.uploadFile(multipartReq,session,"shpFile/region",fileExtensions);
+    public Result upLoadRegionDbfFile(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"dbf", "DBF"};
+        return this.uploadFile(fileBtn, session, "shpFile/region", fileExtensions);
     }
+
     // for matsim xml files
     @RequestMapping(value = "/mastimNetworkXml", method = RequestMethod.POST)
-    public Result upLoadMastimNetworkXml(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"xml","xml.gz"};
-        return this.uploadFile(multipartReq,session,"/matsimXml/network",fileExtensions);
+    public Result upLoadMastimNetworkXml(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"xml", "xml.gz"};
+        return this.uploadFile(fileBtn, session, "/matsimXml/network", fileExtensions);
     }
+
     @RequestMapping(value = "/mastimActivityXml", method = RequestMethod.POST)
-    public Result upLoadMastimActivityXml(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"xml","xml.gz"};
-        return this.uploadFile(multipartReq,session,"matsimXml/plans",fileExtensions);
+    public Result upLoadMastimActivityXml(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"xml", "xml.gz"};
+        return this.uploadFile(fileBtn, session, "matsimXml/plans", fileExtensions);
     }
+
     @RequestMapping(value = "/mastimBusScheduleXml", method = RequestMethod.POST)
-    public Result upLoadMastimBusScheduleXml(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"xml","xml.gz"};
-        return this.uploadFile(multipartReq,session,"matsimXml/busSchedule",fileExtensions);
+    public Result upLoadMastimBusScheduleXml(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"xml", "xml.gz"};
+        return this.uploadFile(fileBtn, session, "matsimXml/busSchedule", fileExtensions);
     }
+
     @RequestMapping(value = "/mastimVehicleXml", method = RequestMethod.POST)
-    public Result upLoadMastimVehicleXml(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"xml","xml.gz"};
-        return this.uploadFile(multipartReq,session,"matsimXml/busSchedule",fileExtensions);
+    public Result upLoadMastimVehicleXml(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"xml", "xml.gz"};
+        return this.uploadFile(fileBtn, session, "matsimXml/busSchedule", fileExtensions);
     }
+
     @RequestMapping(value = "/mastimFacilityXml", method = RequestMethod.POST)
-    public Result upLoadMastimFacilityXml(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"xml","xml.gz"};
-        return this.uploadFile(multipartReq,session,"matsimXml/facility",fileExtensions);
-	}
+    public Result upLoadMastimFacilityXml(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"xml", "xml.gz"};
+        return this.uploadFile(fileBtn, session, "matsimXml/facility", fileExtensions);
+    }
 
     @RequestMapping(value = "/mastimConfigXml", method = RequestMethod.POST)
-    public Result upLoadMastimConfigXml(MultipartHttpServletRequest multipartReq, HttpSession session) {
-        String[] fileExtensions = {"xml","xml.gz"};
-        return this.uploadFile(multipartReq,session,"matsimXml/config",fileExtensions);
+    public Result upLoadMastimConfigXml(MultipartFile fileBtn, HttpSession session) {
+        String[] fileExtensions = {"xml", "xml.gz"};
+        return this.uploadFile(fileBtn, session, "matsimXml/config", fileExtensions);
     }
 
-	public @ResponseBody Result uploadFile(MultipartHttpServletRequest multipartReq, HttpSession session,String folder,String[] fileExtensions){
-		Result result = new Result();
-		// 获得文件：
-		MultipartFile file = multipartReq.getFile("fileBtn");
-		// 获得文件名：
-		String fileName = file.getOriginalFilename();
-        System.out.println("fileName: "+fileName);
-		// check if file  extensions are in the list
+    public Result uploadFile(MultipartFile file, HttpSession session, String folder, String[] fileExtensions) {
+        Result result = new Result();
+        // 获得文件：
+//        MultipartFile file = fileBtn.getFile("fileBtn");
+//        MultipartFile file = fileBtn.getFile("fileBtn");
+        if(file == null) {
+            result.setSuccess(false);
+            result.setInfo("请上传正确的文件...");
+            return result;
+        }
+
+        // 获得文件名：
+        String fileName = file.getOriginalFilename();
+        // check if file  extensions are in the list
         boolean checkFileExt = false;
 //        System.out.println(fileExtensions.length);
-        for (String fileExt:fileExtensions) {
-            System.out.println("originalFile: "+fileName+ " fileExt: "+ fileExt);
+        for (String fileExt : fileExtensions) {
 //            System.out.println("line109 "+ fileName+" "+fileName.endsWith(fileExt));
             checkFileExt = checkFileExt || fileName.endsWith(fileExt);
         }
 //        System.out.println(checkFileExt);
-        if (!checkFileExt){
+        if (!checkFileExt) {
             result.setSuccess(false);
             result.setInfo("请上传正确的文件...");
-            System.out.println(result.getErrMsg());
+            log.error(result.getErrMsg());
             return result;
         }
 
-		// set save path and outputstream
+        // set save path and outputstream
 //		String userNamePath = "/" + session.getAttribute("userName").toString()+"/"+folder+"/"+filename;
 //		FileOutputStream fos = new FileOutputStream(new File(userNamePath));
-		FileOutputStream fos = null;
-		try {
+        FileOutputStream fos;
+        try {
 //		    File tempFile = new File("/Users/convel/Desktop/"+user+"/"+folder);
             //todo have to change path settings after user control system is done
-            File tempFile = new File(FileUtil.userFilePath + session.getAttribute("userName").toString()+"/temp/"+folder);
-		    if(!tempFile.exists()){
+            File tempFile = new File(FileUtil.userFilePath + session.getAttribute("userName").toString() + "/temp/" + folder);
+            if (!tempFile.exists()) {
                 tempFile.mkdirs();
-                System.out.println(tempFile.getAbsolutePath()+" upload file ");
+                System.out.println(tempFile.getAbsolutePath() + " upload file ");
             }
-            File destFile = new File(tempFile+"/" + fileName);
-		    if(destFile.exists()){
-		        result.setSuccess( false );
-		        result.setErrMsg( "There are files uploaded with same names, to avoid confusion, please rename and then upload again..." );
+            File destFile = new File(tempFile + "/" + fileName);
+            if (destFile.exists()) {
+                result.setSuccess(false);
+                result.setErrMsg("There are files uploaded with same names, to avoid confusion, please rename and then upload again...");
             }
-			fos = new FileOutputStream(destFile);
+            fos = new FileOutputStream(destFile);
 
-            log.info(destFile.getAbsolutePath() );
+            log.info(destFile.getAbsolutePath());
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrMsg("FileNotFoundException");
-		}
+        } catch (FileNotFoundException e) {
+            log.error(e.getMessage(), e);
+            result.setSuccess(false);
+            result.setErrMsg("FileNotFoundException");
+            return result;
+        }
 
 
-		// 获得输入流：
-		try {
-			InputStream input = file.getInputStream();
-			InputStream fs = multipartReq.getFile("fileBtn").getInputStream();
-			byte[] buffer = new byte[1024];
-			int len = 0;
-			while ((len = fs.read(buffer)) != -1) {
-				fos.write(buffer, 0, len);
-			}
-			fos.close();
-			fs.close();
+        // 获得输入流：
+        try {
+            InputStream fs = file.getInputStream();
+            byte[] buffer = new byte[1024];
+            int len = 0;
+            while ((len = fs.read(buffer)) != -1) {
+                fos.write(buffer, 0, len);
+            }
+            fos.close();
+            fs.close();
             result.setSuccess(true);
-            result.setInfo( "上传成功！" );
+            result.setInfo("上传成功！");
             result.setData(fileName);
-            System.out.println(result.getInfo()+","+result.isSuccess()+result.getData().toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setErrMsg("IOException");
-		}
-		return result;
-	}
+//            System.out.println(result.getInfo() + "," + result.isSuccess() + result.getData().toString());
+        } catch (IOException e) {
+//            e.printStackTrace();
+            log.error(e.getMessage(), e);
+            result.setSuccess(false);
+            result.setErrMsg("IOException");
+        }
+        return result;
+    }
 
 
 }

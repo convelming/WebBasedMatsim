@@ -4,8 +4,8 @@ var configs = window.configs = {
 
     drawBoard: {   // 操作面板配置
         id: "traffic",
-        loadUrl: "http://"+ipPort+"/saveAndLoad/loadBySaveId",
-        runUrl: "http://"+ipPort+"/workspace/start",
+        loadUrl: "/saveAndLoad/loadBySaveId",
+        runUrl: "/workspace/start",
         tool: {
             title: "",
             style: "width: 80px;color:black;",
@@ -139,7 +139,7 @@ var configs = window.configs = {
             { key: "shapeId", title: "图形ID", type: "text", show: false }
         ],
         buttons: [
-            { id: "save", type: "saveConsole", text: "确认保存", url: "http://"+ipPort+"/saveAndLoad/save" },
+            { id: "save", type: "saveConsole", text: "确认保存", url: "/saveAndLoad/save" },
         ]
     },
 
@@ -218,9 +218,9 @@ var configs = window.configs = {
                 { key: "linkLane", title: "指定单向车道数字段名", type: "text", value: "null", verify: "NO_NULL", help: "提示：输入路段单向车道数字段名，整数类型", error: "错误：未找到相应字段！" },
                 { key: "linkCapacity", title: "指定单向总通行能力字段名", type: "text", value: "null", verify: "NO_NULL", help: "提示：输入路段单向总通行能力字段名，浮点类型", error: "错误：未找到相应字段！" },
                 { key: "linkMode", title: "指定交通方式字段名", type: "text", value: "null", verify: "NO_NULL", help: "提示：输入路段允许的交通方式字段名，与mode模块对应，字符串，内容有多个字段时用'，'分割", error: "错误：未找到相应字段！" },
-                { key: "networkShpFile", title: "上传shp文件", type: "file", value: "", verify: "NO_NULL", help: "提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成。由于路网格式转换时对数据要求比较高，指定的上述字段中不能处理空值或异常值，否则即使格式转化成功，在后续的处理中也会出现异常，请使用GIS软件进行批处理后再上传", error: "错误：未找到其他文件！", url: "http://"+ipPort+"/upload/networkShpFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "networkShxFile", title: "上传shx文件", type: "file", value: "", verify: "NO_NULL", help: "提示：上传.shx文件", error: "错误：未找到其他文件！", url: "http://"+ipPort+"/upload/networkShxFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "networkDbfFile", title: "上传dbf文件", type: "file", value: "", verify: "NO_NULL", help: "提示：上传.dbf文件", error: "错误：未找到其他文件！", url: "http://"+ipPort+"/upload/networkDbfFile", fileName: "fileBtn", upload:"custom.console.call.upload" }
+                { key: "networkShpFile", title: "上传shp文件", type: "file", value: "", verify: "NO_NULL", help: "提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成。由于路网格式转换时对数据要求比较高，指定的上述字段中不能处理空值或异常值，否则即使格式转化成功，在后续的处理中也会出现异常，请使用GIS软件进行批处理后再上传", error: "错误：未找到其他文件！", url: "/upload/networkShpFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "networkShxFile", title: "上传shx文件", type: "file", value: "", verify: "NO_NULL", help: "提示：上传.shx文件", error: "错误：未找到其他文件！", url: "/upload/networkShxFile", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "networkDbfFile", title: "上传dbf文件", type: "file", value: "", verify: "NO_NULL", help: "提示：上传.dbf文件", error: "错误：未找到其他文件！", url: "/upload/networkDbfFile", fileName: "fileBtn", upload:"custom.console.call.upload" }
 
             ],
             buttons: [{ id: "finish", type: "finish", text: "完成" }, { id: "help", type: "help", text: "帮助" }]
@@ -234,9 +234,9 @@ var configs = window.configs = {
                 { key: "regionDefaultEPSG", title: "默认坐标系", type: "span", value: "EPSG：4326", default: "EPSG code", help: "提示：将投影坐标系通过<a href=http://epsg.io\" target=\"_blank\">OPEN STREET MAP</a>  查找EPSG code 填入，暂时不可修改", error: "错误：请输入EPSG code！" },
                 { key: "regionDesiredEPSG", title: "期望坐标系", type: "span", value: "EPSG：4326", default: "EPSG code", help: "提示：输入期望转成的坐标系，必须使用投影坐标系", error: "错误：此输入框不能为空！" },
                 { key: "regionId", title: "指定regionID字段", type: "text", value: "EnglishID", verify: "NO_NULL", help: "提示：输入路网唯一ID标识，尽量使用英文（区分大小写！），解析时容易出错，同时路网文件应该由多边形组成", error: "错误：此输入框不能为空！" },
-                { key: "regionShpFile", title: "上传shp文件", type: "file", value: "", verify: "NO_NULL", help: "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成", error: "错误：未找到其他文件！", url: "http://"+ipPort+"/upload/regionShp", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "regionShxFile", title: "上传shp附属文件", type: "file", value: "", verify: "NO_NULL", help: "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成", error: "错误：未找到其他文件！", url: "http://"+ipPort+"/upload/regionShx", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "regionDbfFile", title: "上传shp附属文件", type: "file", value: "", verify: "NO_NULL", help: "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成", error: "错误：未找到其他文件！", url: "http://"+ipPort+"/upload/regionDbf", fileName: "fileBtn", upload:"custom.console.call.upload" }
+                { key: "regionShpFile", title: "上传shp文件", type: "file", value: "", verify: "NO_NULL", help: "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成", error: "错误：未找到其他文件！", url: "/upload/regionShp", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "regionShxFile", title: "上传shp附属文件", type: "file", value: "", verify: "NO_NULL", help: "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成", error: "错误：未找到其他文件！", url: "/upload/regionShx", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "regionDbfFile", title: "上传shp附属文件", type: "file", value: "", verify: "NO_NULL", help: "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成", error: "错误：未找到其他文件！", url: "/upload/regionDbf", fileName: "fileBtn", upload:"custom.console.call.upload" }
 
             ],
             buttons: [{ id: "finish", type: "finish", text: "完成" }, { id: "help", type: "help", text: "帮助" }]
@@ -263,7 +263,7 @@ var configs = window.configs = {
                 {
                     key: "odFile", title: "出行活动", type: "file", default: "",
                     help: "提示：可为excel或逗号分割的txt或csv格式文件，建议使用文本文件,以逗号（非中文逗号！）分隔，请严格按照格式整理数据，否则后台解析会报错！！！",
-                    error: "错误：格式有误！", url: "http://"+ipPort+"/upload/odMatrix", fileName: "fileBtn", upload:"custom.console.call.upload"
+                    error: "错误：格式有误！", url: "/upload/odMatrix", fileName: "fileBtn", upload:"custom.console.call.upload"
                 },
             ],
             buttons: [{ id: "finish", type: "finish", text: "完成" }, { id: "help", type: "help", text: "帮助" }]
@@ -355,11 +355,11 @@ var configs = window.configs = {
                 title: "matsimXMLs"
             },
             form: [
-                { key: "networkXml", title: "路网文件", type: "file", default: "", verify: "", help: "提示：输入matsim路网xml文件", error: "错误：请查看帮助并检查输入！", url: "http://"+ipPort+"/upload/mastimNetworkXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "activityXml", title: "出行活动", type: "file", default: "", verify: "", help: "提示：输入matsim活动xml文件", error: "错误：请查看帮助并检查输入！", url: "http://"+ipPort+"/upload/mastimActivityXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "busScheduleXml", title: "公交时刻表", type: "file", default: "", verify: "", help: "提示：输入matsim公交相关时刻表xml文件", error: "错误：请查看帮助并检查输入！", url: "http://"+ipPort+"/upload/mastimBusScheduleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "vehicleXml", title: "车辆配置", type: "file", default: "", verify: "", help: "提示：输入matsim车辆配置xml文件", error: "错误：请查看帮助并检查输入！", url: "http://"+ipPort+"/upload/mastimVehicleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
-                { key: "facilityXml", title: "建筑设施配置", type: "file", default: "", verify: "", help: "提示：输入matsim建筑xml文件", error: "错误：请查看帮助并检查输入！", url: "http://"+ipPort+"/upload/mastimFacilityXml", fileName: "fileBtn", upload:"custom.console.call.upload" }
+                { key: "networkXml", title: "路网文件", type: "file", default: "", verify: "", help: "提示：输入matsim路网xml文件", error: "错误：请查看帮助并检查输入！", url: "/upload/mastimNetworkXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "activityXml", title: "出行活动", type: "file", default: "", verify: "", help: "提示：输入matsim活动xml文件", error: "错误：请查看帮助并检查输入！", url: "/upload/mastimActivityXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "busScheduleXml", title: "公交时刻表", type: "file", default: "", verify: "", help: "提示：输入matsim公交相关时刻表xml文件", error: "错误：请查看帮助并检查输入！", url: "/upload/mastimBusScheduleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "vehicleXml", title: "车辆配置", type: "file", default: "", verify: "", help: "提示：输入matsim车辆配置xml文件", error: "错误：请查看帮助并检查输入！", url: "/upload/mastimVehicleXml", fileName: "fileBtn", upload:"custom.console.call.upload" },
+                { key: "facilityXml", title: "建筑设施配置", type: "file", default: "", verify: "", help: "提示：输入matsim建筑xml文件", error: "错误：请查看帮助并检查输入！", url: "/upload/mastimFacilityXml", fileName: "fileBtn", upload:"custom.console.call.upload" }
             ],
             buttons: [{ id: "finish", type: "finish", text: "完成" }, { id: "help", type: "help", text: "帮助" }]
         },
@@ -393,7 +393,7 @@ var configs = window.configs = {
                 },
                 {
                     key: "configXml", title: "运行配置文件", type: "file", default: "", verify: "", help: "提示：上传config文件,无需设置输入及输出文件路径", if: "@hasConfigXml==true",
-                    error: "错误：请查看帮助并检查输入！", url: "http://"+ipPort+"/upload/mastimConfigXml", fileName: "fileBtn", upload:"custom.console.call.upload"
+                    error: "错误：请查看帮助并检查输入！", url: "/upload/mastimConfigXml", fileName: "fileBtn", upload:"custom.console.call.upload"
                 }
 
             ],
@@ -427,7 +427,7 @@ var configs = window.configs = {
             grid: {
                 col: 5,
                 elements: {
-                    url: "http://"+ipPort+"/saveAndLoad/loadAll",
+                    url: "/saveAndLoad/loadAll",
                     width: 1,
                     height: 1
                 }
@@ -441,7 +441,7 @@ var configs = window.configs = {
             grid: {
                 col: 5,
                 elements: {
-                    url: "http://"+ipPort+"/saveAndLoad/loadExample",
+                    url: "/saveAndLoad/loadExample",
                     width: 1,
                     height: 1
                 }
@@ -455,7 +455,7 @@ var configs = window.configs = {
             grid: {
                 col: 5,
                 elements: {
-                    url: "http://"+ipPort+"/saveAndLoad/loadExample",
+                    url: "/saveAndLoad/loadExample",
                     width: 1,
                     height: 1
                 }
