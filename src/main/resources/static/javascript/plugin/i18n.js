@@ -13,6 +13,7 @@ window.i18n = (function () {
         }
       });
     }
+    return language;
   }
 
   function getCookie(name) {
@@ -33,6 +34,7 @@ window.i18n = (function () {
   }
 
   function changeLanguage(language) {
+    console.log(language);
     s_language = language;
     setCookie("language", language, 30);
     $("[i18n]").each(function (i, v) {
@@ -43,11 +45,19 @@ window.i18n = (function () {
           var list2 = item1.split(".");
           var key1 = list2[0];
           var key2 = list2[1];
-          var pos = list2[2];
+          var pos = "";
+          var value = "";
+          if (list2[2]) {
+            value = s_languageObj[s_language][key1][key2];
+            pos = list2[2];
+          } else {
+            value = s_languageObj[s_language][key1];
+            pos = key2;
+          }
           if (pos == "text") {
-            $(v).text(s_languageObj[s_language][key1][key2]);
+            $(v).text(value);
           } else if (!!pos) {
-            $(v).attr(pos, s_languageObj[s_language][key1][key2]);
+            $(v).attr(pos, value);
           }
         }
       } catch (error) {

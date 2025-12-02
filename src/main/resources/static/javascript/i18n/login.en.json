@@ -1,0 +1,13 @@
+{
+  "header_title": "MATSim",
+  "header_btn1": "Download",
+  "header_btn2": "Log out",
+  "form_title": "Welcome to log in",
+  "form_username": { "label": "Username", "placeholder": "Please enter username" },
+  "form_password": { "label": "Password", "placeholder": "Please enter password" },
+  "form_email": { "label": "E-mail", "placeholder": "Please enter E-mail" },
+  "form_submit": "Login",
+  "form_sendEmail": "Forgot password?",
+  "form_register": { "text1": "No account?", "text2": "Register Now" },
+  "copy": { "text1": " &copy; All Rights Reserved.深圳康沃数据科技有限公司", "text2": "Online Traffic planning." }
+}
