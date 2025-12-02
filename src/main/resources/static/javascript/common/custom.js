@@ -339,8 +339,8 @@ ui.custom.console = {
             else svgParams = rectParams;
 
             if (params.icon) svgParams.elements.push(
-                { type: "image", text: params.text, properties: { "xlink:href": params.icon, x: "15%", y: "15%", width: "70%", height: "70%" } });
-            else svgParams.elements.push({ type: "text", text: params.text, properties: { fill: "#FFF" } });
+                { type: "image", text: params.text, properties: { "xlink:href": params.icon, x: "15%", y: "15%", width: "70%", height: "70%", i18n: params.i18n + ".text.text" } });
+            else svgParams.elements.push({ type: "text", text: params.text, properties: { fill: "#FFF", i18n: params.i18n + ".text.text" } });
 
             var svgObj = ui.parts.svg.build(svgParams);
             if (parseInt(params.left) > 80) {

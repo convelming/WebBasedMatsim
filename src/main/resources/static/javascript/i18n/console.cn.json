@@ -1,0 +1,587 @@
+{
+  "matsimXMLs_bar": {
+    "text": "xml",
+    "title": "上传MATSim标准输入文件"
+  },
+  "matsim_bar": {
+    "text": "MATSim",
+    "title": "MATSim"
+  },
+  "network_bar": {
+    "text": "network",
+    "title": "上传Shp格式路网文件"
+  },
+  "openStreet_bar": {
+    "text": "open",
+    "title": "从openstreetmap下载"
+  },
+  "vehicle_bar": {
+    "text": "GTFS",
+    "title": "设置车辆信息"
+  },
+  "region_bar": {
+    "text": "region",
+    "title": "选择或上传交通小区文件"
+  },
+  "facility_bar": {
+    "text": "Facility",
+    "title": "设置建筑信息"
+  },
+  "odMatrix_bar": {
+    "text": "OD matrix",
+    "title": "设置OD矩阵"
+  },
+  "editTable_bar": {
+    "text": "Table",
+    "title": "修改OD表数据"
+  },
+  "activity_bar": {
+    "text": "activity",
+    "title": "设置出行活动"
+  },
+  "timer_bar": {
+    "text": "Timer",
+    "title": "设置出行时间"
+  },
+  "person_bar": {
+    "text": "Person",
+    "title": "设置出行者信息"
+  },
+  "mode_bar": {
+    "text": "Modes",
+    "title": "选择出行模式"
+  },
+  "tripPurpose_bar": {
+    "text": "Trip purpose",
+    "title": "选择出行目的"
+  },
+  "networkDisplay_bar": {
+    "text": "Network",
+    "title": "显示路网"
+  },
+  "OTFvis_bar": {
+    "text": "OTFvis",
+    "title": "显示仿真结果"
+  },
+  "centroid_bar": {
+    "text": "centroids",
+    "title": "显示形心连杆"
+  },
+  "chord_bar": {
+    "text": "chord",
+    "title": "显示OD弦图"
+  },
+  "example_bar": {
+    "text": "案例"
+  },
+  "trafficData_bar": {
+    "text": "交通数据"
+  },
+  "help_bar": {
+    "text": "help"
+  },
+  "saveConsole_title": {
+    "title": "保存工作空间"
+  },
+  "saveConsole_id": {
+    "title": "ID"
+  },
+  "saveConsole_name": {
+    "title": "保存名称",
+    "default": "请输入保存名称",
+    "error": "错误：此输入框不能为空！"
+  },
+  "saveConsole_callType": {
+    "title": "Call类型"
+  },
+  "saveConsole_callParams": {
+    "title": "Call参数"
+  },
+  "saveConsole_shapeId": {
+    "title": "图形ID"
+  },
+  "confirmSave_btn": {
+    "text": "确认保存"
+  },
+  "timer_title": {
+    "title": "Timer"
+  },
+  "timer_durTime": {
+    "title": "活动持续时间",
+    "default": "hh:mm:ss",
+    "help": "提示：输入期望出发时间，格式为hh:mm:ss",
+    "error": "错误：此输入框不能为空！"
+  },
+  "timer_endTime": {
+    "title": "活动结束时间",
+    "default": "hh:mm:ss",
+    "help": "提示：输入期望到达时间，格式为hh:mm:ss",
+    "error": "错误：此输入框不能为空！"
+  },
+  "finish_btn": {
+    "text": "完成"
+  },
+  "help_btn": {
+    "text": "帮助"
+  },
+  "facility_title": {
+    "title": "facility"
+  },
+  "facility_facilityId": {
+    "title": "建筑ID",
+    "default": "HIL",
+    "help": "提示：输入建筑ID,此模块可作为activity模块+tripPurpose模块来用，如果没有facility设置文件请尽量使用activity模块代替",
+    "error": "错误：此输入框不能为空！"
+  },
+  "facility_actType": {
+    "title": "活动类型",
+    "help": "提示：输入在指定建筑的活动类型，需要与出行目的对应，指定此项后如再接入出行目的模块，将以此处添入但为准",
+    "error": "错误：活动类型需要与出行目的对应！"
+  },
+  "facility_facilityCoord": {
+    "title": "建筑位置",
+    "default": "47.408765, 8.507441",
+    "help": "提示：建筑的地理坐标（经纬度），以逗号分割,如果没有上传facility文件则必须指定坐标",
+    "error": "错误：此输入框需输入经纬度，浮点类型"
+  },
+  "facility_facilityOpenDay": {
+    "title": "开放时间",
+    "help": "提示：建筑开放的周期时间，默认为工作日，可不填",
+    "error": "错误：此输入框不能为空！"
+  },
+  "facility_facilityOpenTime": {
+    "title": "开门时间",
+    "help": "提示：建筑的开门时间，格式为hh:mm:ss",
+    "error": "错误：此输入框不能为空！"
+  },
+  "facility_facilityCloseTime": {
+    "title": "关门时间",
+    "help": "提示：建筑关门时间，默认为hh:mm:ss",
+    "error": "错误：此输入框不能为空！"
+  },
+  "openStreet_title": {
+    "title": "openStreet"
+  },
+  "openStreet_minLong": {
+    "title": "最小经度",
+    "help": "提示：请到 <a href=\"https://www.openstreetmap.org/export#map=4/36.99/119.58\" target=\"_blank\">OPEN STREET MAP</a> 获取并选择经纬度信息",
+    "error": "错误：输入经度，double类型类型,范围：[0,180]！"
+  },
+  "openStreet_maxLong": {
+    "title": "最大经度",
+    "error": "错误：输入经度，double类型,范围：[0,180]！"
+  },
+  "openStreet_minLati": {
+    "title": "最小纬度",
+    "error": "错误：输入纬度，double类型类型,范围：[0,180]！"
+  },
+  "openStreet_maxLati": {
+    "title": "最大纬度",
+    "error": "错误：输入纬度，double类型类型,范围：[0,180]！"
+  },
+  "network_title": {
+    "title": "network"
+  },
+  "network_networkDefaultEPSG": {
+    "title": "默认坐标系",
+    "default": "EPSG code",
+    "help": "提示：将投影坐标系通过<a href=http://epsg.io\" target=\"_blank\">EPSG </a> 查找相应code 填入，暂时不可修改",
+    "error": "错误：请输入EPSG code！"
+  },
+  "network_networkDesiredEPSG": {
+    "title": "期望坐标系",
+    "default": "EPSG code",
+    "help": "提示：现阶段只支持WGS 84，暂时不可修改",
+    "error": "错误：请输入EPSG code！"
+  },
+  "network_linkDir": {
+    "title": "指定方向字段名",
+    "help": "提示：输入路段方向字段名（字段名区分大小写，字段内容为整数格式）请统一利用GIS软件按照 0-双向道路(默认)，<0 反向单行，>0正向单行 修改后上传",
+    "error": "错误：未找到相应字段！"
+  },
+  "network_linkSpeed": {
+    "title": "指定最大速度字段名",
+    "help": "提示：输入路段限速字段名 （米／秒），字段内容为浮点类型",
+    "error": "错误：未找到相应字段！"
+  },
+  "network_linkLength": {
+    "title": "指定路线长度名",
+    "help": "提示：输入路段长度（米），浮点类型",
+    "error": "错误：未找到相应字段！"
+  },
+  "network_linkLane": {
+    "title": "指定单向车道数字段名",
+    "help": "提示：输入路段单向车道数字段名，整数类型",
+    "error": "错误：未找到相应字段！"
+  },
+  "network_linkCapacity": {
+    "title": "指定单向总通行能力字段名",
+    "help": "提示：输入路段单向总通行能力字段名，浮点类型",
+    "error": "错误：未找到相应字段！"
+  },
+  "network_linkMode": {
+    "title": "指定交通方式字段名",
+    "help": "提示：输入路段允许的交通方式字段名，与mode模块对应，字符串，内容有多个字段时用'，'分割",
+    "error": "错误：未找到相应字段！"
+  },
+  "network_networkShpFile": {
+    "title": "上传shp文件",
+    "help": "提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成。由于路网格式转换时对数据要求比较高，指定的上述字段中不能处理空值或异常值，否则即使格式转化成功，在后续的处理中也会出现异常，请使用GIS软件进行批处理后再上传",
+    "error": "错误：未找到其他文件！"
+  },
+  "network_networkShxFile": {
+    "title": "上传shx文件",
+    "help": "提示：上传.shx文件",
+    "error": "错误：未找到其他文件！"
+  },
+  "network_networkDbfFile": {
+    "title": "上传dbf文件",
+    "help": "提示：上传.dbf文件",
+    "error": "错误：未找到其他文件！"
+  },
+  "region_title": {
+    "title": "region"
+  },
+  "region_regionDefaultEPSG": {
+    "title": "默认坐标系",
+    "default": "EPSG code",
+    "help": "提示：将投影坐标系通过<a href=http://epsg.io\" target=\"_blank\">OPEN STREET MAP</a>  查找EPSG code 填入，暂时不可修改",
+    "error": "错误：请输入EPSG code！"
+  },
+  "region_regionDesiredEPSG": {
+    "title": "期望坐标系",
+    "default": "EPSG code",
+    "help": "提示：输入期望转成的坐标系，必须使用投影坐标系",
+    "error": "错误：此输入框不能为空！"
+  },
+  "region_regionId": {
+    "title": "指定regionID字段",
+    "help": "提示：输入路网唯一ID标识，尽量使用英文（区分大小写！），解析时容易出错，同时路网文件应该由多边形组成",
+    "error": "错误：此输入框不能为空！"
+  },
+  "region_regionShpFile": {
+    "title": "上传shp文件",
+    "help": "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成",
+    "error": "错误：未找到其他文件！"
+  },
+  "region_regionShxFile": {
+    "title": "上传shp附属文件",
+    "help": "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成",
+    "error": "错误：未找到其他文件！"
+  },
+  "region_regionDbfFile": {
+    "title": "上传shp附属文件",
+    "help": "提示：提示：shp文件通常有.shp,.shx,.prj和.dbf文件组成",
+    "error": "错误：未找到其他文件！"
+  },
+  "odMatrix_title": {
+    "title": "odMatrix"
+  },
+  "odMatrix_odFileType_squareMatrix": {
+    "text": "方阵式"
+  },
+  "odMatrix_odFileType_array": {
+    "text": "行列式"
+  },
+  "odMatrix_odFileType": {
+    "title": "矩阵类型",
+    "help": "提示：方阵式第一行出行小区讫点ID，第一列为出行小区起点ID，第一行第一列为空",
+    "error": "错误：格式有误！"
+  },
+  "odMatrix_odAsRegionOrCoord_asRegion": {
+    "text": "交通小区"
+  },
+  "odMatrix_odAsRegionOrCoord_asCoord": {
+    "text": "坐标"
+  },
+  "odMatrix_odAsRegionOrCoord": {
+    "title": "OD格式",
+    "help": "提示：如按照交通小区获取的OD则矩阵ID应为小区ID，如按照坐标输入则选择，如选择OD方阵，则此项只能选择交通小区！",
+    "error": "错误：格式有误！"
+  },
+  "odMatrix_odFile": {
+    "title": "出行活动",
+    "help": "提示：可为excel或逗号分割的txt或csv格式文件，建议使用文本文件,以逗号（非中文逗号！）分隔，请严格按照格式整理数据，否则后台解析会报错！！！",
+    "error": "错误：格式有误！"
+  },
+  "mode_title": {
+    "title": "mode"
+  },
+  "mode_mode_walk": {
+    "text": "步行"
+  },
+  "mode_mode_bus": {
+    "text": "公交"
+  },
+  "mode_mode_subway": {
+    "text": "地铁"
+  },
+  "mode_mode_bike": {
+    "text": "自行车"
+  },
+  "mode_mode_car": {
+    "text": "小汽车"
+  },
+  "mode_mode_userDefined": {
+    "text": "自定义"
+  },
+  "mode_mode": {
+    "title": "mode",
+    "error": "错误：此输入框不能为空！"
+  },
+  "mode_otherMode": {
+    "title": "自定义",
+    "default": "请输入自定义值",
+    "help": "提示：输入自定义出行方式",
+    "error": "错误：格式有误！"
+  },
+  "tripPurpose_title": {
+    "title": "tripPurpose"
+  },
+  "tripPurpose_tripPurpose_work": {
+    "text": "工作"
+  },
+  "tripPurpose_tripPurpose_entertainment": {
+    "text": "娱乐"
+  },
+  "tripPurpose_tripPurpose_shopping": {
+    "text": "购物"
+  },
+  "tripPurpose_tripPurpose_sport": {
+    "text": "运动"
+  },
+  "tripPurpose_tripPurpose_userDefined": {
+    "text": "其他"
+  },
+  "tripPurpose_tripPurpose": {
+    "title": "出行目的",
+    "error": "错误：格式有误！"
+  },
+  "tripPurpose_otherPurpose": {
+    "title": "其他",
+    "default": "请输入自定义值",
+    "help": "提示:出行目的",
+    "error": "错误：格式有误！"
+  },
+  "tripPurpose_tripPurposeDuration": {
+    "title": "出行期望时长",
+    "help": "提示:此次出行持续时间，不计出行花费在路上的时间，如工作出行通常持续8小时，则填入8:00:00",
+    "error": "错误：格式有误！"
+  },
+  "activity_title": {
+    "title": "activity"
+  },
+  "activity_actDestinationType_location": {
+    "text": "出行目的地坐标"
+  },
+  "activity_actDestinationType_regionId": {
+    "text": "出行交通小区ID"
+  },
+  "activity_actDestinationType": {
+    "title": "出行目的地类型",
+    "help": "提示：选择出行目的地信息",
+    "error": "错误：此输入框不能为空！"
+  },
+  "activity_actLocation": {
+    "title": "出行活动坐标",
+    "default": "121.5066,31.2827",
+    "help": "提示：坐标格式为0.00(经度)，0.00（纬度）",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "activity_actRegionId": {
+    "title": "出行活动小区或建筑ID",
+    "default": "Tongji University",
+    "help": "提示：小区ID或建筑ID需与上传的交通小区或建筑ID对应",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_title": {
+    "title": "person"
+  },
+  "person_personId": {
+    "title": "出行者ID",
+    "help": "提示：需唯一，如果人数>1，则此输入作为前缀",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_personNum": {
+    "title": "出行者数量",
+    "help": "提示：输入整型",
+    "error": "错误：输入格式有误！"
+  },
+  "person_personAge": {
+    "title": "年龄/范围",
+    "help": "提示：如果出行者数量为一，则直接指定年龄，如果数量>1则输入年龄范围",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_personHouseholdSize": {
+    "title": "家庭成员数",
+    "help": "提示：输入成员数量",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_personCarNum": {
+    "title": "拥有车辆数",
+    "help": "提示：输入拥有的小汽车数量",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_personDepTime": {
+    "title": "期望出发时间",
+    "help": "提示：格式HH:MM:SS, or hh:mm:ssAM/PM",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_personLocationType_homeCoord": {
+    "text": "家庭坐标"
+  },
+  "person_personLocationType_regionId": {
+    "text": "小区ID"
+  },
+  "person_personLocationType": {
+    "help": "提示：输入家庭所在位置",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_personLocationRegion": {
+    "title": "位置信息",
+    "default": "ETH Zürich",
+    "help": "提示：小区ID或建筑ID需与上传的交通小区或建筑ID对应",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "person_personLocationLocation": {
+    "title": "位置信息",
+    "default": "47.37639, 8.54806",
+    "help": "提示：坐标格式为0.00，0.00（longitude，latitude），范围0-180，精度通常至少要小数点后4位",
+    "error": "请查看帮助并检查输入！"
+  },
+  "matsimXMLs_title": {
+    "title": "matsimXMLs"
+  },
+  "matsimXMLs_networkXml": {
+    "title": "路网文件",
+    "help": "提示：输入matsim路网xml文件",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "matsimXMLs_activityXml": {
+    "title": "出行活动",
+    "help": "提示：输入matsim活动xml文件",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "matsimXMLs_busScheduleXml": {
+    "title": "公交时刻表",
+    "help": "提示：输入matsim公交相关时刻表xml文件",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "matsimXMLs_vehicleXml": {
+    "title": "车辆配置",
+    "help": "提示：输入matsim车辆配置xml文件",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "matsimXMLs_facilityXml": {
+    "title": "建筑设施配置",
+    "help": "提示：输入matsim建筑xml文件",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "matsim_title": {
+    "title": "matsim"
+  },
+  "matsim_iteration": {
+    "title": "迭代次数",
+    "default": "1",
+    "help": "提示：建议设置为1或者10",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "matsim_hasBusScheduleXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasBusScheduleXml_false": {
+    "text": "No"
+  },
+  "matsim_hasBusScheduleXml": {
+    "title": "是否配置公交信息",
+    "error": "错误：此输入框不能为空！"
+  },
+  "matsim_hasVehicleXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasVehicleXml_false": {
+    "text": "No"
+  },
+  "matsim_hasVehicleXml": {
+    "title": "车辆",
+    "error": "错误：此输入框不能为空！"
+  },
+  "matsim_hasFacilityXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasFacilityXml_false": {
+    "text": "No"
+  },
+  "matsim_hasFacilityXml": {
+    "title": "建筑设施功能",
+    "error": "错误：此输入框不能为空！"
+  },
+  "matsim_hasConfigXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasConfigXml_false": {
+    "text": "No"
+  },
+  "matsim_hasConfigXml": {
+    "title": "是否有运行配置文件",
+    "error": "错误：此输入框不能为空！"
+  },
+  "matsim_configXml": {
+    "title": "运行配置文件",
+    "help": "提示：上传config文件,无需设置输入及输出文件路径",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_title": {
+    "title": "vehicle"
+  },
+  "vehicle_vehicleType": {
+    "title": "车辆类型",
+    "help": "提示：输入车辆类型",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_vehicleSeatNum": {
+    "title": "座位数",
+    "help": "提示：车辆座位数",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_vehicleStandNum": {
+    "title": "可站人数",
+    "help": "提示：可站立的人数",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_vehicleLength": {
+    "title": "车辆长度",
+    "help": "提示：车辆长度（米）",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_vehicleWidth": {
+    "title": "车辆宽度",
+    "help": "提示：车辆长度（米）",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_vehicleMaxSpeed": {
+    "title": "最大速度",
+    "default": "km/h",
+    "help": "提示：最大车速（km/h）",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_vehicleDes": {
+    "title": "车辆描述",
+    "help": "提示：车辆用途，描述",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "vehicle_vehicleAsCar": {
+    "title": "当量值",
+    "help": "提示：转化成当量小汽车的值",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "loadAll_title": {
+    "title": "加载存档"
+  },
+  "example_title": {
+    "title": "example"
+  },
+  "trafficData_title": {
+    "title": "trafficData"
+  }
+}

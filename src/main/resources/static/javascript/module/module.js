@@ -201,6 +201,7 @@ window.ui = (function (parts, modules, pages, build, common, config) {
         var id = params.id;
         var style = params.style;
         var title = params.title;
+        var i18n = params.i18n;
         var bodyConfig = params.body;
 
         if (common.isEmpty(id)) params.id = index = id = index + 1;
@@ -216,13 +217,19 @@ window.ui = (function (parts, modules, pages, build, common, config) {
 
         var header = exterior.children[0];
         header.properties.onmousedown = "ui.parts.window.drag('" + id + "')";
-        header.children[0].text = title;
+        header.children[0].properties.i18n = i18n + ".title.text";
+        header.children[0].text = window.i18n.getStr(header.children[0].properties.i18n) || title;
         header.children[1].children[0].properties.onclick = "ui.parts.window.close('" + id + "')";
 
         var body = exterior.children[1];
         body.properties.id = bodyIdPrefix + id;
-        if (common.is.Array(bodyConfig)) body.children = bodyConfig;
-        else body.text = bodyConfig;
+
+        if (common.is.Array(bodyConfig)) {
+          body.children = bodyConfig;
+        } else {
+          body.properties.i18n = bodyConfig.i18n + ".body.text";
+          body.text = window.i18n.getStr(body.properties.i18n) || bodyConfig;
+        }
 
         if (!document.getElementById(bgIdPrefix)) {
           var windowBgElement = common.deepCopy(windowBgConfig);
@@ -716,6 +723,7 @@ window.ui = (function (parts, modules, pages, build, common, config) {
 
       function buildElement(id, params) {
         var key = elementIdPrefix + id + "_" + params.key;
+        var i18n = params.i18n;
         var type = params.type;
         var value = params.value ? params.value : "";
         var defaultValue = params.default ? params.default : "";
@@ -727,8 +735,9 @@ window.ui = (function (parts, modules, pages, build, common, config) {
           var element = common.deepCopy(elementsConfig.input);
           element.properties.name = key;
           element.properties.type = type;
-          element.properties.value = value;
-          element.properties.placeholder = defaultValue;
+          element.properties.i18n = i18n + ".default.placeholder";
+          element.properties.value = window.i18n.getStr(i18n + ".value.value") || value;
+          element.properties.placeholder = window.i18n.getStr(i18n + ".default.placeholder") || defaultValue;
           if (commandOf) element.properties.onblur = "ui.parts.form.command('" + id + "','" + commandOf + "')";
           elementArr.push(element);
         } else if (type == "file") {
@@ -737,16 +746,20 @@ window.ui = (function (parts, modules, pages, build, common, config) {
           var element = common.deepCopy(elementsConfig.file);
           element.properties.name = key;
           element.children[0].properties.name = key + filePathNameSuffix;
-          element.children[0].properties.value = value;
-          element.children[0].properties.placeholder = defaultValue;
+          element.children[0].properties.i18n = i18n + ".default.placeholder";
+          element.children[0].properties.value = window.i18n.getStr(i18n + ".value.value") || value;
+          element.children[0].properties.placeholder = window.i18n.getStr(i18n + ".default.placeholder") || defaultValue;
+
           if (commandOf) element.children[0].properties.onblur = "ui.parts.from.command('" + id + "','" + commandOf + "')";
           element.children[1].properties.id = key + fileNameSuffix;
           element.children[1].properties.name = key + fileNameSuffix;
           element.children[1].properties.onchange = "ui.parts.form.element.file.checked('" + id + "','" + params.key + "')";
           element.children[2].properties.onclick = "ui.parts.form.element.file.browse('" + id + "','" + params.key + "')";
-          element.children[2].text = fileBrowseButtonName;
+          element.children[2].text = window.i18n.getStr("fileBrowseButtonName.text.text") || fileBrowseButtonName;
+          element.children[2].properties.i18n = "fileBrowseButtonName.text.text";
           element.children[3].properties.onclick = "ui.parts.form.element.file.upload('" + id + "','" + params.key + "','" + url + "','" + fileParamName + "')";
-          element.children[3].text = fileUploadButtonName;
+          element.children[3].text = window.i18n.getStr("fileUploadButtonName.text.text") || fileUploadButtonName;
+          element.children[3].properties.i18n = "fileUploadButtonName.text.text";
           elementArr.push(element);
         } else if (type == "select") {
           var element = common.deepCopy(elementsConfig.select);
@@ -763,6 +776,7 @@ window.ui = (function (parts, modules, pages, build, common, config) {
             optionElement.properties.value = child.value;
             if (child.value == value) optionElement.properties.selected = "selected";
             optionElement.text = child.value;
+            optionElement.properties.i18n = child.i18n + ".text.text";
             element.children.push(optionElement);
           }
           elementArr.push(element);
@@ -786,21 +800,23 @@ window.ui = (function (parts, modules, pages, build, common, config) {
             var child = children[childrenIndex];
             element.properties.value = child.value;
 
-            var radioText = { name: "label", text: buildUtil.tags.nbsps(2) + child.text + buildUtil.tags.nbsps(3) };
+            var radioText = { name: "label", text: buildUtil.tags.nbsps(2) + child.text + buildUtil.tags.nbsps(3), properties: { i18n: child.i18n + ".text.text" } };
             elementArr.push(element);
             elementArr.push(radioText);
           }
         } else if (type == "textarea") {
           var element = common.deepCopy(elementsConfig.textarea);
           element.properties.name = key;
-          element.text = value;
+          element.text = window.i18n.getStr(i18n + ".value.text") || value;
+          element.properties.i18n = i18n + ".value.text";
           if (commandOf) element.properties.onblur = "ui.parts.form.command('" + id + "','" + commandOf + "')";
 
           elementArr.push(element);
         } else {
           var element = common.deepCopy(elementsConfig.span);
           element.properties.name = key;
-          element.text = value;
+          element.text = window.i18n.getStr(i18n + ".value.text") || value;
+          element.properties.i18n = i18n + ".value.text";
           if (commandOf) element.properties.onblur = "ui.parts.form.command('" + id + "','" + commandOf + "')";
 
           elementArr.push(element);
@@ -828,6 +844,7 @@ window.ui = (function (parts, modules, pages, build, common, config) {
         for (var i = 0; i < elements.length; i++) {
           var element = elements[i];
           var title = element.title;
+          var i18n = element.i18n;
           var helpMsg = element.help ? element.help : "";
           var errorMsg = element.error ? element.error : "";
           var isShow = element.show == false ? false : true;
@@ -845,10 +862,13 @@ window.ui = (function (parts, modules, pages, build, common, config) {
 
           var formElement = common.deepCopy(formConfig);
           if (!isShow || element.if) formElement.properties.style = "display:none;";
-          formElement.children[0].text = title;
+          formElement.children[0].properties.i18n = i18n + ".title.text";
+          formElement.children[0].text = window.i18n.getStr(formElement.children[0].properties.i18n) || title;
           formElement.children[1].children = buildElement(id, element);
-          formElement.children[2].text = errorMsg;
-          formElement.children[3].text = helpMsg;
+          formElement.children[2].properties.i18n = i18n + ".errorMsg.text";
+          formElement.children[2].text = window.i18n.getStr(formElement.children[2].properties.i18n) || errorMsg;
+          formElement.children[3].properties.i18n = i18n + ".helpMsg.text";
+          formElement.children[3].text = window.i18n.getStr(formElement.children[3].properties.i18n) || helpMsg;
 
           elementsData["element" + element.key] = element;
           currFormColElementArr.push(formElement);
@@ -1899,6 +1919,7 @@ window.ui = (function (parts, modules, pages, build, common, config) {
             var toolKey = toolIdPrefix + id + "_" + tool.key;
             var toolText = tool.text;
             var toolTitle = tool.title ? tool.title : "";
+            var toolI18n = tool.i18n;
             var toolIcon = tool.icon;
             var toolBgColor = tool.bgColor;
             var toolIsClick = tool.click == false ? false : true;
@@ -1914,8 +1935,13 @@ window.ui = (function (parts, modules, pages, build, common, config) {
             if (toolIsDrag) toolElement.properties.onmousedown = "ui.parts.drawBoard.tool.drag('" + id + "','" + toolsBarsIndex + "','" + tool.key + "')";
             else if (toolIsClick) toolElement.properties.onclick = "ui.parts.drawBoard.tool.click('" + id + "','" + toolsBarsIndex + "','" + tool.key + "')";
 
-            if (!common.isEmpty(toolIcon)) toolElement.children = [{ name: "img", properties: { src: toolIcon, width: "100%", height: "100%" } }];
-            else toolElement.text = toolText;
+            if (!common.isEmpty(toolIcon)) {
+              toolElement.children = [{ name: "img", properties: { src: toolIcon, width: "100%", height: "100%" } }];
+              toolElement.properties.i18n = toolI18n + ".title.title";
+            } else {
+              toolElement.text = toolText;
+              toolElement.properties.i18n = toolI18n + ".text.title" + ";" + toolI18n + ".text.text";
+            }
             toolsElements.push(toolElement);
           }
 
@@ -2233,12 +2259,14 @@ window.ui = (function (parts, modules, pages, build, common, config) {
 
           var buttonId = button.id;
           var buttonText = button.text;
+          var buttonI18n = button.i18n;
 
           if (!button.call) button.call = {};
           if (button.call.click) buttonElement.properties.onclick = "ui.parts.buttons.click('" + id + "','" + buttonId + "')";
 
           buttonElement.properties.id = idPrefix + id + "_" + buttonId;
-          buttonElement.text = buttonText;
+          buttonElement.properties.i18n = buttonI18n + ".text.text";
+          buttonElement.text = window.i18n.getStr(buttonElement.properties.i18n) || buttonText;
 
           buttonsElement.children.push(buttonElement);
         }
