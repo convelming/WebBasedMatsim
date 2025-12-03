@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style/module.css" />
+    <link rel="stylesheet" href="./style/console.css" />
+    <title>Online Traffic Planning-MATSim</title>
+</head>
+
+<body>
+    <div id="wait" style="width:100%;height:100%;position:fixed;z-index:3;top:0px;left:0px;display:none;" align="center">
+        <span style="color:black;font-weight:bold;position:absolute;z-index:2;top:40%;">
+            运行中，请稍后 ...<br>
+            <img src="./image/loading.gif" style="width:100px;height:10px;"/>
+        </span>
+        <div style="width:100%;height:100%;top:0px;left:0px;background-color:rgba(0,0,0,0.6);position:absolute;z-index:1;"></div>
+    </div>
+    
+    <div id="draw_board" style="width:100%; height:100%;position:relative;z-index:1"></div>
+
+    <div id="windows"style="position:absolute;z-index:1"></div>
+    <!-- <div id="txt"></div><div class="p-nav"></div><div id="tabs"></div><div id="page"></div> -->
+
+</body>
+<link href="./javascript/intro/introjs.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript " src="./javascript/plugin/jquery.min.js"></script>
+<script type="text/javascript " src="./javascript/plugin/ajaxfileupload.js"></script>
+<script type="text/javascript " src="./javascript/plugin/i18n.js"></script>
+<script type="text/javascript " src="./javascript/module/module.js"></script>
+<script type="text/javascript " src="./javascript/common/custom.js"></script>
+<script type="text/javascript " src="./javascript/common/config.js"></script>
+<script type="text/javascript " src="./javascript/console.js"></script>
+
+<script type="text/javascript " src="./javascript/intro/jquery.cookie.js"></script>
+<script type="text/javascript"  src="./javascript/intro/intro.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        //这个变量可以用来存取版本号， 系统更新时候改变相应值
+         cur_val = 1;
+        // //判断函数所接收变量的长度
+        // if (arguments.length ==0)
+        // {
+            //每个页面设置不同的cookie变量名称，不可以重复，有新版本时，更新cur_val
+            //这里模拟很多网站有新版本更新时才出现一次引导页， 第二次进入进不再出现， 这里有COOKIE来判断
+        if ($.cookie('intro_cookie_index') == cur_val)
+        {
+            return;
+        }
+        // }
+        console.log("<><><><><><><><><><><><><"+cur_val);
+        introJs().setOptions({
+            //对应的按钮
+            prevLabel:"<",
+            nextLabel:">",
+            skipLabel:"skip",
+            doneLabel:"end",
+            //对应的数组，顺序出现每一步引导提示
+            steps: [
+                {
+                    element: '#p_draw_shapes_traffic',
+                    intro: 'Online Traffic Planning <img src="./image/workspace.gif" width="300"> Simple way to create traffic planning scenario...',
+                    // '<img src="./image/echartNetwork.gif"> <img src="./image/eventQuery.gif">',
+                    position: 'top'
+                }, {
+                    element: '#p_draw_traffic_matsimXMLs',// matsimXml block
+                    intro: 'MATSimXml block: allows you to upload .xml input files of MATSim. If you are pro on MATSim, just upload all the MATSim input files here and connected to MATSim block and you are ready to go',
+                    position: 'right'
+                }, {
+                    element: '#p_draw_traffic_matsim',// matsim block
+                    intro:    'matsim: set up matsim running configs',// '<a href="www.cnblogs.com">3</a><img src="./image/loading.gif"/>~~',
+                    position: 'right'
+                }, {
+                    element: '#p_draw_traffic_network',// network block
+                    intro:    'network: upload .shp file network',
+                    position: 'right'
+                }, {
+                    element: '#p_draw_traffic_openStreet',// openStreet block
+                    intro:    'openStreet: download network from open street map',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_vehicle',// GTFS not valid at the moment
+                    intro:    'GTFS: upload GTFS for public transport simulation, no valid at the moment',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_region',//region block
+                    intro:    'region: generate specified location according to upload regions',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_facility',//facility block
+                    intro:    'facility: as an trip destination if facility file is uploaded in matsimXml block',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_odMatrix',//od matrix block
+                    intro:    'ods: upload either od matrix file or trip chains for a list of travellers ',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_editTable',//edit table block
+                    intro:    'tableEdit: edit and validate od files',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_activity',//activity block
+                    intro:    'activity: trip destination',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_timer',//timer block
+                    intro:    'timer: set up trip during and desired departure time',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_person',//matsim block
+                    intro:    'person: set up travellers\' basic information' ,
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_mode',//matsim block
+                    intro:    'mode: set up travel mode',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_tripPurpose',//matsim block
+                    intro:    'trip purpose: set up trip purpose',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_networkDisplay',//matsim block
+                    intro:    'networkDisplay: display networks, need to connect to network, matsimXml, openstreet or region(not valid at the moment) block',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_OTFvis',//matsim block
+                    intro:    'OTFVis: visualize MATSim simulation result, more is coming',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_centroid',//matsim block
+                    intro:    'centroid: display od amounts among regions, not valid at the moment',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_chord',//matsim block
+                    intro:    'chord: drag this block into the workspace, double click and save to see some visual effects',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_example',//matsim block
+                    intro:    'some examples, coming soon',
+                    position: 'right'
+                },{
+                    element: '#p_draw_traffic_trafficData',//matsim block
+                    intro:    'some public traffic related data, coming soon',
+                    position: 'right'
+                },{
+                    element: '#p_svg_tools',//tools
+                    intro:    'some tools',
+                    position: 'bottom'
+                },{
+                    element: '#p_svg_element_start',// start button
+                    intro:    'running matsim, click after building the model',
+                    position: 'bottom'
+                },{
+                    element: '#p_svg_element_save',// save button
+                    intro:    'save button: save current model',
+                    position: 'bottom'
+                },{
+                    element: '#p_svg_element_load',// load button
+                    intro:    'load: load from saves',
+                    position: 'bottom'
+                },{
+                    element: '#p_svg_element_delete',// delete button
+                    intro:    'delete: delete selected blocks ',
+                    position: 'bottom'
+                },
+            ],
+
+        })
+            .oncomplete(function(){
+            //点击跳过按钮后执行的事件(这里保存对应的版本号到cookie,并且设置有效期为30天）
+            $.cookie('intro_cookie_index',cur_val,{expires:30});
+                console.log("<><><><><><><><><><><><><"+cur_val);
+
+            }).onexit(function(){
+            //点击结束按钮后， 执行的事件
+            $.cookie('intro_cookie_index',cur_val,{expires:30});
+            console.log("<><><><><><><><><><><><><"+cur_val);
+
+        })
+           .start();
+    });
+</script>
+
+<style>
+    [data-title] {
+   position: relative;
+}
+[data-title]:hover::after {
+   content: attr(data-title);
+   position: absolute;
+   top: 20px;
+   left: 10px;
+   color: #666;
+   font-size: 10px;
+   border: 1px solid #ddd;
+   background-color: #fff;
+   z-index: 20;
+   line-height: 1.5;
+   white-space: nowrap;
+   padding: 0 5px;
+}
+</style>
+</html>
