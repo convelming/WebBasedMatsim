@@ -8,11 +8,11 @@ var configs = (window.configs = {
     runUrl: "/workspace/start",
     tool: {
       title: "",
-      style: "width: 80px;color:black;",
+      style: "width: 100px;color:black;",
       bars: [
         {
           col: 2,
-          style: "font-size:9px;margin:0px 2px;",
+          style: "height: 40px;font-size:9px;margin:0px 2px;padding:4px;box-sizing: border-box;",
           elements: [
             { key: "matsimXMLs", i18n: "matsimXMLs_bar", text: "xml", title: "上传MATSim标准输入文件", icon: "icon/xml.svg", shape: "rect", leftPoint: false, rightPoint: ">" },
             { key: "matsim", i18n: "matsim_bar", text: "MATSim", title: "MATSim", icon: "icon/matsim.svg", shape: "circle", leftPoint: ">", rightPoint: ">" },
@@ -32,7 +32,7 @@ var configs = (window.configs = {
         },
         {
           col: 2,
-          style: "font-size:9px;margin:0px 2px;",
+          style: "height: 40px;font-size:9px;margin:0px 2px;padding:3px;box-sizing: border-box;",
           elements: [
             { key: "networkDisplay", i18n: "networkDisplay_bar", status: 2, title: "显示路网", text: "Network", icon: "icon/display.svg", shape: "circle", leftPoint: ">", rightPoint: false, linkTo: "./echartsNetwork.html" },
             { key: "OTFvis", i18n: "OTFvis_bar", status: 2, title: "显示仿真结果", text: "OTFvis", icon: "icon/otfvis.svg", shape: "rect", leftPoint: ">", rightPoint: false, linkTo: "./eventQuery.html" },
@@ -964,12 +964,12 @@ function getI18nByConfig() {
       }
     }
     if (item.i18n) {
-      var value = {}
-      if(item.text) value.text = item.text;
-      if(item.title) value.title = item.title;
-      if(item.default) value.default = item.default;
-      if(item.help) value.help = item.help;
-      if(item.error) value.error = item.error;
+      var value = {};
+      if (item.text) value.text = item.text;
+      if (item.title) value.title = item.title;
+      if (item.default) value.default = item.default;
+      if (item.help) value.help = item.help;
+      if (item.error) value.error = item.error;
       i18nList.push([item.i18n, value]);
     }
   }

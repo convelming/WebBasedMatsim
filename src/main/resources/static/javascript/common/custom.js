@@ -4,7 +4,6 @@ ui.custom.console = {
   saveName: undefined,
   zIndex: 1,
   tools: {},
-  outTools: false,
   init: function (config) {
     // 初始化控制台
     // 绘制画板
@@ -35,12 +34,7 @@ ui.custom.console = {
     var drawBoardObj = ui.parts.drawBoard.build(config);
     ui.custom.console.id = drawBoardObj.id;
     ui.custom.console.statusColor = config.shape.statusColor;
-
-    drawBoardObj.config.children[0].properties.mouseout = "ui.custom.console.call.mouseoutTools()";
-    drawBoardObj.config.children[0].properties.mouseover = "ui.custom.console.call.mouseoverTools()";
-
     var drawBoardHtml = ui.build.buildModule(drawBoardObj.config);
-    console.log(drawBoardObj.config, drawBoardHtml);
     $("#draw_board").append(drawBoardHtml);
 
     // 绘制悬浮工具条
@@ -96,7 +90,7 @@ ui.custom.console = {
     };
     var imageObj = ui.parts.svg.build(imageParams);
     var toolsParams = {
-      base: { top: "0px", left: "80%", width: "200px", height: "30px", zIndex: "9" },
+      base: { display: "none" },
       body: imageObj.config,
       checked: false,
       dblclick: false,
@@ -107,8 +101,6 @@ ui.custom.console = {
     ui.parts.drawBoard.shape.create(drawBoardObj.id, toolsParams);
 
     var saveId = ui.common.getQueryString("saveId");
-    console.log("saveId", saveId);
-
     if (saveId) {
       $.ajax({
         type: "POST",
@@ -337,12 +329,6 @@ ui.custom.console = {
     gridClick: function (params) {
       window.open("./console.html?saveId=" + params.key, "_blank");
     },
-    mouseoutTools: function (params) {
-      ui.custom.console.outTools = true;
-    },
-    mouseoverTools: function (params) {
-      ui.custom.console.outTools = false;
-    },
     leftToolClick: function (params) {
       // 左边工具栏回调函数
       var statusColor = ui.custom.console.statusColor;
@@ -363,7 +349,7 @@ ui.custom.console = {
         elements: [
           {
             type: "rect",
-            properties: { width: "46px", height: "46px", x: "2", y: "2", fill: svgBgColor, stroke: "#FF9966", "stroke-width": "3" },
+            properties: { width: "46px", height: "46px", x: "2", y: "2", fill: svgBgColor, stroke: "#FF9966", "stroke-width": "2" },
           },
         ],
       };
@@ -378,22 +364,30 @@ ui.custom.console = {
               zIndex: ui.custom.console.zIndex + "",
               fill: svgBgColor,
               stroke: "#FF9966",
-              "stroke-width": "3",
+              "stroke-width": "2",
             },
           },
         ],
       };
 
       var svgParams;
-      if (params.shape == "circle") svgParams = circleParams;
-      else svgParams = rectParams;
+      var iconSize;
+      var iconPos;
+      if (params.shape == "circle") {
+        svgParams = circleParams;
+        iconSize = "60%"
+        iconPos = "20%"
+      } else {
+        svgParams = rectParams;
+        iconSize = "70%"
+        iconPos = "15%"
+      }
 
-      if (params.icon) svgParams.elements.push({ type: "image", text: params.text, properties: { "xlink:href": params.icon, x: "15%", y: "15%", width: "70%", height: "70%", i18n: params.i18n + ".text.text" } });
+      if (params.icon) svgParams.elements.push({ type: "image", text: params.text, properties: { "xlink:href": params.icon, x: iconPos, y: iconPos, width: iconSize, height: iconSize, i18n: params.i18n + ".text.text" } });
       else svgParams.elements.push({ type: "text", text: params.text, properties: { fill: "#FFF", i18n: params.i18n + ".text.text" } });
 
       var svgObj = ui.parts.svg.build(svgParams);
-      // if (parseInt(params.left) > 80) {
-      if (!ui.custom.console.outTools) {
+      if (parseInt(params.left) > 80) {
         var shapeParams = {
           type: params.key,
           base: { top: params.top, left: params.left, width: "50px", height: "50px", zIndex: ui.custom.console.zIndex + "" },

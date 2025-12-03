@@ -1,8 +1,70 @@
-body{
-  padding: 0;
-  border: 0;
-  margin: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+.console_nav {
+  height: 64px;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 24px;
+
+  position: relative;
+  z-index: 20;
+}
+
+.console_nav .title {
+  font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+  margin-right: auto;
+}
+
+.console_nav .select {
+  width: 88px;
+  height: 26px;
+  border-radius: 4px 4px 4px 4px;
+  border: 1px solid #ededed;
+
+  font-size: 12px;
+  color: #333333;
+  padding: 0 8px;
+}
+
+.console_nav .btn_box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.console_nav .btn_box .line {
+  width: 1px;
+  height: 28px;
+  background: #ededed;
+}
+
+.console_nav .btn {
+  width: 24px;
+  height: 24px;
+}
+
+.user_btn {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+  background: #f5ae1f;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.save_btn {
+  width: 64px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  background: #087fff;
+  border-radius: 4px 4px 4px 4px;
+  font-size: 14px;
+  color: #ffffff;
 }

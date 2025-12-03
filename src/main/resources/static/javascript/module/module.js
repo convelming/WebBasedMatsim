@@ -1037,13 +1037,18 @@ window.ui = (function (parts, modules, pages, build, common, config) {
         children: [
           {
             name: "div",
-            properties: { class: "p-toolbar" },
+            properties: { class: "p-toolbar", id: "p-toolbar" },
             children: [
-              { name: "div", properties: { class: "p-head" }, text: "" },
-              { name: "div", properties: { class: "p-tool" }, children: [] },
+              { name: "div", properties: { class: "p-head", id: "p-head" }, text: "" },
+              { name: "div", properties: { class: "p-tool", id: "p-tool" }, children: [] },
             ],
           },
-          { name: "div", properties: { class: "p-panel" }, children: [] },
+          {
+            name: "div",
+            properties: { class: "p-nav", id: "p-nav" },
+            children: [],
+          },
+          { name: "div", properties: { class: "p-panel", id: "p-panel" }, children: [] },
         ],
       };
       var shapeExteriorConfig = { name: "div", properties: { class: "p-draw-exterior" }, children: [] };
@@ -1951,7 +1956,7 @@ window.ui = (function (parts, modules, pages, build, common, config) {
           }
         }
 
-        var panelElement = drawBoardElement.children[1];
+        var panelElement = drawBoardElement.children[2];
         panelElement.properties.id = drawIdPrefix + id;
         if (region) panelElement.properties.onmousedown = "ui.parts.drawBoard.region('" + id + "')";
         else panelElement.properties.onclick = "ui.parts.drawBoard.click('" + id + "')";
