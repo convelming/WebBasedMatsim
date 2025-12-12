@@ -1,0 +1,589 @@
+{
+  "matsimXMLs_bar": {
+    "text": "xml",
+    "title": "Upload MATSim .xml inputs"
+  },
+  "matsim_bar": {
+    "text": "MATSim",
+    "title": "MATSim"
+  },
+  "network_bar": {
+    "text": "network",
+    "title": "upload .shp network files"
+  },
+  "openStreet_bar": {
+    "text": "open",
+    "title": "download open street map"
+  },
+  "vehicle_bar": {
+    "text": "GTFS",
+    "title": "not working, coming soon"
+  },
+  "region_bar": {
+    "text": "region",
+    "title": "upload traffic zones"
+  },
+  "facility_bar": {
+    "text": "Facility",
+    "title": "set up facility info"
+  },
+  "odMatrix_bar": {
+    "text": "OD matrix",
+    "title": "upload OD files"
+  },
+  "editTable_bar": {
+    "text": "Table",
+    "title": "edit OD tables"
+  },
+  "activity_bar": {
+    "text": "activity",
+    "title": "set up activity"
+  },
+  "timer_bar": {
+    "text": "Timer",
+    "title": "set up travel time info"
+  },
+  "person_bar": {
+    "text": "Person",
+    "title": "set up person plans"
+  },
+  "mode_bar": {
+    "text": "Modes",
+    "title": "choose travel mode"
+  },
+  "tripPurpose_bar": {
+    "text": "Trip purpose",
+    "title": "choose trip purpose"
+  },
+  "networkDisplay_bar": {
+    "text": "Network",
+    "title": "display network"
+  },
+  "OTFvis_bar": {
+    "text": "OTFvis",
+    "title": "display simulation result"
+  },
+  "centroid_bar": {
+    "text": "centroids",
+    "title": "centroids"
+  },
+  "chord_bar": {
+    "text": "chord",
+    "title": "display OD chord"
+  },
+  "example_bar": {
+    "text": "example"
+  },
+  "trafficData_bar": {
+    "text": "opendata"
+  },
+  "help_bar": {
+    "text": "HELP"
+  },
+
+  "saveConsole_title": {
+    "title": "saveConsole"
+  },
+  "saveConsole_id": {
+    "title": "ID"
+  },
+  "saveConsole_name": {
+    "title": "SaveName",
+    "default": "input save name",
+    "error": "input save name"
+  },
+  "saveConsole_callType": {
+    "title": "CallType"
+  },
+  "saveConsole_callParams": {
+    "title": "CallParas"
+  },
+  "saveConsole_shapeId": {
+    "title": "ShapeId"
+  },
+  "confirmSave_btn": {
+    "text": "sure?"
+  },
+  "timer_title": {
+    "title": "Timer"
+  },
+  "timer_durTime": {
+    "title": "activity duration",
+    "default": "hh:mm:ss",
+    "help": "hint：input activity duration，format as hh:mm:ss",
+    "error": "Error: not NULL!"
+  },
+  "timer_endTime": {
+    "title": "activity end time",
+    "default": "hh:mm:ss",
+    "help": "hint：input activity end time，format as hh:mm:ss",
+    "error": "Error: not NULL!"
+  },
+  "finish_btn": {
+    "text": "DONE"
+  },
+  "help_btn": {
+    "text": "HELP"
+  },
+  "facility_title": {
+    "title": "facility"
+  },
+  "facility_facilityId": {
+    "title": "facility ID",
+    "default": "HIL",
+    "help": "Hint:this can be used as activity block, but not recommended if you don't upload facility file ",
+    "error": "Error: not NULL!"
+  },
+  "facility_actType": {
+    "title": "trip purpose",
+    "help": "Hint:trip purpose, will dominate tripPurpose block",
+    "error": "error:"
+  },
+  "facility_facilityCoord": {
+    "title": "facility location",
+    "default": "47.408765, 8.507441",
+    "help": "Hint:location as longitude,latitude if no facility.xml file",
+    "error": "error:"
+  },
+  "facility_facilityOpenDay": {
+    "title": "open days",
+    "help": "Hint: need to modify ",
+    "error": "Error: not NULL!"
+  },
+  "facility_facilityOpenTime": {
+    "title": "open time",
+    "help": "Hint: need to modify, format as hh:mm:ss",
+    "error": "Error: not NULL!"
+  },
+  "facility_facilityCloseTime": {
+    "title": "close time",
+    "help": "Hint: need to modify, format as hh:mm:ss",
+    "error": "Error: not NULL!"
+  },
+  "openStreet_title": {
+    "title": "openStreet"
+  },
+  "openStreet_minLong": {
+    "title": "min longitude",
+    "help": "Hint:please go to  <a href=\"https://www.openstreetmap.org/export#map=4/36.99/119.58\" target=\"_blank\">OPEN STREET MAP</a> to choose the range"
+  },
+  "openStreet_maxLong": {
+    "title": "max longitude",
+    "help": "max longitude：[0,180]！"
+  },
+  "openStreet_minLati": {
+    "title": "min latitude",
+    "help": "min latitude：[0,180]！"
+  },
+  "openStreet_maxLati": {
+    "title": "max latitude",
+    "help": "max latitude：[0,180]！"
+  },
+  "network_title": {
+    "title": "network"
+  },
+  "network_networkDefaultEPSG": {
+    "title": "networkDefaultEPSG",
+    "default": "EPSG code",
+    "help": "Hint:please turn to <a href=http://epsg.io\" target=\"_blank\">EPSG </a> , not working at the moment, only support WGS 84",
+    "error": "错误：请输入EPSG code！"
+  },
+  "network_networkDesiredEPSG": {
+    "title": "networkDesiredEPSG",
+    "default": "EPSG code",
+    "help": "Hint:not working at the moment",
+    "error": "错误：请输入EPSG code！"
+  },
+  "network_linkDir": {
+    "title": "direction",
+    "help": "Hint: input directions of the link, use GIS software to formatted as: 0-double way(default if null or empty)，<0 from end node to start node，>0 from start to end",
+    "error": "Error: field not found!"
+  },
+  "network_linkSpeed": {
+    "title": "max speed",
+    "help": "Hint: m/s，as double",
+    "error": "Error: field not found!"
+  },
+  "network_linkLength": {
+    "title": "link length",
+    "help": "Hint: meter, as double",
+    "error": "Error: field not found!"
+  },
+  "network_linkLane": {
+    "title": "lanes",
+    "help": "Hint: lane number for single direction, as int",
+    "error": "Error: field not found!"
+  },
+  "network_linkCapacity": {
+    "title": "capacity",
+    "help": "Hint: capacity for single direction",
+    "error": "Error: field not found!"
+  },
+  "network_linkMode": {
+    "title": "modes",
+    "help": "Hint: modes allowed on the link, splitted by ','",
+    "error": "Error: field not found!"
+  },
+  "network_networkShpFile": {
+    "title": "upload .shp file",
+    "help": "Hint: a complete shp file includes .shp,.shx,.prj, .dbf and etc, must be the same prefix name",
+    "error": "错误：未找到其他文件！"
+  },
+  "network_networkShxFile": {
+    "title": "upload .shx file",
+    "help": "Hint:upload .shx file",
+    "error": "错误：未找到其他文件！"
+  },
+  "network_networkDbfFile": {
+    "title": "upload .dbf file",
+    "help": "Hint:upload .dbf file",
+    "error": "错误：未找到其他文件！"
+  },
+  "region_title": {
+    "title": "region"
+  },
+  "region_regionDefaultEPSG": {
+    "title": "default proj",
+    "default": "EPSG code",
+    "help": "Hint:<a href=http://epsg.io\" target=\"_blank\">OPEN STREET MAP</a>  not working",
+    "error": "错误：请输入EPSG code！"
+  },
+  "region_regionDesiredEPSG": {
+    "title": "desired proj",
+    "default": "EPSG code",
+    "help": "Hint:not working",
+    "error": "Error: not NULL!"
+  },
+  "region_regionId": {
+    "title": "regionID field",
+    "help": "Hint:id field from the shp file, case sensitive",
+    "error": "Error: not NULL!"
+  },
+  "region_regionShpFile": {
+    "title": "upload .shp file",
+    "help": "Hint: traffic zone shp file, with polygon or multipolygon",
+    "error": "错误：未找到其他文件！"
+  },
+  "region_regionShxFile": {
+    "title": "upload .shx file",
+    "help": "Hint:.shx file",
+    "error": "错误：未找到其他文件！"
+  },
+  "region_regionDbfFile": {
+    "title": "upload .dbf file",
+    "help": "Hint:.prj file",
+    "error": "错误：未找到其他文件！"
+  },
+  "odMatrix_title": {
+    "title": "odMatrix"
+  },
+  "odMatrix_odFileType": {
+    "title": "od file type",
+    "help": "Hint:first row is the destination id, first column is the origin id, the very first col|row can be anything, normally not-null",
+    "error": "Error: please read the help lines and check."
+  },
+  "odMatrix_odFileType_squareMatrix": {
+    "text": "square matrix"
+  },
+  "odMatrix_odFileType_array": {
+    "text": "array"
+  },
+  "odMatrix_odAsRegionOrCoord": {
+    "title": "OD location type",
+    "help": "Hint:if square matrix is chosen, only traffic zone id is allowed！",
+    "error": "Error: please read the help lines and check."
+  },
+  "odMatrix_odAsRegionOrCoord_asRegion": {
+    "text": "traffic zone id"
+  },
+  "odMatrix_odAsRegionOrCoord_asCoord": {
+    "text": "coord"
+  },
+  "odMatrix_odFile": {
+    "title": "activity(plan,od)file",
+    "help": "Hint:only support csv or txt file at the moment, if od array is uploaded, please check the format as: id(0)|count(1)|oriDepatrueTime(2)|origionRegion(3)|originCoordX(4)|originCoordY(5)|departureTime1(6+8*i)|desiredMode1(7+8*i)|tripPurpose1(8+8*i)|desFacilityId1(9+8*i)|facilityChangable1(10+8*i)|desRegionId1(11+8*i)|desCoordX1(12+8*i)|desCoordY1(13+8*i) where i>=1",
+    "error": "Error: please read the help lines and check."
+  },
+  "mode_title": {
+    "title": "mode"
+  },
+  "mode_mode": {
+    "title": "mode",
+    "error": "Error: not NULL!"
+  },
+  "mode_mode_walk": {
+    "text": "walk"
+  },
+  "mode_mode_bus": {
+    "text": "bus"
+  },
+  "mode_mode_subway": {
+    "text": "subway"
+  },
+  "mode_mode_bike": {
+    "text": "bike"
+  },
+  "mode_mode_car": {
+    "text": "car"
+  },
+  "mode_mode_userDefined": {
+    "text": "userDefined"
+  },
+  "mode_otherMode": {
+    "title": "user defined",
+    "default": "Please enter user defined",
+    "help": "Hint:input specific mode, have to be existed in the network file",
+    "error": "Error: please read the help lines and check."
+  },
+  "tripPurpose_title": {
+    "title": "tripPurpose"
+  },
+  "tripPurpose_tripPurpose": {
+    "title": "trip purpose",
+    "help": "",
+    "error": "Error: please read the help lines and check."
+  },
+  "tripPurpose_tripPurpose_work": {
+    "text": "work"
+  },
+  "tripPurpose_tripPurpose_entertainment": {
+    "text": "entertainment"
+  },
+  "tripPurpose_tripPurpose_shopping": {
+    "text": "shopping"
+  },
+  "tripPurpose_tripPurpose_sport": {
+    "text": "sport"
+  },
+  "tripPurpose_tripPurpose_userDefined": {
+    "text": "userDefined"
+  },
+  "tripPurpose_otherPurpose": {
+    "title": "other",
+    "default": "input purpose",
+    "help": "hit: user-defined trip purpose",
+    "error": "Error: please read the help lines and check."
+  },
+  "tripPurpose_tripPurposeDuration": {
+    "title": "activity duration",
+    "help": "hint: typical activity duration, formatted as hh:mm:ss",
+    "error": "Error: please read the help lines and check."
+  },
+  "activity_title": {
+    "title": "activity"
+  },
+  "activity_actDestinationType": {
+    "title": "type of destination",
+    "help": "Hint:choose type of the destination",
+    "error": "Error: not NULL!"
+  },
+  "activity_actDestinationType_location": {
+    "text": "coord"
+  },
+  "activity_actDestinationType_regionId": {
+    "text": "traffic zone id"
+  },
+  "activity_actLocation": {
+    "title": "activity coord",
+    "default": "121.5066,31.2827",
+    "help": "Hint:longitude, latitude）",
+    "error": "Error: please read the help lines and check."
+  },
+  "activity_actRegionId": {
+    "title": "activity zone",
+    "default": "Tongji University",
+    "help": "Hint:region block is needed.",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_title": {
+    "title": "person"
+  },
+  "person_personId": {
+    "title": "person ID",
+    "help": "Hint:if there are more than one person, this will be a prefix",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personNum": {
+    "title": "number",
+    "help": "Hint:input how many persons",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personAge": {
+    "title": "age",
+    "help": "Hint:age, not working at the moment",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personHouseholdSize": {
+    "title": "family members",
+    "help": "Hint: how many person in the family",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personCarNum": {
+    "title": "cars",
+    "help": "Hint:how many cars the person(s) own",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personDepTime": {
+    "title": "desired departure time",
+    "help": "Hint:format as HH:MM:SS, or hh:mm:ssAM/PM",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personLocationType": {
+    "title": "",
+    "help": "Hint:input home location",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personLocationType_homeCoord": {
+    "text": "home coord"
+  },
+  "person_personLocationType_regionId": {
+    "text": "traffic zoneID"
+  },
+  "person_personLocationRegion": {
+    "title": "traffic zone id",
+    "default": "ETH Zürich",
+    "help": "Hint:region block needed if this is used",
+    "error": "Error: please read the help lines and check."
+  },
+  "person_personLocationLocation": {
+    "title": "location",
+    "default": "47.37639, 8.54806",
+    "help": "Hint:only surport wgs84, as 0.00，0.00（longitude，latitude），0-180, precise to 0.000000",
+    "error": "Error: please read the help lines and check."
+  },
+  "matsimXMLs_title": {
+    "title": "matsimXMLs"
+  },
+  "matsimXMLs_networkXml": {
+    "title": "network",
+    "help": "Hint:upload matsim supported .xml network",
+    "error": "Error: please read the help lines and check."
+  },
+  "matsimXMLs_activityXml": {
+    "title": "plans(population)",
+    "help": "Hint:upload plans(population) .xml ",
+    "error": "Error: please read the help lines and check."
+  },
+  "matsimXMLs_busScheduleXml": {
+    "title": "bus schedules",
+    "help": "Hint:upload bus schedule .xml",
+    "error": "Error: please read the help lines and check."
+  },
+  "matsimXMLs_vehicleXml": {
+    "title": "vehicles",
+    "help": "Hint:upload vehicle .xml",
+    "error": "Error: please read the help lines and check."
+  },
+  "matsimXMLs_facilityXml": {
+    "title": "facilities",
+    "help": "Hint:upload facility .xml",
+    "error": "Error: please read the help lines and check."
+  },
+  "matsim_title": {
+    "title": "matsim"
+  },
+  "matsim_iteration": {
+    "title": "迭代次数",
+    "default": "1",
+    "help": "提示：建议设置为1或者10",
+    "error": "错误：请查看帮助并检查输入！"
+  },
+  "matsim_hasBusScheduleXml": {
+    "title": "是否配置公交信息",
+    "error": "错误：此输入框不能为空！"
+  },
+  "matsim_hasBusScheduleXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasBusScheduleXml_false": {
+    "text": "No"
+  },
+  "matsim_hasVehicleXml": {
+    "title": "has bus schedule xml file?",
+    "error": "Error: not NULL!"
+  },
+  "matsim_hasVehicleXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasVehicleXml_false": {
+    "text": "No"
+  },
+  "matsim_hasFacilityXml": {
+    "title": "has vehicle .xml file?",
+    "error": "Error: not NULL!"
+  },
+  "matsim_hasFacilityXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasFacilityXml_false": {
+    "text": "No"
+  },
+  "matsim_hasConfigXml": {
+    "title": "has facility .xml file?",
+    "error": "Error: not NULL!"
+  },
+  "matsim_hasConfigXml_true": {
+    "text": "Yes"
+  },
+  "matsim_hasConfigXml_false": {
+    "text": "No"
+  },
+  "matsim_configXml": {
+    "title": "config file",
+    "help": "Hint:upload the config file",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_title": {
+    "title": "vehicle"
+  },
+  "vehicle_vehicleType": {
+    "title": "车辆类型",
+    "help": "提示：输入车辆类型",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_vehicleSeatNum": {
+    "title": "座位数",
+    "help": "提示：车辆座位数",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_vehicleStandNum": {
+    "title": "可站人数",
+    "help": "提示：可站立的人数",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_vehicleLength": {
+    "title": "车辆长度",
+    "help": "提示：车辆长度（米）",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_vehicleWidth": {
+    "title": "车辆宽度",
+    "help": "提示：车辆长度（米）",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_vehicleMaxSpeed": {
+    "title": "最大速度",
+    "default": "km/h",
+    "help": "提示：最大车速（km/h）",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_vehicleDes": {
+    "title": "车辆描述",
+    "help": "提示：车辆用途，描述",
+    "error": "Error: please read the help lines and check."
+  },
+  "vehicle_vehicleAsCar": {
+    "title": "当量值",
+    "help": "提示：转化成当量小汽车的值",
+    "error": "Error: please read the help lines and check."
+  },
+  "loadAll_title": {
+    "title": "loadAll"
+  },
+  "example_title": {
+    "title": "example"
+  },
+  "trafficData_title": {
+    "title": "trafficData"
+  }
+}

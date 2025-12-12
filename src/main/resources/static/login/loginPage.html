@@ -42,45 +42,45 @@
   </head>
   <body>
     <div class="login_header">
-      <div class="title">在线交通规划-MATSim</div>
-      <select class="select" name="" id="">
-        <option value="">简体中文</option>
-        <option value="">English</option>
+      <div class="title" i18n="header_title.text">在线交通规划-MATSim</div>
+      <select class="select" name="lang" id="lang" onchange="window.i18n.changeLanguage(this.value)">
+        <option value="cn">简体中文</option>
+        <option value="en">English</option>
       </select>
-      <a class="btn_text">资料下载</a>
-      <a class="btn_text">注销</a>
+      <a class="btn_text" i18n="header_btn1.text">资料下载</a>
+      <a class="btn_text" i18n="header_btn2.text">注销</a>
     </div>
     <div class="login_body">
       <img class="left" src="images/登录背景插画.png" style="background-color: #f1f5fc" />
       <div class="right">
         <div class="login_form_box">
           <form action="/verify/login" class="login_form" name="loginForm" accept-charset="utf-8" method="post">
-            <div class="title">欢迎登录</div>
+            <div class="title" i18n="form_title.text">欢迎登录</div>
             <div class="form_item">
-              <label for="username">用户名</label>
-              <input type="text" name="username" id="username" placeholder="输入用户名" autocomplete="off" />
+              <label for="username" i18n="form_username.label.text">用户名</label>
+              <input type="text" name="username" id="username" i18n="form_username.placeholder.placeholder" placeholder="输入用户名" autocomplete="off" />
             </div>
             <div class="form_item">
-              <label for="password">密码</label>
-              <input type="password" id="password" placeholder="输入密码" autocomplete="off" name="password" />
+              <label for="password" i18n="form_password.label.text">密码</label>
+              <input type="password" id="password" i18n="form_password.placeholder.placeholder" placeholder="输入密码" autocomplete="off" name="password" />
             </div>
             <!-- <div class="form_item">
-              <label for="email">电子邮箱</label>
-              <input type="email" id="email" placeholder="输入电子邮箱号码" autocomplete="off" name="password" />
+              <label for="email" i18n="form_email.label.text">电子邮箱</label>
+              <input type="email" id="email" i18n="form_email.placeholder.placeholder"  placeholder="输入电子邮箱号码" autocomplete="off" name="password" />
             </div> -->
             <!--<div class="form-group">-->
             <!--<label for="remember"><input type="checkbox" id="remember"> Remember Me</label>-->
             <!--</div>-->
-            <input type="submit" value="Login" class="submit_btn" />
+            <input type="submit" i18n="form_submit.value" value="登录" class="submit_btn" />
             <div class="register_box">
-              <a class="sendEmail" href="sendEmail.html">忘记密码？</a>
-              <span class="register">没有账号？<a href="registerPage.html">立即注册</a></span>
+              <a class="sendEmail" href="sendEmail.html" i18n="form_sendEmail.text">忘记密码？</a>
+              <span class="register"><span i18n="form_register.text1.text">没有账号？</span><a href="registerPage.html" i18n="form_register.text2.text">立即注册</a></span>
             </div>
           </form>
         </div>
         <div class="copy">
-          <span> &copy; All Rights Reserved.深圳康沃数据科技有限公司</span>
-          <a href="http://www.ethz.ch/" target="_blank" title="">Online Traffic planning.</a>
+          <span i18n="copy.text1.text"> &copy; All Rights Reserved.深圳康沃数据科技有限公司</span>
+          <a href="http://www.ethz.ch/" target="_blank" title=""  i18n="copy.text2.text">Online Traffic planning.</a>
         </div>
       </div>
     </div>
@@ -96,8 +96,17 @@
     <!-- Main JS -->
     <script src="js/main.js"></script>
 
+    <script src="../javascript/plugin/i18n.js"></script>
+
     <script>
-      console.log($("[i18n]"));
+      $().ready(function () {
+        var lang = window.i18n.init({
+          cn: "../javascript/i18n/login.cn.json",
+          en: "../javascript/i18n/login.en.json",
+        });
+        console.log(lang);
+        $("#lang").val(lang);
+      });
     </script>
   </body>
 </html>
