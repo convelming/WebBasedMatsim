@@ -2,102 +2,102 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>用户注册</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FreeHTML5.co" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>用户注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free HTML5 Template by FreeHTML5.co" />
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico" />
 
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-	
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,300" rel="stylesheet" type="text/css" />
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/registerPage.css" />
 
-	</head>
-	<body class="style-2">
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="style-2">
+    <div class="login_header">
+      <div class="title">在线交通规划-MATSim</div>
+      <select class="select" name="" id="">
+        <option value="">简体中文</option>
+        <option value="">English</option>
+      </select>
+      <a class="btn_text">资料下载</a>
+      <a class="btn_text">注销</a>
+    </div>
+    <div class="login_body">
+      <img class="left" src="images/登录背景插画.png" style="background-color: #f1f5fc" />
+      <div class="right">
+        <div class="login_form_box">
+          <form action="/verify/register" class="login_form" data-animate-effect="fadeInLeft" method="post">
+            <div class="title">用户注册</div>
+            <div class="form_item">
+              <label for="username">用户名</label>
+              <input type="text" name="username" id="username" placeholder="输入用户名" autocomplete="off" />
+            </div>
+            <div class="form_item">
+              <label for="password">密码</label>
+              <input type="password" id="password" placeholder="输入密码" autocomplete="off" name="password" />
+            </div>
+            <div class="form_item">
+              <label for="re-password">确认密码</label>
+              <input type="password" id="re-password" placeholder="再次输入密码" autocomplete="off" name="confirmedPassword" />
+            </div>
+            <div class="form_item">
+              <label for="email">电子邮箱</label>
+              <input type="email" id="email" placeholder="输入电子邮箱号码" autocomplete="off" name="password" />
+            </div>
+            <!--<div class="form-group">-->
+            <!--<label for="remember"><input type="checkbox" id="remember"> Remember Me</label>-->
+            <!--</div>-->
+            <div class="register_box">
+              <a class="sendEmail" href="registerAgreement.html">注册协议</a>
+              <span class="register">已有账号？<a href="loginPage.html">立即登录</a></span>
+            </div>
+            <input type="submit" value="同意协议并注册" class="submit_btn" />
+          </form>
+        </div>
+        <div class="copy">
+          <span> &copy; All Rights Reserved.深圳康沃数据科技有限公司</span>
+          <a href="http://www.ethz.ch/" target="_blank" title="">Online Traffic planning.</a>
+        </div>
+      </div>
+    </div>
 
-		<div class="container">
-			
-			<div class="row">
-				<div class="col-md-4">
-					<!-- Start Sign In Form -->
-					<form action="/verify/register" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" method="post">
-						<h2>sign up</h2>
-
-						<div class="form-group">
-							<label for="name" class="sr-only">Name</label>
-							<input type="text" class="form-control" id="name" placeholder="用户名" autocomplete="off" name="username">
-						</div>
-						
-						<div class="form-group">
-							<label for="password" class="sr-only">Password</label>
-							<input type="password" class="form-control" id="password" placeholder="密码" autocomplete="off" name="password">
-						</div>
-						<div class="form-group">
-							<label for="re-password" class="sr-only">Re-type Password</label>
-							<input type="password" class="form-control" id="re-password" placeholder="确认密码" autocomplete="off" name="confirmedPassword">
-						</div>
-						<div class="form-group">
-							<label for="email" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off" name="email">
-						</div>
-						<!-- <div class="form-group">
-							<label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
-						</div> -->
-						<div class="form-group">
-							<p><a href="registerAgreement.html">注册协议  </a></p>
-							<p>Already registered? <a href="loginPage.html">登录</a>
-							</p>
-						</div>
-						
-						<div class="form-group">
-							<input type="submit" value="同意协议并注册" class="btn btn-primary">
-						</div>
-					</form>
-					<!-- END Sign In Form -->
-
-				</div>
-			</div>
-			<div class="row" style="padding-top: 60px; clear: both;">
-				<div class="col-md-12 text-center"><p><small>&copy; All Rights Reserved.®深圳康沃数据科技有限公司<a href="http://www.ethz.ch/" target="_blank" title="">Online Traffic planning.</a> <p></div>
-			</div>
-		</div>
-	
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Placeholder -->
-	<script src="js/jquery.placeholder.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Main JS -->
-	<script src="js/main.js"></script>
-
-	</body>
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Placeholder -->
+    <script src="js/jquery.placeholder.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+  </body>
 </html>
-

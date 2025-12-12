@@ -1,0 +1,193 @@
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+select,
+input {
+  outline: none;
+}
+
+select:focus,
+input:focus {
+  box-shadow: 0 0 0 2px rgba(100, 150, 250, 0.6);
+  border-color: rgba(100, 150, 250, 0.6) !important;
+}
+
+.login_header {
+  height: 64px;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  gap: 24px;
+
+  position: relative;
+  z-index: 20;
+}
+
+.login_header .title {
+  font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+  margin-right: auto;
+}
+
+.login_header .select {
+  width: 88px;
+  height: 26px;
+  border-radius: 4px 4px 4px 4px;
+  border: 1px solid #ededed;
+
+  font-size: 12px;
+  color: #333333;
+  padding: 0 8px;
+}
+
+.login_header .btn_text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #999999;
+}
+
+.login_body {
+  width: 100%;
+  height: calc(100vh - 64px);
+  display: flex;
+  align-items: stretch;
+}
+.login_body .left {
+  width: 0;
+  flex: 1;
+  display: block;
+  object-fit: contain;
+}
+
+.login_body .right {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  width: 45%;
+  max-width: 600px;
+  min-width: 400px;
+
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: safe center;
+  align-items: safe center; */
+  overflow: auto;
+
+  padding: 40px;
+}
+
+.login_form_box {
+  height: 0;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  align-items: safe center;
+}
+
+@media screen and (max-width: 670px) {
+  .login_body .right {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.login_form {
+  width: 100%;
+  max-width: 400px;
+  min-width: 300px;
+  display: block;
+  position: relative;
+  margin: auto;
+}
+
+.login_form .title {
+  font-weight: 500;
+  font-size: 32px;
+  color: #333333;
+  margin-bottom: 40px;
+}
+.form_item + .form_item {
+  margin-top: 24px;
+}
+
+.form_item label {
+  display: block;
+  font-size: 16px;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.form_item input[type="text"],
+.form_item input[type="password"],
+.form_item input[type="email"] {
+  display: block;
+
+  width: 100%;
+  height: 48px;
+  background: #ffffff;
+  border-radius: 4px 4px 4px 4px;
+  border: 1px solid #cccccc;
+
+  font-weight: 400;
+  font-size: 16px;
+  color: #999999;
+
+  padding: 0 10px;
+}
+
+.submit_btn {
+  width: 100%;
+  height: 48px;
+  background: #087fff;
+  border-radius: 4px 4px 4px 4px;
+  margin-top: 10px;
+
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+
+  border: 0;
+}
+
+.register_box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.register_box .sendEmail {
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
+}
+
+.register_box .register {
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
+}
+.register_box .register a {
+  color: #087fff;
+}
+
+.copy {
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
+  line-height: 20px;
+}
+.copy a {
+  color: #087fff;
+}
