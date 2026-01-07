@@ -54,7 +54,7 @@ var configs = (window.configs = {
         {
           col: 2,
           style: "font-size:12px;margin:0px 2px;",
-          elements: [{ key: "help", i18n: "help_bar", text: "help", icon: "" }],
+          elements: [{ key: "help", i18n: "help_bar", text: "help", icon: "", linkTo: "help/index.html" }],
         },
       ],
     },
