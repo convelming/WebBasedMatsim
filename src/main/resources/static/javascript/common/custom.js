@@ -14,6 +14,7 @@ ui.custom.console = {
       for (var toolsIndex = 0; toolsIndex < tools.length; toolsIndex++) {
         var tool = tools[toolsIndex];
         tool.call = {};
+        // TODO 控制台菜单点击逻辑是根据位置写死的
         if (barsIndex <= 1) {
           tool.drag = true;
           tool.call.drag = {};

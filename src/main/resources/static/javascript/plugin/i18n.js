@@ -81,6 +81,7 @@ window.i18n = (function () {
   return {
     init: init,
     changeLanguage: changeLanguage,
+    getCookie: getCookie,
     getStr: getStr,
   };
 })();
