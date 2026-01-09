@@ -65,6 +65,8 @@ body {
 }
 .p-window .p-body {
   height: 100%;
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
   background-color: white;
   padding: 20px 24px;
 }
@@ -165,21 +167,27 @@ body {
 }
 .p-form .p-element .p-element-file {
   width: 100%;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 .p-form .p-element .p-element-file input {
-  width: 60%;
-  display: inline-block;
+  width: 0;
+  flex: 1;
 }
 .p-form .p-element .p-element-file span {
-  width: 10%;
+  width: auto;
+  padding: 0px 5px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 12px;
+  border: 1px solid #087fff;
+  border-radius: 4px;
+  color: white;
+  background-color: #087fff;
+  cursor: pointer;
   display: inline-block;
   text-align: center;
-  color: white;
-  margin-left: 1%;
-  border: 0px;
-  background-color: #ff9966;
-  cursor: pointer;
 }
 
 .p-margin-30 {
@@ -203,10 +211,10 @@ body {
   padding: 8px 20px;
   margin: 0px 10px;
   font-size: 14px;
-  border: 1px solid #087FFF;
+  border: 1px solid #087fff;
   border-radius: 4px;
   color: white;
-  background-color: #087FFF;
+  background-color: #087fff;
   cursor: pointer;
   display: inline-block;
   text-align: center;

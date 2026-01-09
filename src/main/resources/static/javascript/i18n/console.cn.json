@@ -124,6 +124,9 @@
   "help_btn": {
     "text": "帮助"
   },
+  "fileBrowseButtonName": { "text": "选择" },
+  "fileUploadButtonName": { "text": "上传" },
+
   "facility_title": {
     "title": "facility"
   },
