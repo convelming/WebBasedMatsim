@@ -49,13 +49,13 @@ var configs = (window.configs = {
           elements: [
             { key: "example", i18n: "example_bar", text: "案例", icon: "" },
             { key: "trafficData", i18n: "trafficData_bar", text: "交通数据", icon: "" },
+            { key: "ATLAS", i18n: "ATLAS_bar", text: "ATLAS", icon: "", linkTo: "http://192.168.60.231:23105/pt.html#/" },
           ],
         },
         {
           col: 1,
           style: "font-size:12px;margin:0px 2px;",
           elements: [
-            { key: "ATLAS", i18n: "ATLAS_bar", text: "ATLAS", icon: "", linkTo: "http://192.168.60.231:23105/pt.html#/" },
             { key: "help", i18n: "help_bar", text: "help", icon: "", linkTo: "help/index.html" },
             { key: "bug", i18n: "bug_bar", text: "BUG", icon: "", linkTo: "https://doc.weixin.qq.com/sheet/e3_AdQA8Aa_ADMt1qh97LkSHer6ALqI2?scode=APwA6gfEAA0aeGdABPAdQA8Aa_ADM&tab=6d9g0g" },
           ],

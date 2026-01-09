@@ -22,7 +22,11 @@ ui.custom.console = {
           tool.call.drag.params = tool;
         } else if (barsIndex == 2) {
           tool.call.click = {};
-          tool.call.click.fn = ui.custom.console.call.loadClick;
+          if (tool.linkTo) {
+            tool.call.click.fn = ui.custom.console.call.linkTo;
+          } else {
+            tool.call.click.fn = ui.custom.console.call.loadClick;
+          }
           tool.call.click.params = tool;
         } else if (barsIndex == 3) {
           tool.call.click = {};
@@ -376,12 +380,12 @@ ui.custom.console = {
       var iconPos;
       if (params.shape == "circle") {
         svgParams = circleParams;
-        iconSize = "60%"
-        iconPos = "20%"
+        iconSize = "60%";
+        iconPos = "20%";
       } else {
         svgParams = rectParams;
-        iconSize = "70%"
-        iconPos = "15%"
+        iconSize = "70%";
+        iconPos = "15%";
       }
 
       if (params.icon) svgParams.elements.push({ type: "image", text: params.text, properties: { "xlink:href": params.icon, x: iconPos, y: iconPos, width: iconSize, height: iconSize, i18n: params.i18n + ".text.text" } });
