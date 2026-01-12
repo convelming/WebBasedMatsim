@@ -38,6 +38,7 @@ var configs = (window.configs = {
             { key: "OTFvis", i18n: "OTFvis_bar", status: 2, title: "显示仿真结果", text: "OTFvis", icon: "icon/otfvis.svg", shape: "rect", leftPoint: ">", rightPoint: false, linkTo: "./eventQuery.html" },
             { key: "centroid", i18n: "centroid_bar", status: 2, title: "显示形心连杆", text: "centroids", icon: "icon/star.svg", shape: "rect", leftPoint: ">", rightPoint: false, linkTo: "./LinkStatusTest.html" },
             { key: "chord", i18n: "chord_bar", status: 2, title: "显示OD弦图", text: "chord", icon: "image/globe.gif", shape: "circle", leftPoint: ">", rightPoint: false, linkTo: "./viaTest.html" },
+            { key: "simwwrapper", i18n: "simwwrapper_bar", status: 2, title: "simwwrapper", text: "simwwrapper", icon: "icon/SW_logo_black.png", shape: "circle", leftPoint: ">", rightPoint: false, linkTo: "https://simwrapper.app/" },
             // 设置图形左右连接点示例
             //{ key: "aaaa", title: "显示OD弦图", text:"aaaa", shape:"circle", leftPoint:"", rightPoint:">" }
             // status 设置为1 或以上  拖进来默认就是绿的 1 以上的数字对应的是statusColor
@@ -150,6 +151,7 @@ var configs = (window.configs = {
     form: [
       { key: "id", i18n: "saveConsole_id", title: "ID", type: "text", show: false },
       { key: "name", i18n: "saveConsole_name", title: "保存名称", type: "text", default: "请输入保存名称", verify: "NO_NULL", error: "错误：此输入框不能为空！" },
+      // { key: "name", i18n: "saveConsole_name", title: "保存名称", type: "text", default: "请输入保存名称", verify: "NO_NULL", error: "错误：此输入框不能为空！" },
       { key: "callType", i18n: "saveConsole_callType", title: "Call类型", type: "text", show: false },
       { key: "callParams", i18n: "saveConsole_callParams", title: "Call参数", type: "text", show: false },
       { key: "shapeId", i18n: "saveConsole_shapeId", title: "图形ID", type: "text", show: false },

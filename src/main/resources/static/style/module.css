@@ -296,6 +296,9 @@ body {
   text-align: center;
   font-size: 14px;
 }
+.p-draw-board .p-toolbar .p-tool span img {
+  object-fit: contain;
+}
 .p-draw-board .p-toolbar .p-tool .p-divide-line {
   margin: 5%;
   width: 90%;

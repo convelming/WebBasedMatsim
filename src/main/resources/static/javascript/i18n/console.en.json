@@ -71,6 +71,10 @@
     "text": "chord",
     "title": "display OD chord"
   },
+  "simwwrapper_bar": {
+    "text": "simwwrapper",
+    "title": "simwwrapper"
+  },
   "example_bar": {
     "text": "example"
   },

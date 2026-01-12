@@ -71,6 +71,10 @@
     "text": "chord",
     "title": "显示OD弦图"
   },
+  "simwwrapper_bar": {
+    "text": "simwwrapper",
+    "title": "simwwrapper"
+  },
   "example_bar": {
     "text": "案例"
   },
