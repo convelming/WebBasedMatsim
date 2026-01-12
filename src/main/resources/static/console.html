@@ -23,21 +23,23 @@
     <div id="windows" style="position: absolute; z-index: 1"></div>
     <!-- <div id="txt"></div><div class="p-nav"></div><div id="tabs"></div><div id="page"></div> -->
 
-    <div id="nav" class="console_nav">
+    <div id="nav" class="console_nav console_nav_flex">
       <div class="title" i18n="header_title.text">在线交通规划-MATSim</div>
-      <select class="select" name="lang" id="lang" onchange="window.i18n.changeLanguage(this.value)">
-        <option value="cn">简体中文</option>
-        <option value="en">English</option>
-      </select>
-      <div class="btn_box">
-        <img class="btn" src="icon/start.svg" id="p_svg_element_start" title="" onclick="ui.parts.svg.element.click('tools','start')" />
-        <img class="btn" src="icon/load.svg" id="p_svg_element_load" title="" onclick="ui.parts.svg.element.click('tools','load')" />
-        <img class="btn" src="icon/delete.svg" id="p_svg_element_delete" title="" onclick="ui.parts.svg.element.click('tools','delete')" />
-        <div class="line"></div>
-        <div class="user_btn" onclick="ui.parts.svg.element.click('tools','user')">U</div>
-        <div class="save_btn" onclick="ui.parts.svg.element.click('tools','save')">SAVE</div>
-        <!-- <img class="btn" src="icon/user.svg" id="p_svg_element_user" title="" onclick="ui.parts.svg.element.click('tools','user')" />
+      <div class="console_nav_flex" id="p_svg_tools2">
+        <select class="select" name="lang" id="p_svg_element_lang2" onchange="window.i18n.changeLanguage(this.value)">
+          <option value="cn">简体中文</option>
+          <option value="en">English</option>
+        </select>
+        <div class="btn_box">
+          <img class="btn" src="icon/start.svg" id="p_svg_element_start2" title="" onclick="ui.parts.svg.element.click('tools','start')" />
+          <img class="btn" src="icon/load.svg" id="p_svg_element_load2" title="" onclick="ui.parts.svg.element.click('tools','load')" />
+          <img class="btn" src="icon/delete.svg" id="p_svg_element_delete2" title="" onclick="ui.parts.svg.element.click('tools','delete')" />
+          <div class="line"></div>
+          <div class="user_btn" id="p_svg_element_user2" onclick="ui.parts.svg.element.click('tools','user')">U</div>
+          <div class="save_btn" id="p_svg_element_save2" onclick="ui.parts.svg.element.click('tools','save')">SAVE</div>
+          <!-- <img class="btn" src="icon/user.svg" id="p_svg_element_user" title="" onclick="ui.parts.svg.element.click('tools','user')" />
         <img class="btn" src="icon/save.svg" id="p_svg_element_save" title="" onclick="ui.parts.svg.element.click('tools','save')" /> -->
+        </div>
       </div>
     </div>
   </body>
@@ -56,7 +58,6 @@
 
   <script type="text/javascript">
     $(function () {
-
       //这个变量可以用来存取版本号， 系统更新时候改变相应值
       cur_val = 1;
       // //判断函数所接收变量的长度
@@ -64,9 +65,9 @@
       // {
       //每个页面设置不同的cookie变量名称，不可以重复，有新版本时，更新cur_val
       //这里模拟很多网站有新版本更新时才出现一次引导页， 第二次进入进不再出现， 这里有COOKIE来判断
-      // if ($.cookie("intro_cookie_index") == cur_val) {
-      //   return;
-      // }
+      if ($.cookie("intro_cookie_index") == cur_val) {
+        return;
+      }
       // }
       console.log("<><><><><><><><><><><><><" + cur_val);
       introJs()
@@ -185,28 +186,28 @@
               position: "right",
             },
             {
-              element: "#p_svg_tools", //tools
+              element: "#p_svg_tools2", //tools
               intro: "some tools",
               position: "bottom",
             },
             {
-              element: "#p_svg_element_start", // start button
+              element: "#p_svg_element_start2", // start button
               intro: "running matsim, click after building the model",
               position: "bottom",
             },
             {
-              element: "#p_svg_element_save", // save button
-              intro: "save button: save current model",
-              position: "bottom",
-            },
-            {
-              element: "#p_svg_element_load", // load button
+              element: "#p_svg_element_load2", // load button
               intro: "load: load from saves",
               position: "bottom",
             },
             {
-              element: "#p_svg_element_delete", // delete button
+              element: "#p_svg_element_delete2", // delete button
               intro: "delete: delete selected blocks ",
+              position: "bottom",
+            },
+            {
+              element: "#p_svg_element_save2", // save button
+              intro: "save button: save current model",
               position: "bottom",
             },
           ],
