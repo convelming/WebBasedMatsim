@@ -64,9 +64,9 @@
       // {
       //每个页面设置不同的cookie变量名称，不可以重复，有新版本时，更新cur_val
       //这里模拟很多网站有新版本更新时才出现一次引导页， 第二次进入进不再出现， 这里有COOKIE来判断
-      if ($.cookie("intro_cookie_index") == cur_val) {
-        return;
-      }
+      // if ($.cookie("intro_cookie_index") == cur_val) {
+      //   return;
+      // }
       // }
       console.log("<><><><><><><><><><><><><" + cur_val);
       introJs()
@@ -79,7 +79,7 @@
           //对应的数组，顺序出现每一步引导提示
           steps: [
             {
-              element: "#p_draw_shapes_traffic",
+              element: "body",
               intro: 'Online Traffic Planning <img src="./image/workspace.gif" width="300"> Simple way to create traffic planning scenario...',
               // '<img src="./image/echartNetwork.gif"> <img src="./image/eventQuery.gif">',
               position: "top",
