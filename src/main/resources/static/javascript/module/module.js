@@ -406,7 +406,7 @@ window.ui = (function (parts, modules, pages, build, common, config) {
               if (result == true)
                 $("*[name='" + tabName + "']")
                   .parents(".p-form")
-                  .css("display", "inline-block");
+                  .css("display", "block");
               else
                 $("*[name='" + tabName + "']")
                   .parents(".p-form")
