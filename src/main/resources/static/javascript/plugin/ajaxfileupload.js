@@ -149,26 +149,37 @@ jQuery.extend({
         }
         try {
             var form = jQuery('#' + formId);
-            jQuery(form).attr('action', s.url);
-            jQuery(form).attr('method', 'POST');
-            jQuery(form).attr('target', frameId);
-            if (form.encoding) {
-                form.encoding = 'multipart/form-data';
-            }
-            else {
-                form.enctype = 'multipart/form-data';
-            }
-            jQuery(form).submit();
+            const formData = new FormData(form);
+            jQuery.ajax({
+                url: s.url,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    uploadCallback();
+                }
+            });
+            // jQuery(form).attr('action', s.url);
+            // jQuery(form).attr('method', 'POST');
+            // jQuery(form).attr('target', frameId);
+            // if (form.encoding) {
+            //     form.encoding = 'multipart/form-data';
+            // }
+            // else {
+            //     form.enctype = 'multipart/form-data';
+            // }
+            // jQuery(form).submit();
 
         } catch (e) {
             jQuery.handleError(s, xml, null, e);
         }
-        if (window.attachEvent) {
-            document.getElementById(frameId).attachEvent('onload', uploadCallback);
-        }
-        else {
-            document.getElementById(frameId).addEventListener('load', uploadCallback, false);
-        }
+        // if (window.attachEvent) {
+        //     document.getElementById(frameId).attachEvent('onload', uploadCallback);
+        // }
+        // else {
+        //     document.getElementById(frameId).addEventListener('load', uploadCallback, false);
+        // }
         return { abort: function () { } };
 
     },
