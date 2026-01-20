@@ -15,7 +15,11 @@
     <title>AdminWelcome</title>
     <script>
         window.onload = function(){
-
+            $.ajaxSetup({
+                beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + $.cookie("Admin-Token"));
+                },
+            });
             $.ajax({
                 type: "POST",
                 url: "/verify/getUserInfo",
