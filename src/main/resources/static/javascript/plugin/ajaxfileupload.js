@@ -149,7 +149,7 @@ jQuery.extend({
         }
         try {
             var form = jQuery('#' + formId);
-            const formData = new FormData(form);
+            const formData = new FormData(form[0]);
             jQuery.ajax({
                 url: s.url,
                 type: 'POST',
